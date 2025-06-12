@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env/
+
+# ONNX model outputs (regenerate via export script)
+onnx-model/
+
+# Data folders, logs, intermediate files
+training-data/
+
+#  Python fine-tuned model dir
+securelogx-hf-ner/
+
+hf-ner-env/
+hf_ready/
+
+# Virtual-envs
+venv/
