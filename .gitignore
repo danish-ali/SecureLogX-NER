@@ -13,7 +13,7 @@ training-data/
 #  Python fine-tuned model dir
 securelogx-hf-ner/
 
-hf-ner-env/
+
 hf_ready/
 
 # Virtual-envs
