@@ -1,0 +1,26 @@
+{
+  "gate_version": 1,
+  "declared_before_training": true,
+  "scope": "Decision gate for proceeding from the PyTorch reference checkpoint to a later ONNX validation phase",
+  "required": {
+    "overall_test_micro_f1_minimum": 0.9,
+    "overall_test_macro_f1_minimum": 0.85,
+    "high_risk_test_recall_minimum": 0.95,
+    "minimum_individual_label_recall": 0.7,
+    "gretel_test_micro_f1_minimum": 0.8,
+    "unseen_template_synthetic_micro_f1_minimum": 0.9,
+    "hard_negative_records_with_false_positive_rate_maximum": 0.1,
+    "unexplained_alignment_failures_maximum": 0,
+    "truncated_entity_spans_maximum": 0
+  },
+  "rationale": {
+    "overall_test_micro_f1_minimum": "Existing project training guidance names 0.90 as the overall F1 floor.",
+    "high_risk_test_recall_minimum": "Existing project guidance names 0.95 as the critical-entity recall floor.",
+    "overall_test_macro_f1_minimum": "Prevents high-support labels from hiding broad class weakness.",
+    "minimum_individual_label_recall": "Prevents a nominal aggregate pass when one canonical class is unusable.",
+    "gretel_test_micro_f1_minimum": "Requires meaningful performance beyond SecureLogX generated templates.",
+    "unseen_template_synthetic_micro_f1_minimum": "Checks generalization to template families held out by construction.",
+    "hard_negative_records_with_false_positive_rate_maximum": "Limits pattern-only false alarms; the result remains qualified because test has one hard-negative family.",
+    "alignment": "No unexplained failures or truncated entity spans may be hidden. Explicitly tokenizer-unrepresentable frozen annotations remain reported separately."
+  }
+}

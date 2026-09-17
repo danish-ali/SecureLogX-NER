@@ -1,0 +1,109 @@
+{
+  "gate_version": 1,
+  "dataset_version": "ML-v1.1",
+  "declared_before_training": true,
+  "declared_utc": "2026-09-17T13:35:19.9610953Z",
+  "scope": "Checkpoint selection, sealed-challenge unlock, and final ONNX-readiness gates for the controlled ML-v1 versus ML-v1.1 data experiment",
+  "frozen_inputs": {
+    "ml_v1_1_dataset_manifest": {
+      "path": "configs/ml_v1_1_dataset_manifest.json",
+      "sha256": "cf4a2c60c0b0fafa0a570b57af8335c8ca8fbefd4a9f84175e0da2cbc5b5ba63"
+    },
+    "ml_v1_onnx_validation_gate": {
+      "path": "configs/ml_v1_onnx_validation_gate.json",
+      "sha256": "1d8249e1d4f052d0ba4cb64c607e6178d75f34ae160af17e0060907d02e56176"
+    },
+    "ontology": {
+      "path": "configs/securelogx_labels.json",
+      "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5",
+      "entity_count": 25,
+      "bio_label_count": 51
+    }
+  },
+  "training_configuration": {
+    "architecture": "bert-base-cased token classification",
+    "base_model": "bert-base-cased",
+    "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e",
+    "epochs": 3,
+    "learning_rate": 0.00002,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0,
+    "max_length": 384,
+    "stride": 128,
+    "dynamic_padding": true,
+    "bf16_when_supported": true,
+    "train_batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "eval_batch_size": 8,
+    "seed": 42
+  },
+  "metric_definitions": {
+    "entity_matching": "exact character span and entity class",
+    "macro": "unweighted mean across entity labels with positive gold support in that evaluation view",
+    "micro": "aggregate exact-span true positives, false positives, and false negatives",
+    "record_error_rate": "records with any exact-span false positive, false negative, boundary error, or wrong-class error divided by all records",
+    "context_target_error_rate": "records where the annotated contrast target is not decoded with its expected entity label, or an O contrast target overlaps any predicted entity, divided by all records",
+    "morphology_over_context_error_rate": "BUSINESS_ID contrast records decoded as SSN, CREDIT_CARD_NUMBER, or BANK_ACCOUNT_NUMBER, plus O technical-reference records decoded as IP_ADDRESS, divided by applicable records",
+    "category_error_rate": "record_error_rate calculated independently for one meta.contrast_category",
+    "unexplained_alignment_failure": "a failed alignment other than tokenizer_emitted_no_token_for_span or token_boundary_adjustment_exceeds_three_characters"
+  },
+  "checkpoint_selection": {
+    "development_only": true,
+    "primary_score": "harmonic_mean(original_dev_supported_entity_macro_f1, dev_challenge_supported_entity_macro_f1)",
+    "formula": "2*a*b/(a+b), or 0 when a+b is 0",
+    "effective_tie_absolute": 0.001,
+    "tie_break": "earlier epoch",
+    "sealed_challenge_forbidden": true
+  },
+  "historical_reference": {
+    "ml_v1_best_dev_micro_f1": 0.8990220048899755,
+    "ml_v1_best_dev_macro_f1": 0.903732061488502,
+    "ml_v1_best_dev_high_risk_recall": 0.9029385574354408,
+    "ml_v1_test_business_id_recall": 0.5497835497835498,
+    "ml_v1_test_hard_negative_record_error_rate": 1.0
+  },
+  "sealed_challenge_unlock": {
+    "decision_on_failure": "NOT READY FOR SEALED CHALLENGE EVALUATION",
+    "all_required": {
+      "original_dev_micro_f1_minimum": 0.8890220048899755,
+      "original_dev_supported_macro_f1_minimum": 0.893732061488502,
+      "original_dev_high_risk_recall_minimum": 0.8929385574354408,
+      "dev_challenge_micro_f1_minimum": 0.9,
+      "dev_challenge_supported_macro_f1_minimum": 0.85,
+      "dev_challenge_business_id_recall_minimum": 0.8,
+      "dev_challenge_business_id_recall_improvement_over_ml_v1_minimum": 0.2,
+      "dev_challenge_ssn_recall_minimum": 0.9,
+      "dev_challenge_record_error_rate_maximum": 0.15,
+      "dev_challenge_context_target_error_rate_maximum": 0.1,
+      "dev_challenge_morphology_over_context_error_rate_maximum": 0.1,
+      "dev_challenge_maximum_category_error_rate": 0.2,
+      "unexplained_alignment_failures_maximum": 0,
+      "truncated_entity_spans_maximum": 0
+    },
+    "rationale": "The standard-dev floors allow at most one absolute percentage point below the frozen ML-v1 best-dev values. The challenge thresholds require a material BUSINESS_ID recall gain, retained SSN recall, broad supported-label accuracy, and low record/context-conflict error before the sealed set can be opened."
+  },
+  "sealed_challenge_acceptance": {
+    "all_required": {
+      "micro_f1_minimum": 0.9,
+      "supported_macro_f1_minimum": 0.85,
+      "business_id_recall_minimum": 0.8,
+      "ssn_recall_minimum": 0.9,
+      "record_error_rate_maximum": 0.15,
+      "context_target_error_rate_maximum": 0.1,
+      "morphology_over_context_error_rate_maximum": 0.1,
+      "maximum_category_error_rate": 0.2,
+      "unexplained_alignment_failures_maximum": 0,
+      "truncated_entity_spans_maximum": 0
+    }
+  },
+  "final_onnx_readiness": {
+    "requires_sealed_challenge_pass": true,
+    "requires_original_ml_v1_gate_unchanged": true,
+    "original_ml_v1_gate_path": "configs/ml_v1_onnx_validation_gate.json",
+    "no_threshold_may_be_lowered_after_results": true,
+    "ready_value": "READY FOR ONNX VALIDATION",
+    "failure_value": "NOT READY FOR ONNX VALIDATION"
+  }
+}

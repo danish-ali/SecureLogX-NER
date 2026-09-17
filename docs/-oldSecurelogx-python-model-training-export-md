@@ -1,0 +1,1196 @@
+# SecureLogX Python-Side Model Training and ONNX Export Approach
+
+## 1. Purpose
+
+This document defines the Python-side workflow for preparing data, training the SecureLogX PII/NPI named-entity recognition model, evaluating the model, and exporting production-ready artifacts for Java-based inference.
+
+The Python side is responsible for:
+
+* Preparing labeled PII/NPI data.
+* Normalizing messy raw logs into a consistent JSONL format.
+* Sampling high-value unlabeled examples for annotation.
+* Supporting manual or semi-automatic annotation.
+* Merging all labeled datasets.
+* Splitting data into train, development, and test sets.
+* Training a Hugging Face token-classification model.
+* Evaluating model quality using precision, recall, and F1.
+* Exporting the trained model to ONNX.
+* Exporting tokenizer and label metadata required by the Java runtime.
+
+The Java side should not depend on Python at runtime. Python is used only for data preparation, training, evaluation, and artifact export.
+
+---
+
+## 2. High-Level Pipeline
+
+The expected SecureLogX Python-side flow is:
+
+```text
+Base PII/NPI data
+    -> prepare HF-ready labeled dataset
+    -> train baseline model
+    -> normalize new unlabeled logs
+    -> sample informative records
+    -> annotate selected records
+    -> merge old + new labeled data
+    -> split into train/dev/test
+    -> retrain final model
+    -> evaluate final model
+    -> export ONNX + tokenizer + labels + metadata
+    -> integrate artifacts into Java SecureLogX runtime
+```
+
+A simplified sequence:
+
+```text
+clean / prepare
+    -> train baseline
+    -> normalize
+    -> sample
+    -> annotate
+    -> merge
+    -> split
+    -> retrain
+    -> evaluate
+    -> export
+```
+
+---
+
+## 3. Recommended Repository Structure
+
+```text
+securelogx-ai/
+├── README.md
+├── AGENTS.md
+├── docs/
+│   ├── securelogx-python-training-approach.md
+│   ├── securelogx-data-schema.md
+│   ├── securelogx-entity-taxonomy.md
+│   ├── securelogx-annotation-guide.md
+│   ├── securelogx-evaluation-plan.md
+│   ├── securelogx-onnx-export-guide.md
+│   └── securelogx-java-integration-contract.md
+├── data/
+│   ├── raw/
+│   │   └── unlabeled.txt
+│   ├── kaggle_pii/
+│   │   └── pii_hf/
+│   │       ├── train.jsonl
+│   │       ├── dev.jsonl
+│   │       ├── test.jsonl
+│   │       └── labels.json
+│   ├── to_annotate/
+│   │   ├── pool.jsonl
+│   │   ├── pool_norm.jsonl
+│   │   ├── sample_for_label.jsonl
+│   │   └── labeled_pool.jsonl
+│   ├── training/
+│   │   └── all_labeled.jsonl
+│   └── split/
+│       ├── train.jsonl
+│       ├── dev.jsonl
+│       └── test.jsonl
+├── scripts/
+│   ├── prep_kaggle_pii.py
+│   ├── normalize_unlabeled.py
+│   ├── clean_logs_to_messages.py
+│   ├── al_sampler.py
+│   ├── annotate_pool.py
+│   ├── merge.py
+│   ├── split_labeled_jsonl.py
+│   ├── train_baseline.py
+│   ├── train_baseline_full.py
+│   ├── eval_hf_charspan.py
+│   └── export_securelogx_artifacts.py
+├── models/
+│   └── pii_baseline/
+├── output_trf/
+│   └── model-best/
+└── onnx/
+    ├── securelogx.onnx
+    ├── tokenizer.json
+    ├── labels.json
+    └── securelogx-model-metadata.json
+```
+
+---
+
+## 4. Data Types Used in the Pipeline
+
+SecureLogX should treat data in three major categories.
+
+### 4.1 Base Labeled PII/NPI Data
+
+This is the initial labeled dataset used to train the first baseline model.
+
+Examples:
+
+* Public PII datasets.
+* Synthetic PII/NPI records.
+* Manually curated examples.
+* Domain-specific examples for enterprise logs.
+
+Expected output format:
+
+```text
+data/kaggle_pii/pii_hf/train.jsonl
+data/kaggle_pii/pii_hf/dev.jsonl
+data/kaggle_pii/pii_hf/test.jsonl
+data/kaggle_pii/pii_hf/labels.json
+```
+
+### 4.2 New Unlabeled Logs
+
+These are raw records not yet labeled.
+
+They may include:
+
+* Plain text log messages.
+* JSON payloads.
+* XML payloads.
+* Mixed application logs.
+* Request/response payloads.
+* Error messages containing sensitive values.
+
+Raw unlabeled data must not be used for training until it is labeled.
+
+### 4.3 Final Labeled Training Dataset
+
+This is the merged dataset used for final training.
+
+It combines:
+
+* Base labeled PII/NPI dataset.
+* Newly annotated SecureLogX-specific examples.
+* Domain-specific examples for logs, JSON, XML, and API payloads.
+
+Expected output:
+
+```text
+data/training/all_labeled.jsonl
+```
+
+---
+
+## 5. Entity Scope
+
+The entity list should be driven by SecureLogX production masking requirements.
+
+Recommended core entities:
+
+| Entity           | Description                  | Example                |
+| ---------------- | ---------------------------- | ---------------------- |
+| `SSN`            | Social Security Number       | `123-45-6789`          |
+| `EMAIL`          | Email address                | `john.doe@example.com` |
+| `PHONE`          | Phone number                 | `704-555-1212`         |
+| `FIRST_NAME`     | First name                   | `John`                 |
+| `LAST_NAME`      | Last name                    | `Doe`                  |
+| `FULL_NAME`      | Full person name             | `John Doe`             |
+| `DOB`            | Date of birth                | `1985-04-12`           |
+| `ADDRESS_LINE1`  | Street address line 1        | `123 Main Street`      |
+| `ADDRESS_LINE2`  | Apartment/suite/unit         | `Apt 4B`               |
+| `CITY`           | City                         | `Charlotte`            |
+| `STATE`          | State                        | `NC`                   |
+| `ZIP`            | ZIP code                     | `28202`                |
+| `CREDIT_CARD`    | Card number                  | `4111111111111111`     |
+| `CVV`            | Card security code           | `123`                  |
+| `ACCOUNT_NUMBER` | Bank/account number          | `9876543210`           |
+| `ROUTING_NUMBER` | Bank routing number          | `053000196`            |
+| `NPI`            | National Provider Identifier | `1234567893`           |
+| `MRN`            | Medical record number        | `MRN-778812`           |
+| `POLICY_NUMBER`  | Insurance policy number      | `POL-12345`            |
+| `DRIVER_LICENSE` | Driver license number        | `NC1234567`            |
+| `PASSPORT`       | Passport number              | `A12345678`            |
+| `IP_ADDRESS`     | IPv4 or IPv6 address         | `192.168.1.1`          |
+| `TOKEN`          | API/session/access token     | `eyJhbGciOi...`        |
+| `SECRET`         | Secret, key, credential      | `sk_live_...`          |
+
+For the first production-focused model, do not try to support every possible sensitive entity. Start with the entities required by the SecureLogX masking policy and add more only when evaluation data exists.
+
+---
+
+## 6. Standard JSONL Schema
+
+The preferred labeled format is one JSON object per line.
+
+### 6.1 Unlabeled Record Schema
+
+```json
+{
+  "text": "Customer John Doe used SSN 123-45-6789.",
+  "meta": {
+    "source": "raw_log",
+    "format": "text"
+  }
+}
+```
+
+### 6.2 Labeled Record Schema
+
+```json
+{
+  "text": "Customer John Doe used SSN 123-45-6789.",
+  "entities": [
+    [9, 17, "FULL_NAME"],
+    [27, 38, "SSN"]
+  ],
+  "meta": {
+    "source": "manual_annotation",
+    "format": "text"
+  }
+}
+```
+
+### 6.3 Required Rules
+
+* `text` must contain the exact input string used for character offsets.
+* `entities` must contain character offsets in `[start, end, label]` format.
+* `start` is inclusive.
+* `end` is exclusive.
+* Entity spans must not overlap unless the training script explicitly supports nested entities.
+* Labels must match `labels.json` exactly.
+* Do not train from raw unlabeled text.
+
+---
+
+## 7. Step-by-Step Workflow
+
+## Step 1: Prepare Base PII/NPI Dataset
+
+Script:
+
+```text
+scripts/prep_kaggle_pii.py
+```
+
+Purpose:
+
+* Ingest public or synthetic PII data.
+* Clean inconsistent rows.
+* Convert records into SecureLogX JSONL format.
+* Create train/dev/test splits.
+* Create a label file.
+
+Expected command:
+
+```bash
+python scripts/prep_kaggle_pii.py \
+  --in data/raw/base_pii_dataset.csv \
+  --out data/kaggle_pii/pii_hf
+```
+
+Expected outputs:
+
+```text
+data/kaggle_pii/pii_hf/train.jsonl
+data/kaggle_pii/pii_hf/dev.jsonl
+data/kaggle_pii/pii_hf/test.jsonl
+data/kaggle_pii/pii_hf/labels.json
+```
+
+Validation checks:
+
+* Confirm every JSONL line is valid JSON.
+* Confirm every entity span maps to the correct substring.
+* Confirm labels are consistent.
+* Confirm train/dev/test split has no duplicate examples.
+
+---
+
+## Step 2: Train the First Baseline Model
+
+Script:
+
+```text
+scripts/train_baseline.py
+```
+
+Purpose:
+
+* Train the first Hugging Face token-classification model.
+* Use the prepared labeled data.
+* Create a baseline model used later for active-learning sampling and semi-automatic annotation.
+
+Expected command:
+
+```bash
+python scripts/train_baseline.py \
+  --train data/kaggle_pii/pii_hf/train.jsonl \
+  --dev data/kaggle_pii/pii_hf/dev.jsonl \
+  --test data/kaggle_pii/pii_hf/test.jsonl \
+  --labels data/kaggle_pii/pii_hf/labels.json \
+  --out models/pii_baseline
+```
+
+Expected output:
+
+```text
+models/pii_baseline/
+├── config.json
+├── pytorch_model.bin
+├── tokenizer.json
+├── tokenizer_config.json
+├── special_tokens_map.json
+├── trainer_state.json
+└── training_args.bin
+```
+
+Notes:
+
+* The baseline model does not have to be perfect.
+* It only needs to be good enough to assist active learning and annotation.
+* Final production quality should be measured after merge, retraining, and test evaluation.
+
+---
+
+## Step 3: Prepare New Unlabeled Log Data
+
+Input example:
+
+```text
+data/raw/unlabeled.txt
+```
+
+This file may contain mixed lines:
+
+```text
+Customer name: John Doe, SSN: 123-45-6789
+{"customer":"Jane Smith","email":"jane@example.com"}
+<customer><name>Noor Chen</name><dob>1985-01-02</dob></customer>
+```
+
+The purpose of this stage is to make every input line machine-readable.
+
+---
+
+## Step 4: Normalize Unlabeled Data
+
+Script:
+
+```text
+scripts/normalize_unlabeled.py
+```
+
+Purpose:
+
+* Convert plain text, JSON, XML, or mixed raw lines into a standard JSONL structure.
+* Preserve source metadata.
+* Make downstream scripts read a consistent format.
+
+Expected command:
+
+```bash
+python scripts/normalize_unlabeled.py \
+  --in data/raw/unlabeled.txt \
+  --out data/to_annotate/pool.jsonl
+```
+
+Expected output line:
+
+```json
+{"text":"Customer name: Noor Chen","meta":{"format":"text","source":"unlabeled.txt"}}
+```
+
+Important rule:
+
+Normalization does not create labels. It only converts raw data into a consistent structure.
+
+---
+
+## Step 5: Clean Logs to Message Text
+
+Script:
+
+```text
+scripts/clean_logs_to_messages.py
+```
+
+Purpose:
+
+* Remove log wrappers, timestamps, thread names, log levels, class names, and noisy prefixes.
+* Extract the core message or payload.
+* Improve model input consistency.
+
+Expected command:
+
+```bash
+python scripts/clean_logs_to_messages.py \
+  data/to_annotate/pool.jsonl \
+  data/to_annotate/pool_norm.jsonl
+```
+
+Input example:
+
+```text
+2026-01-12 10:14:33 INFO [http-nio-8080] com.app.CustomerController - Customer John Doe used SSN 123-45-6789
+```
+
+Output example:
+
+```json
+{"text":"Customer John Doe used SSN 123-45-6789","meta":{"format":"text","cleaned":true}}
+```
+
+This step is useful for production-style logs because the NER model should focus on the sensitive payload, not the logging framework noise.
+
+---
+
+## Step 6: Active-Learning Sampling
+
+Script:
+
+```text
+scripts/al_sampler.py
+```
+
+Purpose:
+
+* Use the baseline model to score unlabeled records.
+* Select records where the model is uncertain.
+* Prioritize examples that are most useful for annotation.
+
+Recommended command:
+
+```bash
+python scripts/al_sampler.py \
+  -i data/to_annotate/pool_norm.jsonl \
+  -o data/to_annotate/sample_for_label.jsonl \
+  --model-dir models/pii_baseline \
+  --limit 500 \
+  --format auto \
+  --dedupe \
+  --seed 42 \
+  --use-entropy
+```
+
+Fallback command when entropy produces too few samples:
+
+```bash
+python scripts/al_sampler.py \
+  -i data/to_annotate/pool_norm.jsonl \
+  -o data/to_annotate/sample_for_label.jsonl \
+  --model-dir models/pii_baseline \
+  --limit 500 \
+  --format auto \
+  --seed 42 \
+  --fallback-unc-only \
+  --unc 0.10 \
+  --digit 0.00 \
+  --min-chars 5
+```
+
+Important options:
+
+| Option                | Meaning                                                                      |
+| --------------------- | ---------------------------------------------------------------------------- |
+| `--limit 500`         | Select up to 500 records for annotation.                                     |
+| `--dedupe`            | Remove near-duplicate examples before sampling.                              |
+| `--use-entropy`       | Use entropy-based uncertainty scoring.                                       |
+| `--fallback-unc-only` | Fall back to uncertainty scoring if entropy does not select enough examples. |
+| `--unc 0.10`          | Minimum uncertainty threshold.                                               |
+| `--min-chars 5`       | Ignore very short records.                                                   |
+
+Expected output:
+
+```text
+data/to_annotate/sample_for_label.jsonl
+```
+
+---
+
+## Step 7: Semi-Automatic Annotation
+
+Script:
+
+```text
+scripts/annotate_pool.py
+```
+
+Purpose:
+
+* Load sampled records.
+* Run baseline model predictions.
+* Show predicted entities to the annotator.
+* Let the annotator accept, edit, add, delete, skip, or preview entities.
+* Save confirmed labels.
+
+CPU command:
+
+```bash
+python scripts/annotate_pool.py \
+  data/to_annotate/sample_for_label.jsonl \
+  data/to_annotate/labeled_pool.jsonl \
+  models/pii_baseline \
+  --limit 500 \
+  --local-only
+```
+
+GPU command:
+
+```bash
+python scripts/annotate_pool.py \
+  data/to_annotate/sample_for_label.jsonl \
+  data/to_annotate/labeled_pool.jsonl \
+  models/pii_baseline \
+  --limit 500 \
+  --local-only \
+  --device cuda
+```
+
+Interactive controls:
+
+| Key | Action                     |
+| --- | -------------------------- |
+| `a` | Accept predicted entities. |
+| `s` | Skip record.               |
+| `e` | Add or edit an entity.     |
+| `d` | Delete an entity.          |
+| `p` | Preview highlighted spans. |
+| `q` | Quit and save progress.    |
+
+Expected output:
+
+```text
+data/to_annotate/labeled_pool.jsonl
+```
+
+Annotation guidance:
+
+* Skip noisy records that do not represent real SecureLogX input.
+* Do not accept incorrect model predictions just to increase volume.
+* Prioritize correctness over dataset size.
+* Try to collect 50–100 high-quality examples per important entity type.
+* Stop when new examples become repetitive or test F1 no longer improves.
+
+---
+
+## Step 8: Merge Base and Newly Labeled Data
+
+Script:
+
+```text
+scripts/merge.py
+```
+
+Purpose:
+
+* Combine the base labeled dataset and newly labeled SecureLogX-specific records.
+* Create one master labeled dataset.
+
+Expected command:
+
+```bash
+python scripts/merge.py \
+  --in \
+    data/kaggle_pii/pii_hf/train.jsonl \
+    data/kaggle_pii/pii_hf/dev.jsonl \
+    data/kaggle_pii/pii_hf/test.jsonl \
+    data/to_annotate/labeled_pool.jsonl \
+  --out data/training/all_labeled.jsonl
+```
+
+Expected output:
+
+```text
+data/training/all_labeled.jsonl
+```
+
+Validation checks:
+
+* Remove exact duplicate records.
+* Validate entity offsets.
+* Validate label names.
+* Confirm no unlabeled records were accidentally merged.
+* Confirm `all_labeled.jsonl` contains only records with verified labels.
+
+---
+
+## Step 9: Split Final Labeled Dataset
+
+Script:
+
+```text
+scripts/split_labeled_jsonl.py
+```
+
+Purpose:
+
+* Split the merged dataset into train/dev/test.
+* Ensure evaluation happens on unseen records.
+
+Expected command:
+
+```bash
+python scripts/split_labeled_jsonl.py \
+  --in data/training/all_labeled.jsonl \
+  --out data/split
+```
+
+Expected output:
+
+```text
+data/split/train.jsonl
+data/split/dev.jsonl
+data/split/test.jsonl
+```
+
+Recommended split:
+
+| Split | Recommended Ratio | Purpose                    |
+| ----- | ----------------: | -------------------------- |
+| Train |            70–80% | Model learning             |
+| Dev   |            10–15% | Model selection and tuning |
+| Test  |            10–15% | Final unbiased evaluation  |
+
+Important rule:
+
+Do not tune the model repeatedly on the test set. The test set should be used for final quality reporting.
+
+---
+
+## Step 10: Retrain Final Model
+
+Script:
+
+```text
+scripts/train_baseline_full.py
+```
+
+Purpose:
+
+* Train the final model using merged and split data.
+* Save the best checkpoint.
+* Prepare the model for ONNX export.
+
+Expected command:
+
+```bash
+python scripts/train_baseline_full.py \
+  --train data/split/train.jsonl \
+  --dev data/split/dev.jsonl \
+  --labels data/kaggle_pii/pii_hf/labels.json \
+  --out output_trf
+```
+
+Expected output:
+
+```text
+output_trf/model-best/
+├── config.json
+├── pytorch_model.bin
+├── tokenizer.json
+├── tokenizer_config.json
+├── special_tokens_map.json
+├── trainer_state.json
+└── training_args.bin
+```
+
+---
+
+## Step 11: Evaluate Final Model
+
+Script:
+
+```text
+scripts/eval_hf_charspan.py
+```
+
+Purpose:
+
+* Evaluate the final model on the test set.
+* Measure entity-level quality.
+* Confirm whether the model is strong enough for ONNX export and Java runtime use.
+
+Expected command:
+
+```bash
+python scripts/eval_hf_charspan.py \
+  --model output_trf/model-best \
+  --data data/split/test.jsonl
+```
+
+Recommended metrics:
+
+| Metric              | Meaning                                             |
+| ------------------- | --------------------------------------------------- |
+| Precision           | How many predicted entities were correct.           |
+| Recall              | How many true entities were detected.               |
+| F1                  | Harmonic mean of precision and recall.              |
+| Entity-level F1     | F1 measured per entity type.                        |
+| Exact-span accuracy | Whether predicted offsets exactly match true spans. |
+
+Minimum recommendation before export:
+
+```text
+Overall F1 >= 0.80
+Critical entity F1 >= 0.85 where possible
+No severe false-negative issue for SSN, DOB, CREDIT_CARD, CVV, NPI, TOKEN, or SECRET
+```
+
+For journal-ready reporting, capture:
+
+* Number of train/dev/test records.
+* Label distribution by entity type.
+* Overall precision, recall, F1.
+* Per-entity precision, recall, F1.
+* Confusion/error examples.
+* False positive and false negative analysis.
+* Latency summary after ONNX export.
+
+---
+
+## Step 12: Export Final Model to ONNX
+
+Tool:
+
+```text
+optimum.exporters.onnx
+```
+
+Purpose:
+
+* Convert the Hugging Face model to ONNX.
+* Make the model usable from Java with ONNX Runtime.
+
+Expected command:
+
+```bash
+python -m optimum.exporters.onnx \
+  --model output_trf/model-best \
+  --task token-classification \
+  --opset 17 \
+  onnx/securelogx.onnx
+```
+
+Expected output:
+
+```text
+onnx/securelogx.onnx
+```
+
+Important export notes:
+
+* Use `token-classification` because SecureLogX uses NER-style token labeling.
+* Use a stable opset supported by the target ONNX Runtime Java version.
+* Opset 17 is a reasonable default, but should be verified against the Java runtime dependency.
+* Export should happen only after evaluation confirms acceptable model quality.
+
+---
+
+## Step 13: Export Tokenizer
+
+SecureLogX Java runtime must use the same tokenizer behavior as training.
+
+Required tokenizer artifacts usually include:
+
+```text
+onnx/tokenizer.json
+onnx/tokenizer_config.json
+onnx/special_tokens_map.json
+```
+
+The most important file for Java integration is:
+
+```text
+onnx/tokenizer.json
+```
+
+Suggested command:
+
+```bash
+cp output_trf/model-best/tokenizer.json onnx/tokenizer.json
+cp output_trf/model-best/tokenizer_config.json onnx/tokenizer_config.json
+cp output_trf/model-best/special_tokens_map.json onnx/special_tokens_map.json
+```
+
+Important rule:
+
+The tokenizer used in Java must match the tokenizer used during training. Otherwise, ONNX predictions may not align correctly to the original text.
+
+---
+
+## Step 14: Export Labels
+
+The Java runtime needs label metadata to interpret ONNX output indices.
+
+Required output:
+
+```text
+onnx/labels.json
+```
+
+Recommended `labels.json` format:
+
+```json
+{
+  "id2label": {
+    "0": "O",
+    "1": "B-EMAIL",
+    "2": "I-EMAIL",
+    "3": "B-SSN",
+    "4": "I-SSN"
+  },
+  "label2id": {
+    "O": 0,
+    "B-EMAIL": 1,
+    "I-EMAIL": 2,
+    "B-SSN": 3,
+    "I-SSN": 4
+  }
+}
+```
+
+Suggested extraction source:
+
+```text
+output_trf/model-best/config.json
+```
+
+The final Java runtime should not guess label order. Label order must come from the exported metadata.
+
+---
+
+## Step 15: Export SecureLogX Model Metadata
+
+Recommended file:
+
+```text
+onnx/securelogx-model-metadata.json
+```
+
+Recommended content:
+
+```json
+{
+  "model_name": "securelogx-pii-npi-ner",
+  "model_type": "token-classification",
+  "framework": "huggingface-transformers",
+  "export_format": "onnx",
+  "onnx_opset": 17,
+  "tokenizer_file": "tokenizer.json",
+  "labels_file": "labels.json",
+  "max_sequence_length": 512,
+  "entities_supported": [
+    "SSN",
+    "EMAIL",
+    "PHONE",
+    "FIRST_NAME",
+    "LAST_NAME",
+    "FULL_NAME",
+    "DOB",
+    "ADDRESS_LINE1",
+    "ADDRESS_LINE2",
+    "ZIP",
+    "CREDIT_CARD",
+    "CVV",
+    "NPI"
+  ],
+  "masking_strategy": {
+    "default": "full_mask",
+    "supports_show_last_four": true
+  },
+  "runtime_target": {
+    "language": "Java",
+    "runtime": "ONNX Runtime Java"
+  }
+}
+```
+
+This file helps the Java side validate that the model, tokenizer, and labels are compatible.
+
+---
+
+## 8. Java Runtime Artifact Contract
+
+There are two levels of artifact packaging: **minimum runtime files** and **recommended production files**.
+
+### 8.1 Minimum Runtime Files
+
+For a simple Java proof of concept, SecureLogX may only need these two files:
+
+```text
+onnx/securelogx.onnx
+onnx/tokenizer.json
+```
+
+This can work only if the Java code already knows or hard-codes:
+
+* the model input names,
+* the model output name,
+* the label index mapping,
+* special-token handling,
+* max sequence length,
+* padding and truncation behavior,
+* BIO tag reconstruction logic, and
+* masking policy mapping.
+
+This is acceptable for an early local PoC, but it is fragile for production because too much model knowledge lives in Java code instead of versioned metadata.
+
+### 8.2 Strongly Recommended Production Files
+
+For a production-ready SecureLogX package, export and version these files together:
+
+```text
+onnx/securelogx.onnx
+onnx/tokenizer.json
+onnx/labels.json
+onnx/securelogx-model-metadata.json
+```
+
+These four files should be treated as the core SecureLogX model bundle.
+
+| File                             |            Required? | Purpose                                                                                                                   |
+| -------------------------------- | -------------------: | ------------------------------------------------------------------------------------------------------------------------- |
+| `securelogx.onnx`                |                  Yes | The actual neural network graph executed by ONNX Runtime Java.                                                            |
+| `tokenizer.json`                 |                  Yes | The tokenizer definition used to convert log text into token IDs.                                                         |
+| `labels.json`                    | Strongly recommended | Maps model output indexes to labels such as `B-SSN`, `I-SSN`, `B-EMAIL`, etc.                                             |
+| `securelogx-model-metadata.json` | Strongly recommended | SecureLogX-specific runtime contract: supported entities, max length, opset, masking behavior, and compatibility details. |
+
+### 8.3 Optional Hugging Face Support Files
+
+These files are useful to keep for traceability, debugging, and reproducibility, but they do not always need to be loaded directly by Java:
+
+```text
+onnx/tokenizer_config.json
+onnx/special_tokens_map.json
+onnx/hf-config.json
+```
+
+| File                      | Purpose                                                                                                             |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `tokenizer_config.json`   | Documents tokenizer loading behavior, max length, truncation/padding defaults, and related tokenizer configuration. |
+| `special_tokens_map.json` | Documents special tokens such as `[CLS]`, `[SEP]`, `[PAD]`, `[UNK]`, and `[MASK]`, depending on the model family.   |
+| `hf-config.json`          | Copy of Hugging Face `config.json`; useful for traceability and may contain `id2label` / `label2id`.                |
+
+### 8.4 Recommended SecureLogX Bundle Layout
+
+```text
+securelogx-model-bundle/
+├── securelogx.onnx
+├── tokenizer.json
+├── labels.json
+├── securelogx-model-metadata.json
+├── tokenizer_config.json          # optional but recommended
+├── special_tokens_map.json        # optional but recommended
+└── hf-config.json                 # optional traceability copy
+```
+
+The Java side should verify:
+
+* ONNX file exists.
+* Tokenizer file exists.
+* Label mapping exists or is explicitly provided by Java configuration.
+* Label count matches ONNX output dimension.
+* Tokenizer max length is compatible with model max length.
+* Supported entities match configured masking policies.
+* The model bundle version is compatible with the SecureLogX Java runtime version.
+
+---
+
+## 9. Quality Gates
+
+Before using the model in SecureLogX Java runtime, the following checks should pass.
+
+### 9.1 Data Quality Gate
+
+* JSONL files are valid.
+* Entity spans are valid.
+* Labels are consistent.
+* No unlabeled data is accidentally used for training.
+* No duplicate records leak across train/dev/test.
+
+### 9.2 Model Quality Gate
+
+* Overall F1 is acceptable.
+* Critical entities have strong recall.
+* False negatives are reviewed for high-risk fields.
+* Model performs across plain text, JSON, XML, and log-style records.
+
+### 9.3 Export Quality Gate
+
+* ONNX export completes successfully.
+* ONNX inference output shape is correct.
+* Tokenizer output matches Python tokenizer behavior.
+* Label mapping is correct.
+* Java test input produces expected entity predictions.
+
+### 9.4 Runtime Quality Gate
+
+* Java inference works without Python.
+* Masking output is deterministic.
+* SECURE logs invoke masking.
+* Non-SECURE logs bypass AI masking if configured.
+* `showLastFour` behavior works only for allowed entity types.
+
+---
+
+## 10. Common Mistakes to Avoid
+
+| Mistake                                                  | Why It Is Bad                                 |
+| -------------------------------------------------------- | --------------------------------------------- |
+| Training directly on `unlabeled.txt`                     | The model needs verified labels.              |
+| Changing text after annotation                           | Character offsets become invalid.             |
+| Using different tokenizer in Java                        | Entity spans and token predictions may break. |
+| Trusting baseline predictions blindly                    | Incorrect labels reduce final model quality.  |
+| Evaluating only on dev data                              | Inflates quality estimate.                    |
+| Exporting before test evaluation                         | May ship a weak model.                        |
+| Hard-coding label order in Java                          | Output index mapping may be wrong.            |
+| Masking every detected token without span reconstruction | Can produce broken or partial masking.        |
+
+---
+
+## 11. Recommended Next Documents
+
+This document should be part of a broader SecureLogX documentation set.
+
+Recommended next Markdown files:
+
+1. `docs/securelogx-entity-taxonomy.md`
+
+   * Defines all supported PII/NPI/security-sensitive entities.
+   * Separates MVP entities from future entities.
+
+2. `docs/securelogx-data-schema.md`
+
+   * Defines JSONL formats for unlabeled, labeled, sampled, and merged datasets.
+   * Defines validation rules for offsets and labels.
+
+3. `docs/securelogx-annotation-guide.md`
+
+   * Defines how to label names, addresses, DOB, SSN, NPI, cards, CVV, tokens, and secrets.
+   * Includes positive and negative examples.
+
+4. `docs/securelogx-evaluation-plan.md`
+
+   * Defines metrics, target thresholds, per-entity reporting, and journal-ready result tables.
+
+5. `docs/securelogx-onnx-export-guide.md`
+
+   * Defines exact export commands, expected files, runtime compatibility checks, and troubleshooting.
+
+6. `docs/securelogx-java-integration-contract.md`
+
+   * Defines how Java loads ONNX, tokenizer, labels, metadata, and applies masking policies.
+
+7. `docs/securelogx-active-learning-workflow.md`
+
+   * Defines active learning, uncertainty sampling, entropy sampling, annotation loop, and retraining criteria.
+
+---
+
+## 12. Current Open Questions
+
+The following items should be confirmed before freezing the Python pipeline:
+
+1. Which Hugging Face base model is being used for final training?
+2. Is the label set BIO-based, entity-name-based, or converted internally during training?
+3. What exact Java tokenizer library will be used?
+4. Does Java need token offsets directly from tokenizer output?
+5. Is the target ONNX Runtime Java version compatible with opset 17?
+6. Should `FIRST_NAME` and `LAST_NAME` be separate labels, or should SecureLogX use `PERSON` / `FULL_NAME` only?
+7. Should address be modeled as one `ADDRESS` entity or split into `ADDRESS_LINE1`, `ADDRESS_LINE2`, `CITY`, `STATE`, and `ZIP`?
+8. Should CVV be detected by NER, regex, or policy-aware hybrid logic?
+9. Should credit card detection rely on NER, regex/Luhn validation, or hybrid logic?
+10. Should tokens/secrets be handled by NER, regex, entropy detection, or hybrid rules?
+
+---
+
+## 13. Recommended Final Command Sequence
+
+```bash
+# 1. Prepare base labeled dataset
+python scripts/prep_kaggle_pii.py \
+  --in data/raw/base_pii_dataset.csv \
+  --out data/kaggle_pii/pii_hf
+
+# 2. Train baseline model
+python scripts/train_baseline.py \
+  --train data/kaggle_pii/pii_hf/train.jsonl \
+  --dev data/kaggle_pii/pii_hf/dev.jsonl \
+  --test data/kaggle_pii/pii_hf/test.jsonl \
+  --labels data/kaggle_pii/pii_hf/labels.json \
+  --out models/pii_baseline
+
+# 3. Normalize raw unlabeled logs
+python scripts/normalize_unlabeled.py \
+  --in data/raw/unlabeled.txt \
+  --out data/to_annotate/pool.jsonl
+
+# 4. Clean logs to message text
+python scripts/clean_logs_to_messages.py \
+  data/to_annotate/pool.jsonl \
+  data/to_annotate/pool_norm.jsonl
+
+# 5. Sample informative records
+python scripts/al_sampler.py \
+  -i data/to_annotate/pool_norm.jsonl \
+  -o data/to_annotate/sample_for_label.jsonl \
+  --model-dir models/pii_baseline \
+  --limit 500 \
+  --format auto \
+  --dedupe \
+  --seed 42 \
+  --use-entropy
+
+# 6. Annotate sampled records
+python scripts/annotate_pool.py \
+  data/to_annotate/sample_for_label.jsonl \
+  data/to_annotate/labeled_pool.jsonl \
+  models/pii_baseline \
+  --limit 500 \
+  --local-only
+
+# 7. Merge labeled datasets
+python scripts/merge.py \
+  --in \
+    data/kaggle_pii/pii_hf/train.jsonl \
+    data/kaggle_pii/pii_hf/dev.jsonl \
+    data/kaggle_pii/pii_hf/test.jsonl \
+    data/to_annotate/labeled_pool.jsonl \
+  --out data/training/all_labeled.jsonl
+
+# 8. Split merged labeled dataset
+python scripts/split_labeled_jsonl.py \
+  --in data/training/all_labeled.jsonl \
+  --out data/split
+
+# 9. Retrain final model
+python scripts/train_baseline_full.py \
+  --train data/split/train.jsonl \
+  --dev data/split/dev.jsonl \
+  --labels data/kaggle_pii/pii_hf/labels.json \
+  --out output_trf
+
+# 10. Evaluate final model
+python scripts/eval_hf_charspan.py \
+  --model output_trf/model-best \
+  --data data/split/test.jsonl
+
+# 11. Export ONNX
+python -m optimum.exporters.onnx \
+  --model output_trf/model-best \
+  --task token-classification \
+  --opset 17 \
+  onnx/securelogx.onnx
+
+# 12. Copy tokenizer and metadata files
+cp output_trf/model-best/tokenizer.json onnx/tokenizer.json
+cp output_trf/model-best/tokenizer_config.json onnx/tokenizer_config.json
+cp output_trf/model-best/special_tokens_map.json onnx/special_tokens_map.json
+cp output_trf/model-best/config.json onnx/hf-config.json
+```
+
+---
+
+## 14. Summary
+
+The Python side of SecureLogX should be treated as the model factory. It prepares data, trains the NER model, evaluates model quality, and exports runtime artifacts.
+
+The Java side should be treated as the production runtime. It loads the exported ONNX model, tokenizer, label mapping, and metadata, then applies SecureLogX masking policies during SECURE logging.
+
+The most important rule is:
+
+```text
+Do not train on raw unlabeled logs. Normalize first, annotate correctly, evaluate rigorously, then export.
+```

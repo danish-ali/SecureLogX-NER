@@ -1,0 +1,11 @@
+{
+  "development_gate_sha256": "86c026e9b76c25e61c000eda72b9eabbec9775aaacee7f5e2f8758f263bd1bad",
+  "evaluation_label": "REGRESSION BENCHMARK - NOT UNSEEN TEST",
+  "evaluation_performed": false,
+  "metric_fields_present": false,
+  "model_sha256": "28ec51cbe7d46423ef9e72467994e43b2d47f7d5465593b69d7d1c427975f571",
+  "reason": "Step 9 predeclared development gate failed; the experiment stopped before all post-gate inference.",
+  "sealed_challenge_opened": false,
+  "selected_epoch": 3,
+  "status": "NOT_RUN"
+}

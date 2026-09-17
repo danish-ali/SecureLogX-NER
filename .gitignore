@@ -2,7 +2,9 @@
 __pycache__/
 *.py[cod]
 .venv/
+.venv311/
 .env/
+data/kaggle_pii
 
 # ONNX model outputs (regenerate via export script)
 onnx-model/
@@ -18,3 +20,13 @@ hf_ready/
 
 # Virtual-envs
 venv/
+hf-ner-env/
+
+# Trained model checkpoints (regenerate via training scripts)
+output_securelogx/
+
+# Labeled dumps often contain synthetic token-like strings that GitHub push protection blocks
+data/**/*.jsonl
+data/ml_v1_1/
+reports/model_errors.csv
+reports/ml_v1_1_model_errors.csv

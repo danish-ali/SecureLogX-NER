@@ -1,0 +1,314 @@
+{
+  "confidence": {
+    "false_negative_gold_probability": {
+      "count": 2,
+      "mean": 0.01906412811949849,
+      "median": 0.01906412811949849,
+      "p25": 0.017878908244892952,
+      "p75": 0.02024934799410403
+    },
+    "false_positive": {
+      "count": 594,
+      "mean": 0.042737739396884654,
+      "median": 0.04124839883297682,
+      "p25": 0.036498649045825005,
+      "p75": 0.04774308577179909
+    },
+    "wrong_class": {
+      "count": 12,
+      "mean": 0.03576191278019299,
+      "median": 0.03547913022339344,
+      "p25": 0.03318031411617994,
+      "p75": 0.03779222350567579
+    }
+  },
+  "error_counts": {
+    "boundary_shifted": 0,
+    "boundary_too_long": 0,
+    "boundary_too_short": 0,
+    "false_negatives": 14,
+    "false_positives": 606,
+    "wrong_entity_class": 12
+  },
+  "exact_span_matches": 0,
+  "gold_entities": 14,
+  "high_risk": {
+    "f1": 0.0,
+    "false_negatives": 6,
+    "false_positives": 224,
+    "precision": 0.0,
+    "recall": 0.0,
+    "support": 6,
+    "true_positives": 0
+  },
+  "invalid_bio_transitions": 452,
+  "loss": 3.360664066440331,
+  "macro": {
+    "f1": 0.0,
+    "precision": 0.0,
+    "recall": 0.0
+  },
+  "micro": {
+    "f1": 0.0,
+    "false_negatives": 14,
+    "false_positives": 606,
+    "precision": 0.0,
+    "recall": 0.0,
+    "true_positives": 0
+  },
+  "per_label": {
+    "AGE": {
+      "f1": 0.0,
+      "false_negatives": 2,
+      "false_positives": 21,
+      "precision": 0.0,
+      "predicted": 21,
+      "recall": 0.0,
+      "support": 2,
+      "true_positives": 0
+    },
+    "API_KEY": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 9,
+      "precision": 0.0,
+      "predicted": 9,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "AUTH_TOKEN": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 13,
+      "precision": 0.0,
+      "predicted": 13,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "BANK_ACCOUNT_NUMBER": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 37,
+      "precision": 0.0,
+      "predicted": 37,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    },
+    "BUSINESS_ID": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 8,
+      "precision": 0.0,
+      "predicted": 8,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "CITY": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 6,
+      "precision": 0.0,
+      "predicted": 6,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "COUNTRY": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 30,
+      "precision": 0.0,
+      "predicted": 30,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    },
+    "CREDIT_CARD_NUMBER": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 9,
+      "precision": 0.0,
+      "predicted": 9,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "DEVICE_ID": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 27,
+      "precision": 0.0,
+      "predicted": 27,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "DOB": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 66,
+      "precision": 0.0,
+      "predicted": 66,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "DRIVER_LICENSE": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 4,
+      "precision": 0.0,
+      "predicted": 4,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "EMAIL": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 5,
+      "precision": 0.0,
+      "predicted": 5,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    },
+    "IBAN": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 110,
+      "precision": 0.0,
+      "predicted": 110,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "IP_ADDRESS": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 14,
+      "precision": 0.0,
+      "predicted": 14,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "ITIN": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 15,
+      "precision": 0.0,
+      "predicted": 15,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    },
+    "PASSPORT_NUMBER": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 0.0,
+      "predicted": 0,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "PERSON_NAME": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 2,
+      "precision": 0.0,
+      "predicted": 2,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "PHONE": {
+      "f1": 0.0,
+      "false_negatives": 3,
+      "false_positives": 40,
+      "precision": 0.0,
+      "predicted": 40,
+      "recall": 0.0,
+      "support": 3,
+      "true_positives": 0
+    },
+    "POSTAL_CODE": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 6,
+      "precision": 0.0,
+      "predicted": 6,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "ROUTING_NUMBER": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 9,
+      "precision": 0.0,
+      "predicted": 9,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    },
+    "SSN": {
+      "f1": 0.0,
+      "false_negatives": 2,
+      "false_positives": 0,
+      "precision": 0.0,
+      "predicted": 0,
+      "recall": 0.0,
+      "support": 2,
+      "true_positives": 0
+    },
+    "STATE_PROVINCE": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 6,
+      "precision": 0.0,
+      "predicted": 6,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "STREET_ADDRESS": {
+      "f1": 0.0,
+      "false_negatives": 0,
+      "false_positives": 28,
+      "precision": 0.0,
+      "predicted": 28,
+      "recall": 0.0,
+      "support": 0,
+      "true_positives": 0
+    },
+    "SWIFT_BIC": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 123,
+      "precision": 0.0,
+      "predicted": 123,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    },
+    "TAX_ID": {
+      "f1": 0.0,
+      "false_negatives": 1,
+      "false_positives": 18,
+      "precision": 0.0,
+      "predicted": 18,
+      "recall": 0.0,
+      "support": 1,
+      "true_positives": 0
+    }
+  },
+  "predicted_entities": 606,
+  "records": 16,
+  "split": "dev"
+}

@@ -1,0 +1,68 @@
+---
+# SecureLogX Training Profile
+# Handoff configuration for model training and export phase
+
+ontology:
+  name: SecureLogX
+  version: ML-v1
+  frozen: true
+  entity_count: 25
+  bio_label_count: 51
+  labels_path: configs/securelogx_labels.json
+  id_source: label_to_id
+
+training:
+  model_family: bert
+  model_task: token-classification
+  base_model: distilbert-base-uncased
+  tokenizer_source: same_as_base_model
+  use_fast_tokenizer: true
+  label_format: BIO
+  max_length: 256
+  epochs: 3
+  batch_size: 16
+  learning_rate: 0.00005
+  metric_for_best_model: f1
+  load_best_model_at_end: true
+  eval_strategy: epoch
+  save_strategy: epoch
+
+runtime:
+  target: java_onnx
+  onnx_task: token-classification
+  opset: 17
+  quantize_dynamic: true
+  export_tokenizer_json: true
+  export_labels_json: true
+  export_metadata_json: true
+
+data:
+  train_path: data/split/train.jsonl
+  dev_path: data/split/dev.jsonl
+  test_path: data/split/test.jsonl
+  labels_path: configs/securelogx_labels.json
+  label_map_path: configs/securelogx_label_map.yml
+  data_sources_path: configs/data_sources.yml
+  allowed_review_statuses:
+    - auto_converted
+    - synthetic_generated
+    - manual_reviewed
+    - pseudolabeled_reviewed
+  training_exclusion_meta_key: training_exclusion
+  exclude_when_training_exclusion: true
+  excluded_spans_meta_key: excluded_spans
+  entity_provenance_meta_key: entity_provenance
+
+readiness_gates:
+  minimum_train_spans_per_entity: 300
+  minimum_dev_spans_per_entity: 40
+  minimum_test_spans_per_entity: 40
+  exact_duplicate_text_leakage: 0
+  synthetic_template_family_leakage: 0
+  require_all_ml_v1_entities_to_pass: true
+
+outputs:
+  model_dir: output_securelogx/model-best
+  onnx_dir: onnx
+  model_name: securelogx
+  metrics_dir: reports

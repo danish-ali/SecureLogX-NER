@@ -1,0 +1,67 @@
+---
+# SecureLogX Data Sources Configuration
+# Defines enabled and disabled data sources for pipeline
+
+sources:
+  gretel_finance_pii:
+    id: gretel_finance_pii
+    kind: labeled_dataset
+    provider: Gretel AI
+    name: Synthetic PII Finance Multilingual
+    source_url: "https://huggingface.co/datasets/gretelai/synthetic_pii_finance_multilingual"
+    enabled: true
+    priority: 1
+    license_reviewed: false
+    usage_notes: "Public Hugging Face dataset, multilingual PII spans in finance domain"
+    allowed_usage: "research, training, model development"
+
+  ai4privacy_open_pii_500k:
+    id: ai4privacy_open_pii_500k
+    kind: labeled_dataset
+    provider: Ai4Privacy
+    name: Open PII Masking 500K
+    source_url: "https://huggingface.co/datasets/ai4privacy/open-pii-masking-500k-ai4privacy"
+    enabled: false
+    priority: 2
+    license_reviewed: false
+    usage_notes: "Public dataset with diverse PII annotations, large scale"
+    allowed_usage: "research, training, model development"
+    notes: "Enable after Gretel converter is stable"
+
+  nvidia_gliner_pii:
+    id: nvidia_gliner_pii
+    kind: pretrained_model
+    provider: NVIDIA
+    name: GLiNER PII Model
+    source_url: "https://huggingface.co/urchade/gliner_pii"
+    enabled: false
+    priority: 3
+    license_reviewed: false
+    usage_notes: "Pretrained zero-shot NER model for pseudo-labeling"
+    allowed_usage: "baseline comparison, pseudo-labeling, annotation acceleration"
+    notes: "Use only after labeled dataset pipeline works; not for Java runtime"
+
+  bigcode_starpii:
+    id: bigcode_starpii
+    kind: pretrained_model
+    provider: BigCode
+    name: StarPII Model
+    source_url: "https://huggingface.co/bigcode/starpii"
+    enabled: false
+    priority: 4
+    license_reviewed: false
+    usage_notes: "Pretrained model for technical/code-like secrets (API keys, tokens)"
+    allowed_usage: "baseline comparison, technical secret detection"
+    notes: "Gated access required; use only if available"
+
+  securelogx_custom_logs:
+    id: securelogx_custom_logs
+    kind: generated_data
+    provider: SecureLogX
+    name: SecureLogX Generated Synthetic Logs
+    source_url: "file://data/custom/generated_logs/"
+    enabled: true
+    priority: 2
+    license_reviewed: true
+    usage_notes: "Programmatically generated labeled logs with exact character offsets"
+    allowed_usage: "training, model development"

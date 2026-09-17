@@ -1,0 +1,951 @@
+{
+  "base_model": "bert-base-cased",
+  "max_length": 384,
+  "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e",
+  "splits": {
+    "dev": {
+      "affected_labels": {
+        "PERSON_NAME": {
+          "failed": 3
+        }
+      },
+      "boundary_adjusted_spans": 0,
+      "diagnostics": [
+        {
+          "adjusted_boundaries": [
+            [
+              42,
+              68
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 60,
+          "excessive_boundary_adjustment": true,
+          "label": "PERSON_NAME",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "35120",
+          "record_index": 647,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 42,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              423,
+              449
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 441,
+          "excessive_boundary_adjustment": true,
+          "label": "PERSON_NAME",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "35120",
+          "record_index": 647,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 423,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              819,
+              845
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 837,
+          "excessive_boundary_adjustment": true,
+          "label": "PERSON_NAME",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "35120",
+          "record_index": 647,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 819,
+          "status": "failed",
+          "template_family": null
+        }
+      ],
+      "exact_boundary_spans": 4017,
+      "failed_alignments": 3,
+      "max_length": 384,
+      "reason_counts": {
+        "exact_token_boundaries": 4017,
+        "token_boundary_adjustment_exceeds_three_characters": 3
+      },
+      "records": 2994,
+      "stride": 128,
+      "successfully_aligned_spans": 4017,
+      "supervised_span_instances_across_windows": 4199,
+      "total_spans": 4020,
+      "truncated_spans": 0,
+      "windows": 3324
+    },
+    "test": {
+      "affected_labels": {
+        "PERSON_NAME": {
+          "boundary_adjusted": 1
+        }
+      },
+      "boundary_adjusted_spans": 1,
+      "diagnostics": [
+        {
+          "adjusted_boundaries": [
+            [
+              321,
+              328
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 325,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "44019",
+          "record_index": 875,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 321,
+          "status": "boundary_adjusted",
+          "template_family": null
+        }
+      ],
+      "exact_boundary_spans": 4357,
+      "failed_alignments": 0,
+      "max_length": 384,
+      "reason_counts": {
+        "character_boundary_inside_or_outside_token": 1,
+        "exact_token_boundaries": 4357
+      },
+      "records": 2989,
+      "stride": 128,
+      "successfully_aligned_spans": 4358,
+      "supervised_span_instances_across_windows": 4552,
+      "total_spans": 4358,
+      "truncated_spans": 0,
+      "windows": 3313
+    },
+    "train": {
+      "affected_labels": {
+        "BANK_ACCOUNT_NUMBER": {
+          "boundary_adjusted": 1
+        },
+        "EMAIL": {
+          "boundary_adjusted": 2
+        },
+        "PERSON_NAME": {
+          "boundary_adjusted": 11,
+          "failed": 2
+        },
+        "PHONE": {
+          "boundary_adjusted": 1
+        },
+        "ROUTING_NUMBER": {
+          "boundary_adjusted": 1
+        },
+        "STREET_ADDRESS": {
+          "boundary_adjusted": 1,
+          "failed": 3
+        },
+        "SWIFT_BIC": {
+          "boundary_adjusted": 12,
+          "failed": 1
+        }
+      },
+      "boundary_adjusted_spans": 29,
+      "diagnostics": [
+        {
+          "adjusted_boundaries": [
+            [
+              487,
+              494
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 491,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "46140",
+          "record_index": 3479,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 487,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              56,
+              66
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 66,
+          "excessive_boundary_adjustment": false,
+          "label": "ROUTING_NUMBER",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "24013",
+          "record_index": 3508,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 57,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              22,
+              46
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 46,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "39184",
+          "record_index": 6728,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 23,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              268,
+              275
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 272,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "47690",
+          "record_index": 7330,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 268,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              458,
+              465
+            ]
+          ],
+          "aligned_windows": 2,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 462,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "32853",
+          "record_index": 8980,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 458,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              278,
+              285
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 282,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "41966",
+          "record_index": 9113,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 278,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              1279,
+              1286
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 1283,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "41966",
+          "record_index": 9113,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 1279,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              64,
+              82
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 81,
+          "excessive_boundary_adjustment": false,
+          "label": "PHONE",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "3230",
+          "record_index": 10142,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 64,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              174,
+              197
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 194,
+          "excessive_boundary_adjustment": false,
+          "label": "EMAIL",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "48739",
+          "record_index": 10554,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 174,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              446,
+              468
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 466,
+          "excessive_boundary_adjustment": false,
+          "label": "EMAIL",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "48739",
+          "record_index": 10554,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 446,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              494,
+              503
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 503,
+          "excessive_boundary_adjustment": false,
+          "label": "STREET_ADDRESS",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "48739",
+          "record_index": 10554,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 492,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              51,
+              55
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 53,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "39007",
+          "record_index": 10703,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 51,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              266,
+              556
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 312,
+          "excessive_boundary_adjustment": true,
+          "label": "STREET_ADDRESS",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "37791",
+          "record_index": 13470,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 266,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              106,
+              119
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 119,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "54172",
+          "record_index": 16702,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 107,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              133,
+              167
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 162,
+          "excessive_boundary_adjustment": true,
+          "label": "STREET_ADDRESS",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "54172",
+          "record_index": 16702,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 135,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              17,
+              142
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 142,
+          "excessive_boundary_adjustment": true,
+          "label": "PERSON_NAME",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "55002",
+          "record_index": 17595,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 122,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              215,
+              236
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 236,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "55002",
+          "record_index": 17595,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 216,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              73,
+              92
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 91,
+          "excessive_boundary_adjustment": false,
+          "label": "BANK_ACCOUNT_NUMBER",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "41058",
+          "record_index": 18272,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 73,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 318,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "tokenizer_emitted_no_token_for_span",
+          "record_id": "34267",
+          "record_index": 18997,
+          "seen_overlap": false,
+          "source": "gretel_finance_pii",
+          "start": 297,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 459,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "tokenizer_emitted_no_token_for_span",
+          "record_id": "34267",
+          "record_index": 18997,
+          "seen_overlap": false,
+          "source": "gretel_finance_pii",
+          "start": 448,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              534,
+              542
+            ]
+          ],
+          "aligned_windows": 0,
+          "boundary_adjusted": false,
+          "collision": false,
+          "end": 543,
+          "excessive_boundary_adjustment": true,
+          "label": "STREET_ADDRESS",
+          "reason": "token_boundary_adjustment_exceeds_three_characters",
+          "record_id": "34267",
+          "record_index": 18997,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 505,
+          "status": "failed",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              278,
+              285
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 282,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "48303",
+          "record_index": 19145,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 278,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              59,
+              71
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 70,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 59,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              133,
+              145
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 144,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 133,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              163,
+              175
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 174,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 163,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              203,
+              215
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 214,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 203,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              251,
+              263
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 262,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 251,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              291,
+              303
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 302,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 291,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              330,
+              342
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 341,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 330,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              361,
+              373
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 372,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 361,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              470,
+              482
+            ]
+          ],
+          "aligned_windows": 2,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 481,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 470,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              501,
+              513
+            ]
+          ],
+          "aligned_windows": 2,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 512,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 501,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              532,
+              544
+            ]
+          ],
+          "aligned_windows": 2,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 543,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 532,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              563,
+              575
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 574,
+          "excessive_boundary_adjustment": false,
+          "label": "SWIFT_BIC",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "30174",
+          "record_index": 21150,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 563,
+          "status": "boundary_adjusted",
+          "template_family": null
+        },
+        {
+          "adjusted_boundaries": [
+            [
+              57,
+              80
+            ]
+          ],
+          "aligned_windows": 1,
+          "boundary_adjusted": true,
+          "collision": false,
+          "end": 80,
+          "excessive_boundary_adjustment": false,
+          "label": "PERSON_NAME",
+          "reason": "character_boundary_inside_or_outside_token",
+          "record_id": "45336",
+          "record_index": 23187,
+          "seen_overlap": true,
+          "source": "gretel_finance_pii",
+          "start": 58,
+          "status": "boundary_adjusted",
+          "template_family": null
+        }
+      ],
+      "exact_boundary_spans": 32168,
+      "failed_alignments": 6,
+      "max_length": 384,
+      "reason_counts": {
+        "character_boundary_inside_or_outside_token": 29,
+        "exact_token_boundaries": 32168,
+        "token_boundary_adjustment_exceeds_three_characters": 4,
+        "tokenizer_emitted_no_token_for_span": 2
+      },
+      "records": 23558,
+      "stride": 128,
+      "successfully_aligned_spans": 32197,
+      "supervised_span_instances_across_windows": 33568,
+      "total_spans": 32203,
+      "truncated_spans": 0,
+      "windows": 26051
+    }
+  },
+  "stride": 128
+}

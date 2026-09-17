@@ -1,0 +1,42 @@
+{
+  "manifest_version": 1,
+  "ontology": "SecureLogX ML-v1",
+  "frozen_at": "2026-09-13",
+  "files": {
+    "configs/securelogx_labels.json": {
+      "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+    },
+    "configs/securelogx_label_map.yml": {
+      "sha256": "31d8fe82f829a67642ce3c13861c74ff972f0dfd7c063948437d32cdaa67bc41"
+    },
+    "configs/training_profile.yml": {
+      "sha256": "e1ab0f70136fd6a3cb472714a8926c01c7b854acc2b52a29e813b431b7d435dd"
+    },
+    "configs/ml_v1_onnx_validation_gate.json": {
+      "sha256": "1d8249e1d4f052d0ba4cb64c607e6178d75f34ae160af17e0060907d02e56176"
+    },
+    "data/split/train.jsonl": {
+      "sha256": "b36926d148c3672c463f9530aac77f78f4ccd6e864f2cd70b8c8577a766a83b5",
+      "records": 23558,
+      "entity_spans": 32203
+    },
+    "data/split/dev.jsonl": {
+      "sha256": "126d65a63e0b37bff8462b2f0f56e8cdceab2ec54ad97b868fb1981a4bc8053a",
+      "records": 2994,
+      "entity_spans": 4020
+    },
+    "data/split/test.jsonl": {
+      "sha256": "32c0dc0a259fbc4c51c4a7ce74e3258dedb18ed5dcc48898e182d0991b06fbb7",
+      "records": 2989,
+      "entity_spans": 4358
+    }
+  },
+  "totals": {
+    "records": 29541,
+    "entity_spans": 40581
+  },
+  "independence_gates": {
+    "exact_text_leakage": 0,
+    "synthetic_template_family_leakage": 0
+  }
+}

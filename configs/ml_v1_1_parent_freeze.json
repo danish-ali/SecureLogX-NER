@@ -1,0 +1,139 @@
+{
+  "snapshot_version": 1,
+  "captured_utc": "2026-09-17T00:32:40.6465814+00:00",
+  "purpose": "Immutable pre-generation snapshot for the SecureLogX ML-v1.1 data-hardening experiment",
+  "parent_version": "ML-v1",
+  "parent_manifest": {
+    "path": "configs/ml_v1_frozen_manifest.json",
+    "bytes": 1325,
+    "sha256": "ac397beba394b0904fc0350ec0912291c7b2a47057e6490d59fff4b51e8b43b9"
+  },
+  "ontology": {
+    "path": "configs/securelogx_labels.json",
+    "bytes": 4232,
+    "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5",
+    "entity_count": 25,
+    "bio_label_count": 51
+  },
+  "parent_configs": {
+    "configs/securelogx_label_map.yml": {
+      "bytes": 11917,
+      "sha256": "31d8fe82f829a67642ce3c13861c74ff972f0dfd7c063948437d32cdaa67bc41"
+    },
+    "configs/training_profile.yml": {
+      "bytes": 1776,
+      "sha256": "e1ab0f70136fd6a3cb472714a8926c01c7b854acc2b52a29e813b431b7d435dd"
+    },
+    "configs/ml_v1_onnx_validation_gate.json": {
+      "bytes": 1654,
+      "sha256": "1d8249e1d4f052d0ba4cb64c607e6178d75f34ae160af17e0060907d02e56176"
+    }
+  },
+  "parent_splits": {
+    "data/split/train.jsonl": {
+      "bytes": 31932166,
+      "sha256": "b36926d148c3672c463f9530aac77f78f4ccd6e864f2cd70b8c8577a766a83b5",
+      "records": 23558,
+      "entity_spans": 32203
+    },
+    "data/split/dev.jsonl": {
+      "bytes": 4062630,
+      "sha256": "126d65a63e0b37bff8462b2f0f56e8cdceab2ec54ad97b868fb1981a4bc8053a",
+      "records": 2994,
+      "entity_spans": 4020
+    },
+    "data/split/test.jsonl": {
+      "bytes": 4130546,
+      "sha256": "32c0dc0a259fbc4c51c4a7ce74e3258dedb18ed5dcc48898e182d0991b06fbb7",
+      "records": 2989,
+      "entity_spans": 4358
+    }
+  },
+  "checkpoint": {
+    "path": "output_securelogx/ml-v1/bert-base-cased/best-checkpoint",
+    "fingerprint_algorithm": "sha256 of json.dumps mapping relative filename to file sha256 with ensure_ascii=false and sort_keys=true",
+    "fingerprint_sha256": "922474e5af6819c7cdc172d5cb279d7207f914fda709bb5aa39f0ebf512787cc",
+    "files": {
+      "config.json": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318",
+      "environment.json": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445",
+      "epoch_metrics.json": "6524e2f3bc9760e1cb461998dbd738103f7a703ba4580aae06b0ea13e83a2fad",
+      "model.safetensors": "9def5d37753685c12cbb5e984679af1d9c599f7dd4b271ee059649ce033304ae",
+      "selected_checkpoint.json": "50de538d87ed6c9717d790e1b3b60b117cf259bcea969f1099b1a4c0dcd5efa8",
+      "special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+      "tokenizer.json": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1",
+      "tokenizer_config.json": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570",
+      "training_args.json": "f8bd5c69d17d14d0167cf2c7e663317132e979ae0c74304b92f187cffbfa93f7",
+      "vocab.txt": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+    }
+  },
+  "evaluation_evidence": {
+    "output_securelogx/ml-v1/bert-base-cased/test_evaluation_receipt.json": {
+      "bytes": 4918,
+      "sha256": "ef9a585fe25059b1237bf0b6d5f548ede181029355e1812840137c8af0e08c1f"
+    },
+    "output_securelogx/ml-v1/bert-base-cased/test_predictions.json": {
+      "bytes": 842615,
+      "sha256": "f605b4181216550792b6697de923ae849056b2e9d623147125a127b3ad5fd718"
+    },
+    "reports/test_metrics.json": {
+      "bytes": 55067,
+      "sha256": "ff3c175cfe6bb86ab803bf65ec89cf94f8fa568b09bbc8a86feeca9d4de9a7b7"
+    },
+    "reports/hard_negative_model_evaluation.md": {
+      "bytes": 621,
+      "sha256": "b54208aad4238e42e4498fb25f94007a2f1d5df7bff1f0df03b6026cb8ec2798"
+    },
+    "reports/business_id_subtype_analysis.md": {
+      "bytes": 1570,
+      "sha256": "bfd47b299cd12c275fa160732397a10c3c560acd6465fd38809c3d83addd8fae"
+    },
+    "reports/model_errors.csv": {
+      "bytes": 698391,
+      "sha256": "329a6da07ec96257e0a75afa2fd833d727c2a775131912a750424edf53e7ac45"
+    },
+    "reports/model_error_analysis.md": {
+      "bytes": 1217,
+      "sha256": "b715796805bc8ca7d7538a9c99ae38493943576259cc8456dacc94819ac2a2b1"
+    },
+    "reports/per_label_test_metrics.csv": {
+      "bytes": 1732,
+      "sha256": "a522c4eda152f3574382de74eb2250d92f5731240079f02f4c7dfa3a884e7c22"
+    },
+    "reports/source_segment_evaluation.md": {
+      "bytes": 1679,
+      "sha256": "216976fc37969222f8b0534969ad5a07a5579d75b962dca14e3c41247154befd"
+    }
+  },
+  "baseline_distributions": {
+    "train_business_id_spans": 1360,
+    "train_ssn_spans": 843,
+    "train_business_id_subtypes": {
+      "ACCOUNT_ID": 115,
+      "APPLICATION_ID": 214,
+      "CUSTOMER_ID": 251,
+      "LOAN_NUMBER": 111,
+      "TRANSACTION_ID": 334,
+      "USER_ID": 335
+    },
+    "absent_requested_train_subtypes": [
+      "ORDER_ID",
+      "CASE_ID",
+      "TICKET_ID",
+      "INVOICE_ID",
+      "REFERENCE_ID",
+      "REQUEST_ID",
+      "WORKFLOW_ID"
+    ]
+  },
+  "historical_failure": {
+    "forbidden_family_in_v1_1_train_or_dev": "order_reference_ssn_shape_warn_v1",
+    "business_id_recall": 0.5497835498,
+    "hard_negative_record_error_rate": 1.0,
+    "decision": "NOT READY FOR ONNX VALIDATION"
+  },
+  "release_constraint": {
+    "source": "gretel_finance_pii",
+    "license_reviewed": false,
+    "meaning": "Technical data readiness does not authorize production or commercial release."
+  }
+}

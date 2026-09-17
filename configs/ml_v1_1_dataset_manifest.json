@@ -1,0 +1,1014 @@
+{
+  "business_id_subtype_counts": {
+    "dev_challenge": {
+      "ACCOUNT_ID": 20,
+      "APPLICATION_ID": 20,
+      "CASE_ID": 20,
+      "CUSTOMER_ID": 20,
+      "INVOICE_ID": 20,
+      "REQUEST_ID": 20,
+      "TICKET_ID": 20,
+      "TRANSACTION_ID": 20,
+      "USER_ID": 20,
+      "WORKFLOW_ID": 20
+    },
+    "sealed_challenge": {
+      "APPLICATION_ID": 20,
+      "CUSTOMER_ID": 20,
+      "INVOICE_ID": 20,
+      "ORDER_ID": 20,
+      "REFERENCE_ID": 20,
+      "REQUEST_ID": 20,
+      "TICKET_ID": 20,
+      "TRANSACTION_ID": 20,
+      "USER_ID": 20
+    },
+    "train_addition": {
+      "ACCOUNT_ID": 100,
+      "APPLICATION_ID": 100,
+      "CASE_ID": 100,
+      "CUSTOMER_ID": 100,
+      "INVOICE_ID": 100,
+      "ORDER_ID": 50,
+      "REFERENCE_ID": 50,
+      "REQUEST_ID": 100,
+      "TICKET_ID": 100,
+      "TRANSACTION_ID": 100,
+      "USER_ID": 100,
+      "WORKFLOW_ID": 100
+    }
+  },
+  "context_conflict_counts": {
+    "dev_challenge": {
+      "families": {
+        "business_id_vs_bank_account": 2,
+        "business_id_vs_credit_card": 2,
+        "business_id_vs_ssn": 6,
+        "ip_address_vs_technical_reference": 2
+      },
+      "records": {
+        "business_id_vs_bank_account": 80,
+        "business_id_vs_credit_card": 80,
+        "business_id_vs_ssn": 240,
+        "ip_address_vs_technical_reference": 80
+      }
+    },
+    "sealed_challenge": {
+      "families": {
+        "business_id_vs_bank_account": 2,
+        "business_id_vs_credit_card": 2,
+        "business_id_vs_ssn": 5,
+        "ip_address_vs_technical_reference": 3
+      },
+      "records": {
+        "business_id_vs_bank_account": 80,
+        "business_id_vs_credit_card": 80,
+        "business_id_vs_ssn": 200,
+        "ip_address_vs_technical_reference": 120
+      }
+    },
+    "train_addition": {
+      "families": {
+        "business_id_vs_bank_account": 4,
+        "business_id_vs_credit_card": 6,
+        "business_id_vs_ssn": 12,
+        "ip_address_vs_technical_reference": 4,
+        "person_name_vs_service_name": 2,
+        "street_address_vs_system_location": 2
+      },
+      "records": {
+        "business_id_vs_bank_account": 400,
+        "business_id_vs_credit_card": 600,
+        "business_id_vs_ssn": 1200,
+        "ip_address_vs_technical_reference": 400,
+        "person_name_vs_service_name": 200,
+        "street_address_vs_system_location": 200
+      }
+    }
+  },
+  "created_utc": "2026-09-17T00:49:42.882126+00:00",
+  "dataset_version": "ML-v1.1",
+  "future_composition": {
+    "development_inputs": [
+      "data/split/dev.jsonl",
+      "data/ml_v1_1/context_contrast/dev_challenge.jsonl"
+    ],
+    "historical_regression_test": "data/split/test.jsonl",
+    "sealed_final_challenge": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "training_inputs": [
+      "data/split/train.jsonl",
+      "data/ml_v1_1/context_contrast/train_additions.jsonl"
+    ]
+  },
+  "generation": {
+    "family_catalog_sha256": "a840b2ca4f84cfc873902398ac87e5f3b939a096c54aca2ba3c8b0174dbecebd",
+    "generator_version": "securelogx-ml-v1.1-context-contrast-v1",
+    "profile_path": "configs/ml_v1_1_dataset_profile.json",
+    "profile_sha256": "fdc388319bb779a6a69cc4146281559ff57bcd124ab2600e512c239115cd1c5f",
+    "script_sha256": {
+      "scripts/data/build_securelogx_ml_v1_1_dataset.py": "45c8c1cc194505ba92e91c5ac6a4b03dfde4662c7a1ec734b2adb90c3f527d94",
+      "scripts/data/generate_securelogx_ml_v1_1_context_contrast.py": "ee38f93f779158151008510ca8c2881a6c7f0d12f1a527199dd50a6b39ef3025",
+      "scripts/data/validate_securelogx_ml_v1_1.py": "d09d84fa4d82874513faa4e3613d043520a26793684c339dbde7180190792941"
+    },
+    "seed": 42
+  },
+  "leakage": {
+    "cross_split_exact_text": {
+      "pairs": {
+        "dev_challenge__sealed_challenge": 0,
+        "train_addition__dev_challenge": 0,
+        "train_addition__sealed_challenge": 0
+      },
+      "total": 0
+    },
+    "cross_split_source_id": {
+      "pairs": {
+        "dev_challenge__sealed_challenge": 0,
+        "train_addition__dev_challenge": 0,
+        "train_addition__sealed_challenge": 0
+      },
+      "total": 0
+    },
+    "cross_split_template_family": {
+      "pairs": {
+        "dev_challenge__sealed_challenge": 0,
+        "train_addition__dev_challenge": 0,
+        "train_addition__sealed_challenge": 0
+      },
+      "total": 0
+    },
+    "cross_split_value_hash": {
+      "pairs": {
+        "dev_challenge__sealed_challenge": 0,
+        "train_addition__dev_challenge": 0,
+        "train_addition__sealed_challenge": 0
+      },
+      "total": 0
+    },
+    "parent_exact_text_count": 0,
+    "parent_source_id_count": 0,
+    "parent_template_family_count": 0
+  },
+  "manifest_version": 1,
+  "new_data_artifacts": {
+    "data/ml_v1_1/challenge/sealed_test.jsonl": {
+      "business_id_subtype_counts": {
+        "APPLICATION_ID": 20,
+        "CUSTOMER_ID": 20,
+        "INVOICE_ID": 20,
+        "ORDER_ID": 20,
+        "REFERENCE_ID": 20,
+        "REQUEST_ID": 20,
+        "TICKET_ID": 20,
+        "TRANSACTION_ID": 20,
+        "USER_ID": 20
+      },
+      "bytes": 627906,
+      "category_family_counts": {
+        "business_id_vs_bank_account": 2,
+        "business_id_vs_credit_card": 2,
+        "business_id_vs_ssn": 5,
+        "ip_address_vs_technical_reference": 3
+      },
+      "category_record_counts": {
+        "business_id_vs_bank_account": 80,
+        "business_id_vs_credit_card": 80,
+        "business_id_vs_ssn": 200,
+        "ip_address_vs_technical_reference": 120
+      },
+      "contrast_group_count": 240,
+      "contrast_target_label_counts": {
+        "BANK_ACCOUNT_NUMBER": 40,
+        "BUSINESS_ID": 180,
+        "CREDIT_CARD_NUMBER": 40,
+        "IP_ADDRESS": 60,
+        "O": 60,
+        "SSN": 100
+      },
+      "entity_counts": {
+        "BANK_ACCOUNT_NUMBER": 40,
+        "BUSINESS_ID": 180,
+        "CREDIT_CARD_NUMBER": 40,
+        "IP_ADDRESS": 60,
+        "SSN": 100
+      },
+      "entity_spans": 420,
+      "families": [
+        "ml_v1_1_sealed_challenge_customer_deposit_folio_v1_1",
+        "ml_v1_1_sealed_challenge_edge_release_quad_v1_1",
+        "ml_v1_1_sealed_challenge_incident_identity_folio_v1_1",
+        "ml_v1_1_sealed_challenge_invoice_payment_folio_v1_1",
+        "ml_v1_1_sealed_challenge_member_identity_folio_v1_1",
+        "ml_v1_1_sealed_challenge_proxy_artifact_quad_v1_1",
+        "ml_v1_1_sealed_challenge_registry_identity_folio_v1_1",
+        "ml_v1_1_sealed_challenge_request_deposit_folio_v1_1",
+        "ml_v1_1_sealed_challenge_shipment_identity_folio_v1_1",
+        "ml_v1_1_sealed_challenge_socket_schema_quad_v1_1",
+        "ml_v1_1_sealed_challenge_submission_identity_folio_v1_1",
+        "ml_v1_1_sealed_challenge_transaction_payment_folio_v1_1"
+      ],
+      "family_count": 12,
+      "formats": [
+        "json",
+        "key_value",
+        "text"
+      ],
+      "morphology_classes": [
+        "account_10_digits",
+        "account_14_digits",
+        "card_16_grouped_hyphens",
+        "card_16_luhn",
+        "ipv4_dotted_quad",
+        "ssn_compact",
+        "ssn_dotted",
+        "ssn_hyphenated",
+        "ssn_masked_last4",
+        "ssn_spaced"
+      ],
+      "negative_records": 60,
+      "records": 480,
+      "sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+      "source_record_id_count": 480,
+      "surface_styles": [
+        "abbreviated_key",
+        "error_message",
+        "json_flat",
+        "json_nested",
+        "key_colon",
+        "key_equals",
+        "mixed_punctuation",
+        "natural_language",
+        "structured_audit",
+        "warn_message"
+      ]
+    },
+    "data/ml_v1_1/context_contrast/dev_challenge.jsonl": {
+      "business_id_subtype_counts": {
+        "ACCOUNT_ID": 20,
+        "APPLICATION_ID": 20,
+        "CASE_ID": 20,
+        "CUSTOMER_ID": 20,
+        "INVOICE_ID": 20,
+        "REQUEST_ID": 20,
+        "TICKET_ID": 20,
+        "TRANSACTION_ID": 20,
+        "USER_ID": 20,
+        "WORKFLOW_ID": 20
+      },
+      "bytes": 625398,
+      "category_family_counts": {
+        "business_id_vs_bank_account": 2,
+        "business_id_vs_credit_card": 2,
+        "business_id_vs_ssn": 6,
+        "ip_address_vs_technical_reference": 2
+      },
+      "category_record_counts": {
+        "business_id_vs_bank_account": 80,
+        "business_id_vs_credit_card": 80,
+        "business_id_vs_ssn": 240,
+        "ip_address_vs_technical_reference": 80
+      },
+      "contrast_group_count": 240,
+      "contrast_target_label_counts": {
+        "BANK_ACCOUNT_NUMBER": 40,
+        "BUSINESS_ID": 200,
+        "CREDIT_CARD_NUMBER": 40,
+        "IP_ADDRESS": 40,
+        "O": 40,
+        "SSN": 120
+      },
+      "entity_counts": {
+        "BANK_ACCOUNT_NUMBER": 40,
+        "BUSINESS_ID": 200,
+        "CREDIT_CARD_NUMBER": 40,
+        "IP_ADDRESS": 40,
+        "SSN": 120
+      },
+      "entity_spans": 440,
+      "families": [
+        "ml_v1_1_dev_challenge_account_depositshape_receipt_v1_1",
+        "ml_v1_1_dev_challenge_application_claim_locator_v1_1",
+        "ml_v1_1_dev_challenge_case_identity_locator_v1_1",
+        "ml_v1_1_dev_challenge_customer_identity_receipt_v1_1",
+        "ml_v1_1_dev_challenge_deployment_network_quad_v1_1",
+        "ml_v1_1_dev_challenge_invoice_identity_locator_v1_1",
+        "ml_v1_1_dev_challenge_protocol_artifact_quad_v1_1",
+        "ml_v1_1_dev_challenge_request_identity_locator_v1_1",
+        "ml_v1_1_dev_challenge_ticket_cardshape_receipt_v1_1",
+        "ml_v1_1_dev_challenge_transaction_cardshape_receipt_v1_1",
+        "ml_v1_1_dev_challenge_user_bankshape_receipt_v1_1",
+        "ml_v1_1_dev_challenge_workflow_identity_locator_v1_1"
+      ],
+      "family_count": 12,
+      "formats": [
+        "json",
+        "key_value",
+        "text"
+      ],
+      "morphology_classes": [
+        "account_12_digits",
+        "account_grouped_hyphens",
+        "card_16_grouped_spaces",
+        "card_16_luhn",
+        "ipv4_dotted_quad",
+        "ssn_compact",
+        "ssn_dotted",
+        "ssn_hyphenated",
+        "ssn_masked_last4",
+        "ssn_spaced"
+      ],
+      "negative_records": 40,
+      "records": 480,
+      "sha256": "215c2133c05a3199b5c54b145406f4ed1571214b30eb6c37d00bb7783c96a09e",
+      "source_record_id_count": 480,
+      "surface_styles": [
+        "abbreviated_key",
+        "error_message",
+        "json_flat",
+        "json_nested",
+        "key_colon",
+        "key_equals",
+        "mixed_punctuation",
+        "natural_language",
+        "structured_audit",
+        "warn_message"
+      ]
+    },
+    "data/ml_v1_1/context_contrast/train_additions.jsonl": {
+      "business_id_subtype_counts": {
+        "ACCOUNT_ID": 100,
+        "APPLICATION_ID": 100,
+        "CASE_ID": 100,
+        "CUSTOMER_ID": 100,
+        "INVOICE_ID": 100,
+        "ORDER_ID": 50,
+        "REFERENCE_ID": 50,
+        "REQUEST_ID": 100,
+        "TICKET_ID": 100,
+        "TRANSACTION_ID": 100,
+        "USER_ID": 100,
+        "WORKFLOW_ID": 100
+      },
+      "bytes": 3942531,
+      "category_family_counts": {
+        "business_id_vs_bank_account": 4,
+        "business_id_vs_credit_card": 6,
+        "business_id_vs_ssn": 12,
+        "ip_address_vs_technical_reference": 4,
+        "person_name_vs_service_name": 2,
+        "street_address_vs_system_location": 2
+      },
+      "category_record_counts": {
+        "business_id_vs_bank_account": 400,
+        "business_id_vs_credit_card": 600,
+        "business_id_vs_ssn": 1200,
+        "ip_address_vs_technical_reference": 400,
+        "person_name_vs_service_name": 200,
+        "street_address_vs_system_location": 200
+      },
+      "contrast_group_count": 1500,
+      "contrast_target_label_counts": {
+        "BANK_ACCOUNT_NUMBER": 200,
+        "BUSINESS_ID": 1100,
+        "CREDIT_CARD_NUMBER": 300,
+        "IP_ADDRESS": 200,
+        "O": 400,
+        "PERSON_NAME": 100,
+        "SSN": 600,
+        "STREET_ADDRESS": 100
+      },
+      "entity_counts": {
+        "BANK_ACCOUNT_NUMBER": 200,
+        "BUSINESS_ID": 1100,
+        "CREDIT_CARD_NUMBER": 300,
+        "IP_ADDRESS": 200,
+        "PERSON_NAME": 200,
+        "SSN": 600,
+        "STREET_ADDRESS": 100
+      },
+      "entity_spans": 2700,
+      "families": [
+        "ml_v1_1_train_addition_account_enrollment_folio_v1_1",
+        "ml_v1_1_train_addition_account_registry_numeric_v1_1",
+        "ml_v1_1_train_addition_application_intake_marker_v1_1",
+        "ml_v1_1_train_addition_application_ledgerlike_locator_v1_1",
+        "ml_v1_1_train_addition_approver_job_alias_v1_1",
+        "ml_v1_1_train_addition_case_panlike_locator_v1_1",
+        "ml_v1_1_train_addition_case_triage_locator_v1_1",
+        "ml_v1_1_train_addition_client_release_quad_v1_1",
+        "ml_v1_1_train_addition_customer_depositshape_locator_v1_1",
+        "ml_v1_1_train_addition_customer_identity_bridge_v1_1",
+        "ml_v1_1_train_addition_delivery_route_descriptor_v1_1",
+        "ml_v1_1_train_addition_gateway_build_quad_v1_1",
+        "ml_v1_1_train_addition_invoice_cardshape_locator_v1_1",
+        "ml_v1_1_train_addition_invoice_settlement_locator_v1_1",
+        "ml_v1_1_train_addition_operator_service_name_v1_1",
+        "ml_v1_1_train_addition_order_fulfillment_token_v1_1",
+        "ml_v1_1_train_addition_origin_version_quad_v1_1",
+        "ml_v1_1_train_addition_payment_trace_duality_v1_1",
+        "ml_v1_1_train_addition_peer_artifact_quad_v1_1",
+        "ml_v1_1_train_addition_reference_registry_locator_v1_1",
+        "ml_v1_1_train_addition_request_dispatch_locator_v1_1",
+        "ml_v1_1_train_addition_request_numeric_token_v1_1",
+        "ml_v1_1_train_addition_residence_node_alias_v1_1",
+        "ml_v1_1_train_addition_ticket_escalation_locator_v1_1",
+        "ml_v1_1_train_addition_ticket_paymentlike_locator_v1_1",
+        "ml_v1_1_train_addition_transaction_reconciliation_code_v1_1",
+        "ml_v1_1_train_addition_user_access_registry_v1_1",
+        "ml_v1_1_train_addition_user_bankshape_locator_v1_1",
+        "ml_v1_1_train_addition_workflow_checkpoint_locator_v1_1",
+        "ml_v1_1_train_addition_workflow_panlike_checkpoint_v1_1"
+      ],
+      "family_count": 30,
+      "formats": [
+        "json",
+        "key_value",
+        "text"
+      ],
+      "morphology_classes": [
+        "account_10_digits",
+        "account_12_digits",
+        "account_14_digits",
+        "account_grouped_hyphens",
+        "card_16_grouped_hyphens",
+        "card_16_grouped_spaces",
+        "card_16_luhn",
+        "ipv4_dotted_quad",
+        "ssn_compact",
+        "ssn_dotted",
+        "ssn_hyphenated",
+        "ssn_masked_last4",
+        "ssn_spaced",
+        "street_like_phrase",
+        "two_token_name"
+      ],
+      "negative_records": 400,
+      "records": 3000,
+      "sha256": "99972a6dc287b53cb9618df3e04c612d7592161cefcaa8de562505f57ebb35a6",
+      "source_record_id_count": 3000,
+      "surface_styles": [
+        "abbreviated_key",
+        "error_message",
+        "json_flat",
+        "json_nested",
+        "key_colon",
+        "key_equals",
+        "mixed_punctuation",
+        "natural_language",
+        "structured_audit",
+        "warn_message"
+      ]
+    }
+  },
+  "ontology": {
+    "bio_label_count": 51,
+    "changed": false,
+    "entity_count": 25,
+    "path": "configs/securelogx_labels.json",
+    "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+  },
+  "operations_performed": {
+    "dataset_generation": true,
+    "java_modification": false,
+    "model_evaluation": false,
+    "model_training": false,
+    "onnx_export": false,
+    "report_generation": true,
+    "sealed_challenge_predictions": false
+  },
+  "parent": {
+    "manifest_path": "configs/ml_v1_frozen_manifest.json",
+    "manifest_sha256": "ac397beba394b0904fc0350ec0912291c7b2a47057e6490d59fff4b51e8b43b9",
+    "snapshot_path": "configs/ml_v1_1_parent_freeze.json",
+    "snapshot_sha256": "c6480c46804167a67d81a67ce6b8a6e2824fafa0dd3b3dacff5003dc0e5bd243",
+    "verified_after_generation": {
+      "checkpoint": {
+        "actual_files": [
+          "config.json",
+          "environment.json",
+          "epoch_metrics.json",
+          "model.safetensors",
+          "selected_checkpoint.json",
+          "special_tokens_map.json",
+          "tokenizer.json",
+          "tokenizer_config.json",
+          "training_args.json",
+          "vocab.txt"
+        ],
+        "actual_fingerprint_sha256": "922474e5af6819c7cdc172d5cb279d7207f914fda709bb5aa39f0ebf512787cc",
+        "expected_files": [
+          "config.json",
+          "environment.json",
+          "epoch_metrics.json",
+          "model.safetensors",
+          "selected_checkpoint.json",
+          "special_tokens_map.json",
+          "tokenizer.json",
+          "tokenizer_config.json",
+          "training_args.json",
+          "vocab.txt"
+        ],
+        "expected_fingerprint_sha256": "922474e5af6819c7cdc172d5cb279d7207f914fda709bb5aa39f0ebf512787cc",
+        "passed": true,
+        "path": "output_securelogx/ml-v1/bert-base-cased/best-checkpoint"
+      },
+      "mismatch_count": 0,
+      "mismatches": [],
+      "ontology": {
+        "actual": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "expected": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "passed": true
+      },
+      "passed": true,
+      "verified_files": 27
+    },
+    "verified_before_generation": {
+      "checkpoint": {
+        "actual_files": [
+          "config.json",
+          "environment.json",
+          "epoch_metrics.json",
+          "model.safetensors",
+          "selected_checkpoint.json",
+          "special_tokens_map.json",
+          "tokenizer.json",
+          "tokenizer_config.json",
+          "training_args.json",
+          "vocab.txt"
+        ],
+        "actual_fingerprint_sha256": "922474e5af6819c7cdc172d5cb279d7207f914fda709bb5aa39f0ebf512787cc",
+        "expected_files": [
+          "config.json",
+          "environment.json",
+          "epoch_metrics.json",
+          "model.safetensors",
+          "selected_checkpoint.json",
+          "special_tokens_map.json",
+          "tokenizer.json",
+          "tokenizer_config.json",
+          "training_args.json",
+          "vocab.txt"
+        ],
+        "expected_fingerprint_sha256": "922474e5af6819c7cdc172d5cb279d7207f914fda709bb5aa39f0ebf512787cc",
+        "passed": true,
+        "path": "output_securelogx/ml-v1/bert-base-cased/best-checkpoint"
+      },
+      "mismatch_count": 0,
+      "mismatches": [],
+      "ontology": {
+        "actual": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "expected": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "passed": true
+      },
+      "passed": true,
+      "verified_files": 27
+    },
+    "version": "ML-v1"
+  },
+  "phase": "data_revision_and_challenge_set_preparation_only",
+  "readiness_gates": {
+    "all_passed": true,
+    "builder": {
+      "all_requested_business_id_subtypes": true,
+      "business_id_context_increase_material": true,
+      "canonical_ontology_unchanged": true,
+      "each_business_id_subtype_at_least_40": true,
+      "exact_text_leakage_zero": true,
+      "model_predictions_not_run": true,
+      "sealed_challenge_has_multiple_families": true,
+      "ssn_context_increase_material": true,
+      "target_dev_family_count": true,
+      "target_dev_record_count": true,
+      "target_sealed_family_count": true,
+      "target_sealed_record_count": true,
+      "target_train_family_count": true,
+      "target_train_record_count": true,
+      "template_family_leakage_zero": true
+    },
+    "validator": {
+      "canonical_spans": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "complete_paired_contrast_groups": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "contrast_targets": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_exact_text_leakage": {
+        "actual": 0,
+        "details": {
+          "dev_challenge__sealed_challenge": 0,
+          "train_addition__dev_challenge": 0,
+          "train_addition__sealed_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_source_id_leakage": {
+        "actual": 0,
+        "details": {
+          "dev_challenge__sealed_challenge": 0,
+          "train_addition__dev_challenge": 0,
+          "train_addition__sealed_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_template_family_leakage": {
+        "actual": 0,
+        "details": {
+          "dev_challenge__sealed_challenge": 0,
+          "train_addition__dev_challenge": 0,
+          "train_addition__sealed_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_value_hash_leakage": {
+        "actual": 0,
+        "details": {
+          "dev_challenge__sealed_challenge": 0,
+          "train_addition__dev_challenge": 0,
+          "train_addition__sealed_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "dev_business_id_ssn_family_minimum": {
+        "actual": 6,
+        "expected": ">=5",
+        "passed": true
+      },
+      "dev_card_account_family_minimum": {
+        "actual": 4,
+        "expected": ">=3",
+        "passed": true
+      },
+      "dev_challenge_family_count": {
+        "actual": 12,
+        "expected": 12,
+        "passed": true
+      },
+      "dev_challenge_record_count": {
+        "actual": 480,
+        "expected": 480,
+        "passed": true
+      },
+      "dev_network_family_minimum": {
+        "actual": 2,
+        "expected": ">=2",
+        "passed": true
+      },
+      "entity_provenance_bijection": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "family_metadata_consistency": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "forbidden_parent_hard_negative": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "inputs_readable": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "intended_split": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "o_target_non_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "ontology_exact_25_entities_51_bio": {
+        "actual": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "expected": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "passed": true
+      },
+      "parent_exact_text_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_source_id_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_template_family_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "record_shape": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "sealed_challenge_family_count": {
+        "actual": 12,
+        "expected": 12,
+        "passed": true
+      },
+      "sealed_challenge_record_count": {
+        "actual": 480,
+        "expected": 480,
+        "passed": true
+      },
+      "sealed_family_count_8_to_12": {
+        "actual": 12,
+        "expected": "8..12",
+        "passed": true
+      },
+      "sealed_required_categories": {
+        "actual": [
+          "business_id_vs_bank_account",
+          "business_id_vs_credit_card",
+          "business_id_vs_ssn",
+          "ip_address_vs_technical_reference"
+        ],
+        "details": {
+          "missing": []
+        },
+        "expected": [
+          "business_id_vs_bank_account",
+          "business_id_vs_credit_card",
+          "business_id_vs_ssn",
+          "ip_address_vs_technical_reference"
+        ],
+        "passed": true
+      },
+      "sealed_required_formats": {
+        "actual": [
+          "json",
+          "key_value",
+          "text"
+        ],
+        "details": {
+          "missing": []
+        },
+        "expected": [
+          "json",
+          "key_value",
+          "text"
+        ],
+        "passed": true
+      },
+      "template_catalog_catalogs_readable": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_cross_split_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_forbidden_parent_template": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_parent_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "train_addition_family_count": {
+        "actual": 30,
+        "expected": 30,
+        "passed": true
+      },
+      "train_addition_record_count": {
+        "actual": 3000,
+        "expected": 3000,
+        "passed": true
+      },
+      "train_business_id_baseline_fraction": {
+        "actual": 1100,
+        "expected": {
+          "fraction": 0.25,
+          "minimum": 340,
+          "parent_train_baseline": 1360
+        },
+        "passed": true
+      },
+      "train_business_id_subtype_coverage": {
+        "actual": {
+          "ACCOUNT_ID": 100,
+          "APPLICATION_ID": 100,
+          "CASE_ID": 100,
+          "CUSTOMER_ID": 100,
+          "INVOICE_ID": 100,
+          "ORDER_ID": 50,
+          "REFERENCE_ID": 50,
+          "REQUEST_ID": 100,
+          "TICKET_ID": 100,
+          "TRANSACTION_ID": 100,
+          "USER_ID": 100,
+          "WORKFLOW_ID": 100
+        },
+        "details": {
+          "below_minimum": {}
+        },
+        "expected": ">=40 each",
+        "passed": true
+      },
+      "train_ssn_baseline_fraction": {
+        "actual": 600,
+        "expected": {
+          "fraction": 0.25,
+          "minimum": 211,
+          "parent_train_baseline": 843
+        },
+        "passed": true
+      },
+      "train_surface_style_diversity": {
+        "actual": 10,
+        "details": {
+          "styles": [
+            "abbreviated_key",
+            "error_message",
+            "json_flat",
+            "json_nested",
+            "key_colon",
+            "key_equals",
+            "mixed_punctuation",
+            "natural_language",
+            "structured_audit",
+            "warn_message"
+          ]
+        },
+        "expected": ">=8",
+        "passed": true
+      },
+      "unique_record_texts": {
+        "actual": 0,
+        "details": {
+          "dev_challenge__sealed_challenge": 0,
+          "train_addition__dev_challenge": 0,
+          "train_addition__sealed_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "unique_source_record_ids": {
+        "actual": 0,
+        "details": {
+          "dev_challenge__sealed_challenge": 0,
+          "train_addition__dev_challenge": 0,
+          "train_addition__sealed_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "v1_1_metadata": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      }
+    }
+  },
+  "recommendation": "READY FOR ML-v1.1 RETRAINING",
+  "release_constraint": {
+    "license_reviewed": false,
+    "meaning": "Technical data readiness does not authorize production or commercial release.",
+    "source": "gretel_finance_pii"
+  },
+  "reports": {
+    "reports/ml_v1_1_business_id_distribution.md": {
+      "bytes": 1261,
+      "sha256": "ed0aed71c640475062d28aa257bb82c3e3bbc791eab0d2caea716d2bc689611c"
+    },
+    "reports/ml_v1_1_challenge_split_summary.md": {
+      "bytes": 2423,
+      "sha256": "873b590881b92813369d9a133d11e034715a8d81fa850a5457a2e7cce94407a7"
+    },
+    "reports/ml_v1_1_context_contrast_summary.md": {
+      "bytes": 2433,
+      "sha256": "86a7dacb79f569d6cbfb09625a776db5bb56b187769657f40cd04bd280c8cda8"
+    },
+    "reports/ml_v1_1_context_error_diagnosis.md": {
+      "bytes": 10146,
+      "sha256": "959c6c37766992a2a8f47870e4e5e59393ef9bfb30e5485d230899ebc4b9aeb4"
+    },
+    "reports/ml_v1_1_data_readiness.md": {
+      "bytes": 3492,
+      "sha256": "c108d3c10d359584ccfa98c137fce8b76f91f04c958927c501eba79f08aabed7"
+    },
+    "reports/ml_v1_1_template_leakage_report.md": {
+      "bytes": 1490,
+      "sha256": "8df17d73e83c72c1c89df352829498052aae74bdeaed77dbc347148fc9732ca8"
+    }
+  },
+  "sealed_challenge": {
+    "development_predictions_forbidden": true,
+    "families": [
+      "ml_v1_1_sealed_challenge_customer_deposit_folio_v1_1",
+      "ml_v1_1_sealed_challenge_edge_release_quad_v1_1",
+      "ml_v1_1_sealed_challenge_incident_identity_folio_v1_1",
+      "ml_v1_1_sealed_challenge_invoice_payment_folio_v1_1",
+      "ml_v1_1_sealed_challenge_member_identity_folio_v1_1",
+      "ml_v1_1_sealed_challenge_proxy_artifact_quad_v1_1",
+      "ml_v1_1_sealed_challenge_registry_identity_folio_v1_1",
+      "ml_v1_1_sealed_challenge_request_deposit_folio_v1_1",
+      "ml_v1_1_sealed_challenge_shipment_identity_folio_v1_1",
+      "ml_v1_1_sealed_challenge_socket_schema_quad_v1_1",
+      "ml_v1_1_sealed_challenge_submission_identity_folio_v1_1",
+      "ml_v1_1_sealed_challenge_transaction_payment_folio_v1_1"
+    ],
+    "family_count": 12,
+    "family_list_sha256": "acf56f73b53752894b80c6df58499457fe0b73eee6e3d3adb5fe639c49789644",
+    "generated_before_future_training": true,
+    "model_predictions_run": false,
+    "path": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "sealed": true
+  },
+  "template_audit": {
+    "cross_split_similarity": {
+      "max_literal_token_3gram_jaccard": {
+        "left_family": "ml_v1_1_dev_challenge_customer_identity_receipt_v1_1",
+        "right_family": "ml_v1_1_sealed_challenge_invoice_payment_folio_v1_1",
+        "score": 0.142857
+      },
+      "max_sequence_matcher_ratio": {
+        "left_family": "ml_v1_1_dev_challenge_workflow_identity_locator_v1_1",
+        "right_family": "ml_v1_1_sealed_challenge_registry_identity_folio_v1_1",
+        "score": 0.873362
+      }
+    },
+    "errors": [],
+    "gates": {
+      "catalogs_readable": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "forbidden_parent_template": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      }
+    },
+    "interpretation": "Similarity ratios are descriptive lexical diagnostics only; they do not establish semantic independence.",
+    "new_template_count": 108,
+    "parent_similarity": {
+      "max_literal_token_3gram_jaccard": {
+        "left_family": "ml_v1_1_dev_challenge_customer_identity_receipt_v1_1",
+        "right_family": "ssn_secure_v1",
+        "score": 0.066667
+      },
+      "max_sequence_matcher_ratio": {
+        "left_family": "ml_v1_1_dev_challenge_deployment_network_quad_v1_1",
+        "right_family": "ssn_json_v1",
+        "score": 0.746269
+      }
+    },
+    "parent_template_count": 266,
+    "passed": true
+  }
+}

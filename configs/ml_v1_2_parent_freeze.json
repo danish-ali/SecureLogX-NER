@@ -1,0 +1,582 @@
+{
+  "captured_utc": "2026-09-17T20:25:23.604348+00:00",
+  "constraints": {
+    "model_evaluation": false,
+    "model_training": false,
+    "ontology_changed": false,
+    "sealed_dataset_parsed": false,
+    "sealed_predictions_accessed": false
+  },
+  "groups": {
+    "ml_v1_1_checkpoints_and_dev_evidence": {
+      "file_count": 42,
+      "files": {
+        "output_securelogx/ml-v1.1/bert-base-cased/alignment_summary.json": {
+          "bytes": 24713,
+          "sha256": "c69540c2d01727b13ca46aa5a2b4f16fe85a14548665e82c770c523e937112bf"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/epoch_metrics.json": {
+          "bytes": 62711,
+          "sha256": "fb864d874910e10a98c1dca357850a9a4be2d8e631f75f04b86bc48e249f2355"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "28ec51cbe7d46423ef9e72467994e43b2d47f7d5465593b69d7d1c427975f571"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/selected_checkpoint.json": {
+          "bytes": 1359,
+          "sha256": "fd6f157a9d7ef4aa98227b35a4b8907807d3e2a4bf5e1df7238cff1bc060ff08"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/training_args.json": {
+          "bytes": 868,
+          "sha256": "d7e47ca89acffdea97534643c3a3f753ac2c8ee64c7b39ae96624c259272a78f"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/best-checkpoint/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/epoch_metrics.json": {
+          "bytes": 62754,
+          "sha256": "206061836fe18d1a818fdca83503d65741b9542ec6690a8d1613c2a50ef1bb5c"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "17e657d92b9d68a3eb61ebb83a9e2da24cf8c3e15f8efb80b90272b9ccbb96be"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/training_args.json": {
+          "bytes": 868,
+          "sha256": "d7e47ca89acffdea97534643c3a3f753ac2c8ee64c7b39ae96624c259272a78f"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-1/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/epoch_metrics.json": {
+          "bytes": 62529,
+          "sha256": "39e1d7cbba6fac93a392729fe21d5a8634f670741912430ea5c5574722a90dea"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "fa5bfa6547f1d7a01b453024ff8055f8f35def546b8b78f783270a84cc85b7db"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/training_args.json": {
+          "bytes": 868,
+          "sha256": "d7e47ca89acffdea97534643c3a3f753ac2c8ee64c7b39ae96624c259272a78f"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-2/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/epoch_metrics.json": {
+          "bytes": 62711,
+          "sha256": "fb864d874910e10a98c1dca357850a9a4be2d8e631f75f04b86bc48e249f2355"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "28ec51cbe7d46423ef9e72467994e43b2d47f7d5465593b69d7d1c427975f571"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/training_args.json": {
+          "bytes": 868,
+          "sha256": "d7e47ca89acffdea97534643c3a3f753ac2c8ee64c7b39ae96624c259272a78f"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/checkpoints/epoch-3/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/dev_challenge_predictions.json": {
+          "bytes": 93015,
+          "sha256": "737c079258bb33633588db3216d9730b099050acda1fb5160754380ced683eac"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/dev_gate_decision.json": {
+          "bytes": 4391,
+          "sha256": "86c026e9b76c25e61c000eda72b9eabbec9775aaacee7f5e2f8758f263bd1bad"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/dev_standard_predictions.json": {
+          "bytes": 804860,
+          "sha256": "e5f3a7a912effd6b4ee60bcac71504d3cdc197287a636b6fb13af5cfde4d5dee"
+        },
+        "output_securelogx/ml-v1.1/bert-base-cased/training_history.json": {
+          "bytes": 2720,
+          "sha256": "297d6f711d811fda92b63c7f4ed2b790540d794dbe7fed3e95ca4eaa64868dff"
+        }
+      },
+      "fingerprint_sha256": "009906b485ad76279ed85a533c5243dbfbd836183ebf59fe7ba41458be26e878"
+    },
+    "ml_v1_1_configs": {
+      "file_count": 6,
+      "files": {
+        "configs/ml_v1_1_dataset_manifest.json": {
+          "bytes": 31117,
+          "sha256": "cf4a2c60c0b0fafa0a570b57af8335c8ca8fbefd4a9f84175e0da2cbc5b5ba63"
+        },
+        "configs/ml_v1_1_dataset_manifest.sha256": {
+          "bytes": 96,
+          "sha256": "193d35b8f8941947336d9ad8c6087835e8124f15947a2eec69d591beb55c3590"
+        },
+        "configs/ml_v1_1_dataset_profile.json": {
+          "bytes": 2918,
+          "sha256": "fdc388319bb779a6a69cc4146281559ff57bcd124ab2600e512c239115cd1c5f"
+        },
+        "configs/ml_v1_1_parent_freeze.json": {
+          "bytes": 5415,
+          "sha256": "c6480c46804167a67d81a67ce6b8a6e2824fafa0dd3b3dacff5003dc0e5bd243"
+        },
+        "configs/ml_v1_1_training_gate.json": {
+          "bytes": 5348,
+          "sha256": "cf9f217bbe08a81d79634f649d3a157c4b59a30d9f8168355621e2cdb4bfb273"
+        },
+        "configs/ml_v1_1_training_gate.sha256": {
+          "bytes": 93,
+          "sha256": "f29553c4ffdb551e090330c5469f71abe81c4bd57f00083cb26942010f0a16a0"
+        }
+      },
+      "fingerprint_sha256": "60cd0a112fe1e538187d21692f592515ff46beac8667f02bc7ebd63e7ab7f138"
+    },
+    "ml_v1_1_datasets": {
+      "file_count": 3,
+      "files": {
+        "data/ml_v1_1/challenge/sealed_test.jsonl": {
+          "bytes": 627906,
+          "sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
+        },
+        "data/ml_v1_1/context_contrast/dev_challenge.jsonl": {
+          "bytes": 625398,
+          "sha256": "215c2133c05a3199b5c54b145406f4ed1571214b30eb6c37d00bb7783c96a09e"
+        },
+        "data/ml_v1_1/context_contrast/train_additions.jsonl": {
+          "bytes": 3942531,
+          "sha256": "99972a6dc287b53cb9618df3e04c612d7592161cefcaa8de562505f57ebb35a6"
+        }
+      },
+      "fingerprint_sha256": "45733d234a3f3f2f90e8ad1fcdafb766a3903859b79c12aabc608f63c0488e06"
+    },
+    "ml_v1_1_reports": {
+      "file_count": 22,
+      "files": {
+        "reports/ml_v1_1_business_id_distribution.md": {
+          "bytes": 1261,
+          "sha256": "ed0aed71c640475062d28aa257bb82c3e3bbc791eab0d2caea716d2bc689611c"
+        },
+        "reports/ml_v1_1_business_id_subtype_analysis.md": {
+          "bytes": 1433,
+          "sha256": "04a810b2bdb5febccfdc6339da68534c02da862ab6898d4ec269a83a178f4bae"
+        },
+        "reports/ml_v1_1_challenge_split_summary.md": {
+          "bytes": 2423,
+          "sha256": "873b590881b92813369d9a133d11e034715a8d81fa850a5457a2e7cce94407a7"
+        },
+        "reports/ml_v1_1_checkpoint_selection.md": {
+          "bytes": 2215,
+          "sha256": "bd394b1c4842e710cd950a4156746c19506fed45b67b54a8d923f6572a3a2029"
+        },
+        "reports/ml_v1_1_context_contrast_summary.md": {
+          "bytes": 2433,
+          "sha256": "86a7dacb79f569d6cbfb09625a776db5bb56b187769657f40cd04bd280c8cda8"
+        },
+        "reports/ml_v1_1_context_error_diagnosis.md": {
+          "bytes": 10146,
+          "sha256": "959c6c37766992a2a8f47870e4e5e59393ef9bfb30e5485d230899ebc4b9aeb4"
+        },
+        "reports/ml_v1_1_data_readiness.md": {
+          "bytes": 3492,
+          "sha256": "c108d3c10d359584ccfa98c137fce8b76f91f04c958927c501eba79f08aabed7"
+        },
+        "reports/ml_v1_1_dev_challenge_metrics.json": {
+          "bytes": 48829,
+          "sha256": "c7b1d0823f07c5b58fe8f5be07d74e8a1e38a9e8cc3dfde53e7e47bc224dcae5"
+        },
+        "reports/ml_v1_1_dev_standard_metrics.json": {
+          "bytes": 8549,
+          "sha256": "90be5a2404d9fa40205241fde1d8c5809dbc52b54ad1dff3da92aa5834ed530b"
+        },
+        "reports/ml_v1_1_error_analysis.md": {
+          "bytes": 605,
+          "sha256": "79bb26e31451f2a49e5911cc219f6d31aa12738aa7eeaa90f398c8a365393388"
+        },
+        "reports/ml_v1_1_generalization_analysis.md": {
+          "bytes": 1497,
+          "sha256": "a6c842d9d44f22130b641a4225566b59379b72fc70d498a56aa7f929e71e704f"
+        },
+        "reports/ml_v1_1_model_errors.csv": {
+          "bytes": 36609,
+          "sha256": "5fb6b6c8bf779717310cf34dd72554e924f0b2741c7ecded4c68176fd62e7a3c"
+        },
+        "reports/ml_v1_1_model_validation_decision.md": {
+          "bytes": 1125,
+          "sha256": "714312014121f4033b356ccdbe1d9e041e4e305431bd2813b21e38a2f09b8028"
+        },
+        "reports/ml_v1_1_regression_test_metrics.json": {
+          "bytes": 513,
+          "sha256": "8496b614b1c40355cf71695245928523499677b8f7f1c0fda178c233b8866a8c"
+        },
+        "reports/ml_v1_1_smoke_checkpoint_selection.md": {
+          "bytes": 1882,
+          "sha256": "a913513a3d995fca6820be8348b32584693c774e5d06f3b65623830865ed63c9"
+        },
+        "reports/ml_v1_1_smoke_preflight.md": {
+          "bytes": 1204,
+          "sha256": "e3b8e355109cd033466308a80442ae92de24e2331e0192182db34df228db02fb"
+        },
+        "reports/ml_v1_1_smoke_training_summary.md": {
+          "bytes": 1848,
+          "sha256": "5e8c605a943c9897872f9178052692132c6be2a1ca5fe5a7b54b9b5ac52fadf3"
+        },
+        "reports/ml_v1_1_ssn_context_analysis.md": {
+          "bytes": 911,
+          "sha256": "50aa5f5fe8b9c4ec0e1eb494ce633a9555c4f2b54476fab9c63712e9609f8d88"
+        },
+        "reports/ml_v1_1_template_leakage_report.md": {
+          "bytes": 1490,
+          "sha256": "8df17d73e83c72c1c89df352829498052aae74bdeaed77dbc347148fc9732ca8"
+        },
+        "reports/ml_v1_1_training_preflight.md": {
+          "bytes": 1227,
+          "sha256": "6bf43465f9c167c566a1ef376a7b862eec4a57a5e71eb7db814c501158ec5cce"
+        },
+        "reports/ml_v1_1_training_run_summary.md": {
+          "bytes": 2137,
+          "sha256": "e40ec338643b028f02edd9ef8f50fc7a4a0357173295ac24cf27481a77ced3d4"
+        },
+        "reports/ml_v1_vs_v1_1_comparison.md": {
+          "bytes": 1067,
+          "sha256": "f452a6b741af5086abc2d2a2d6dcbf16d86f86362b4206862bb19dcf0aafb115"
+        }
+      },
+      "fingerprint_sha256": "4cfa08ed197d05c0582729026c22f3b01cb182cf3f300fb0f078a5b5ef38d588"
+    },
+    "ml_v1_artifacts": {
+      "file_count": 56,
+      "files": {
+        "configs/ml_v1_frozen_manifest.json": {
+          "bytes": 1325,
+          "sha256": "ac397beba394b0904fc0350ec0912291c7b2a47057e6490d59fff4b51e8b43b9"
+        },
+        "configs/ml_v1_onnx_validation_gate.json": {
+          "bytes": 1654,
+          "sha256": "1d8249e1d4f052d0ba4cb64c607e6178d75f34ae160af17e0060907d02e56176"
+        },
+        "configs/securelogx_label_map.yml": {
+          "bytes": 11917,
+          "sha256": "31d8fe82f829a67642ce3c13861c74ff972f0dfd7c063948437d32cdaa67bc41"
+        },
+        "configs/securelogx_labels.json": {
+          "bytes": 4232,
+          "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+        },
+        "configs/training_profile.yml": {
+          "bytes": 1776,
+          "sha256": "e1ab0f70136fd6a3cb472714a8926c01c7b854acc2b52a29e813b431b7d435dd"
+        },
+        "data/split/dev.jsonl": {
+          "bytes": 4062630,
+          "sha256": "126d65a63e0b37bff8462b2f0f56e8cdceab2ec54ad97b868fb1981a4bc8053a"
+        },
+        "data/split/test.jsonl": {
+          "bytes": 4130546,
+          "sha256": "32c0dc0a259fbc4c51c4a7ce74e3258dedb18ed5dcc48898e182d0991b06fbb7"
+        },
+        "data/split/train.jsonl": {
+          "bytes": 31932166,
+          "sha256": "b36926d148c3672c463f9530aac77f78f4ccd6e864f2cd70b8c8577a766a83b5"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/alignment_summary.json": {
+          "bytes": 24244,
+          "sha256": "9264889a271999764311321e36b244f358271563823b69eb27b7a679b305e886"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/epoch_metrics.json": {
+          "bytes": 9418,
+          "sha256": "6524e2f3bc9760e1cb461998dbd738103f7a703ba4580aae06b0ea13e83a2fad"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "9def5d37753685c12cbb5e984679af1d9c599f7dd4b271ee059649ce033304ae"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/selected_checkpoint.json": {
+          "bytes": 201,
+          "sha256": "50de538d87ed6c9717d790e1b3b60b117cf259bcea969f1099b1a4c0dcd5efa8"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/training_args.json": {
+          "bytes": 919,
+          "sha256": "f8bd5c69d17d14d0167cf2c7e663317132e979ae0c74304b92f187cffbfa93f7"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/best-checkpoint/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/epoch_metrics.json": {
+          "bytes": 9597,
+          "sha256": "25b9283d201312161fd5c6f8c65ed4dce6f4296087c03ec0399dfc6f16849371"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "e4924a90c8b6a080506fd7f28ab48da98dd1afe9fea62fdeef9186d3b04d5a01"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/training_args.json": {
+          "bytes": 919,
+          "sha256": "f8bd5c69d17d14d0167cf2c7e663317132e979ae0c74304b92f187cffbfa93f7"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-1/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/epoch_metrics.json": {
+          "bytes": 9419,
+          "sha256": "0e2b7498f245906f4c5ff51870b70ea2afb2b10b9cd19aa806d82505035a0005"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "80c4b889508d098dc3a6029e15f151ad247cec97bb8f8f5eb20639fe469ce8b3"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/training_args.json": {
+          "bytes": 919,
+          "sha256": "f8bd5c69d17d14d0167cf2c7e663317132e979ae0c74304b92f187cffbfa93f7"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-2/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/config.json": {
+          "bytes": 3273,
+          "sha256": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/environment.json": {
+          "bytes": 826,
+          "sha256": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/epoch_metrics.json": {
+          "bytes": 9418,
+          "sha256": "6524e2f3bc9760e1cb461998dbd738103f7a703ba4580aae06b0ea13e83a2fad"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/model.safetensors": {
+          "bytes": 431058932,
+          "sha256": "9def5d37753685c12cbb5e984679af1d9c599f7dd4b271ee059649ce033304ae"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/special_tokens_map.json": {
+          "bytes": 132,
+          "sha256": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/tokenizer.json": {
+          "bytes": 669023,
+          "sha256": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/tokenizer_config.json": {
+          "bytes": 1278,
+          "sha256": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/training_args.json": {
+          "bytes": 919,
+          "sha256": "f8bd5c69d17d14d0167cf2c7e663317132e979ae0c74304b92f187cffbfa93f7"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/checkpoints/epoch-3/vocab.txt": {
+          "bytes": 213450,
+          "sha256": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/test_evaluation_receipt.json": {
+          "bytes": 4918,
+          "sha256": "ef9a585fe25059b1237bf0b6d5f548ede181029355e1812840137c8af0e08c1f"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/test_predictions.json": {
+          "bytes": 842615,
+          "sha256": "f605b4181216550792b6697de923ae849056b2e9d623147125a127b3ad5fd718"
+        },
+        "output_securelogx/ml-v1/bert-base-cased/training_history.json": {
+          "bytes": 989,
+          "sha256": "c2939dd4e5a7363b3b3a03a21725248ba220699aecb8a18d4192abec6641dae3"
+        },
+        "reports/business_id_subtype_analysis.md": {
+          "bytes": 1570,
+          "sha256": "bfd47b299cd12c275fa160732397a10c3c560acd6465fd38809c3d83addd8fae"
+        },
+        "reports/hard_negative_model_evaluation.md": {
+          "bytes": 621,
+          "sha256": "b54208aad4238e42e4498fb25f94007a2f1d5df7bff1f0df03b6026cb8ec2798"
+        },
+        "reports/model_error_analysis.md": {
+          "bytes": 1217,
+          "sha256": "b715796805bc8ca7d7538a9c99ae38493943576259cc8456dacc94819ac2a2b1"
+        },
+        "reports/model_errors.csv": {
+          "bytes": 698391,
+          "sha256": "329a6da07ec96257e0a75afa2fd833d727c2a775131912a750424edf53e7ac45"
+        },
+        "reports/per_label_test_metrics.csv": {
+          "bytes": 1732,
+          "sha256": "a522c4eda152f3574382de74eb2250d92f5731240079f02f4c7dfa3a884e7c22"
+        },
+        "reports/source_segment_evaluation.md": {
+          "bytes": 1679,
+          "sha256": "216976fc37969222f8b0534969ad5a07a5579d75b962dca14e3c41247154befd"
+        },
+        "reports/test_metrics.json": {
+          "bytes": 55067,
+          "sha256": "ff3c175cfe6bb86ab803bf65ec89cf94f8fa568b09bbc8a86feeca9d4de9a7b7"
+        }
+      },
+      "fingerprint_sha256": "0ad736822254c3af3b228a0674097e0cb053174dd97bb18875a5aa7051f10f9b"
+    }
+  },
+  "ontology": {
+    "bio_label_count": 51,
+    "entity_count": 25,
+    "path": "configs/securelogx_labels.json",
+    "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+  },
+  "parent_versions": [
+    "ML-v1",
+    "ML-v1.1"
+  ],
+  "purpose": "Immutable parent boundary for ML-v1.2 data analysis and counterbalancing",
+  "sealed_challenge": {
+    "bytes": 627906,
+    "expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+    "handling": "opaque_byte_hash_only_not_parsed_not_predicted",
+    "path": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "records_from_frozen_manifest": 480,
+    "sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
+  },
+  "snapshot_version": 1,
+  "totals": {
+    "bytes": 3503955283,
+    "files": 129
+  }
+}

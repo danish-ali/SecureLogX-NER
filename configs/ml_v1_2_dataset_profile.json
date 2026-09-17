@@ -1,0 +1,148 @@
+{
+  "profile_version": 1,
+  "dataset_version": "ML-v1.2",
+  "phase": "counterbalance_data_analysis_and_hardening_only",
+  "seed": 42,
+  "generator_version": "securelogx-ml-v1.2-counterbalance-v1",
+  "parent_version": "ML-v1.1",
+  "parent_freeze": "configs/ml_v1_2_parent_freeze.json",
+  "canonical_labels": "configs/securelogx_labels.json",
+  "outputs": {
+    "train_additions": "data/ml_v1_2/counterbalance/train_additions.jsonl",
+    "dev_challenge": "data/ml_v1_2/counterbalance/dev_challenge.jsonl",
+    "manifest": "configs/ml_v1_2_dataset_manifest.json",
+    "manifest_sha256": "configs/ml_v1_2_dataset_manifest.sha256"
+  },
+  "future_composition": {
+    "training_inputs": [
+      "data/split/train.jsonl",
+      "data/ml_v1_1/context_contrast/train_additions.jsonl",
+      "data/ml_v1_2/counterbalance/train_additions.jsonl"
+    ],
+    "development_inputs": [
+      "data/split/dev.jsonl",
+      "data/ml_v1_2/counterbalance/dev_challenge.jsonl"
+    ],
+    "historical_diagnostic_only": "data/ml_v1_1/context_contrast/dev_challenge.jsonl",
+    "sealed_final_challenge": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "historical_regression_test": "data/split/test.jsonl"
+  },
+  "target_counts": {
+    "train_additions_records": 1600,
+    "dev_challenge_records": 540,
+    "train_families": 40,
+    "dev_families": 15,
+    "train_pair_groups_per_family": 20,
+    "dev_pair_groups_per_family": 18
+  },
+  "counterbalance_targets": {
+    "primary_objective": "reduce BUSINESS_ID false positives without losing contextual BUSINESS_ID recall",
+    "bidirectional_business_id_contrasts": [
+      "SSN",
+      "CREDIT_CARD_NUMBER",
+      "BANK_ACCOUNT_NUMBER",
+      "ROUTING_NUMBER",
+      "ITIN",
+      "TAX_ID",
+      "PASSPORT_NUMBER",
+      "DRIVER_LICENSE",
+      "API_KEY",
+      "AUTH_TOKEN",
+      "IP_ADDRESS"
+    ],
+    "actual_worst_category": "ip_address_vs_technical_reference",
+    "actual_worst_category_observed_error_rate": 0.2625,
+    "weak_business_id_subtypes": [
+      "CUSTOMER_ID",
+      "REQUEST_ID"
+    ],
+    "multi_entity_examples_required": true,
+    "true_ssn_contexts_required": [
+      "explicit_field",
+      "natural_language",
+      "json",
+      "nested_json",
+      "key_value",
+      "snake_case",
+      "camelCase",
+      "abbreviated_field",
+      "adjacent_business_id",
+      "adjacent_person_name",
+      "adjacent_account_or_application_id"
+    ]
+  },
+  "family_allocation": {
+    "train": {
+      "business_id_vs_ssn": 10,
+      "business_id_vs_credit_card": 4,
+      "business_id_vs_bank_account": 3,
+      "business_id_vs_routing_number": 3,
+      "business_id_vs_itin": 2,
+      "business_id_vs_tax_id": 2,
+      "business_id_vs_passport": 2,
+      "business_id_vs_driver_license": 2,
+      "business_id_vs_api_key": 2,
+      "business_id_vs_auth_token": 2,
+      "business_id_vs_ip_address": 2,
+      "ip_address_vs_technical_reference": 6
+    },
+    "dev": {
+      "business_id_vs_ssn": 2,
+      "business_id_vs_credit_card": 1,
+      "business_id_vs_bank_account": 1,
+      "business_id_vs_routing_number": 1,
+      "business_id_vs_itin": 1,
+      "business_id_vs_tax_id": 1,
+      "business_id_vs_passport": 1,
+      "business_id_vs_driver_license": 1,
+      "business_id_vs_api_key": 1,
+      "business_id_vs_auth_token": 1,
+      "business_id_vs_ip_address": 1,
+      "ip_address_vs_technical_reference": 3
+    }
+  },
+  "readiness_gates": {
+    "entity_count": 25,
+    "bio_label_count": 51,
+    "parent_artifact_hash_mismatches": 0,
+    "sealed_challenge_expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+    "sealed_challenge_writes": 0,
+    "within_or_cross_split_exact_text_duplicates": 0,
+    "normalized_template_leakage": 0,
+    "cross_split_source_record_id_overlap": 0,
+    "cross_split_template_family_overlap": 0,
+    "cross_split_target_value_hash_overlap": 0,
+    "original_ml_v1_test_overlap": 0,
+    "ml_v1_1_dev_challenge_overlap": 0,
+    "sealed_challenge_overlap": 0,
+    "historical_failed_family_wording_reuse": 0,
+    "train_records_min": 1200,
+    "train_records_max": 2000,
+    "dev_records_min": 400,
+    "dev_records_max": 600,
+    "train_ip_technical_reference_families_min": 6,
+    "dev_ip_technical_reference_families_min": 3,
+    "train_customer_id_families_min": 4,
+    "train_request_id_families_min": 4,
+    "multi_entity_record_ratio_min": 0.7
+  },
+  "sealed_challenge_policy": {
+    "dataset_is_parent_frozen": true,
+    "dataset_must_not_be_read_by_generator": true,
+    "dataset_must_not_be_modified": true,
+    "predictions_forbidden": true,
+    "model_evaluation_forbidden": true
+  },
+  "prohibited_operations": [
+    "model_training",
+    "model_evaluation",
+    "sealed_challenge_read_or_write",
+    "onnx_export",
+    "java_changes",
+    "parent_dataset_overwrite",
+    "parent_report_overwrite",
+    "parent_checkpoint_overwrite",
+    "ontology_change",
+    "copy_parent_or_challenge_records_into_v1_2"
+  ]
+}

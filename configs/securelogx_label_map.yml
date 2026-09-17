@@ -1,0 +1,460 @@
+---
+# SecureLogX ML-v1 source-label normalization.
+#
+# `null` means that the source span is not an ML-v1 training entity. The
+# converter still records the span and its disposition in metadata. Sensitive
+# deferred/healthcare spans set training_exclusion=true; deliberately benign
+# labels (for example a generic date) do not.
+
+ontology:
+  name: SecureLogX
+  version: ML-v1
+  entity_count: 25
+  bio_label_count: 51
+
+# Product-taxonomy aliases that collapse into the frozen neural ontology.
+# The original subtype is retained per span by every converter.
+normalization_aliases:
+  FIRST_NAME: PERSON_NAME
+  MIDDLE_NAME: PERSON_NAME
+  LAST_NAME: PERSON_NAME
+  CARDHOLDER_NAME: PERSON_NAME
+  ADDRESS_LINE_1: STREET_ADDRESS
+  ADDRESS_LINE_2: STREET_ADDRESS
+  ZIP_CODE: POSTAL_CODE
+  CUSTOMER_ID: BUSINESS_ID
+  ACCOUNT_ID: BUSINESS_ID
+  LOAN_NUMBER: BUSINESS_ID
+  APPLICATION_ID: BUSINESS_ID
+  TRANSACTION_ID: BUSINESS_ID
+  USER_ID: BUSINESS_ID
+
+# These remain in the broader SecureLogX taxonomy, but are not independent
+# ML-v1 neural labels.
+deferred_labels:
+  - PASSWORD
+  - PIN
+  - OTP
+  - SECURITY_ANSWER
+  - JWT
+  - SESSION_ID
+  - COOKIE
+  - CVV
+  - CARD_EXPIRY
+  - MAC_ADDRESS
+  - GEOLOCATION
+  - BIOMETRIC_ID
+
+# Reserved for a later healthcare extension; never fold these into ML-v1.
+healthcare_extension_labels:
+  - PROVIDER_NPI
+  - MRN
+  - PATIENT_ID
+  - HEALTH_PLAN_ID
+  - CLAIM_ID
+  - PRESCRIPTION_ID
+  - DIAGNOSIS_CODE
+  - PROCEDURE_CODE
+  - LAB_ORDER_ID
+
+# Deliberately non-sensitive source annotations. They are retained as excluded
+# span provenance with training_exclusion=false.
+benign_unmapped_labels:
+  - DATE
+  - TIME
+  - DATE_TIME
+  - COMPANY
+  - ORGANIZATION
+  - ORGANIZATION_NAME
+  - JOB
+
+# Normalize source spellings to a stable source subtype. This is separate from
+# the neural mapping so BUSINESS_ID provenance remains recoverable.
+source_label_aliases:
+  name: PERSON_NAME
+  person: PERSON_NAME
+  person_name: PERSON_NAME
+  full_name: PERSON_NAME
+  fullname: PERSON_NAME
+  first_name: FIRST_NAME
+  given_name: FIRST_NAME
+  givenname: FIRST_NAME
+  middle_name: MIDDLE_NAME
+  middlename: MIDDLE_NAME
+  last_name: LAST_NAME
+  surname: LAST_NAME
+  cardholder_name: CARDHOLDER_NAME
+  date_of_birth: DOB
+  birth_date: DOB
+  dob: DOB
+  age: AGE
+  ssn: SSN
+  social_security_number: SSN
+  itin: ITIN
+  tax_id: TAX_ID
+  taxpayer_id: TAX_ID
+  email: EMAIL
+  email_address: EMAIL
+  phone: PHONE
+  phone_number: PHONE
+  telephone: PHONE
+  street: STREET_ADDRESS
+  street_address: STREET_ADDRESS
+  address: STREET_ADDRESS
+  address_line_1: ADDRESS_LINE_1
+  address_line_2: ADDRESS_LINE_2
+  city: CITY
+  state: STATE_PROVINCE
+  province: STATE_PROVINCE
+  state_province: STATE_PROVINCE
+  zipcode: ZIP_CODE
+  zip_code: ZIP_CODE
+  postal_code: POSTAL_CODE
+  country: COUNTRY
+  credit_card: CREDIT_CARD_NUMBER
+  credit_card_number: CREDIT_CARD_NUMBER
+  bank_account: BANK_ACCOUNT_NUMBER
+  bank_account_number: BANK_ACCOUNT_NUMBER
+  account_number: ACCOUNT_ID
+  bban: BANK_ACCOUNT_NUMBER
+  bank_routing_number: ROUTING_NUMBER
+  routing_number: ROUTING_NUMBER
+  iban: IBAN
+  swift: SWIFT_BIC
+  swift_bic: SWIFT_BIC
+  swift_bic_code: SWIFT_BIC
+  business_id: BUSINESS_ID
+  customer_id: CUSTOMER_ID
+  account_id: ACCOUNT_ID
+  loan_number: LOAN_NUMBER
+  application_id: APPLICATION_ID
+  transaction_id: TRANSACTION_ID
+  user_id: USER_ID
+  employee_id: USER_ID
+  user_name: USER_ID
+  username: USER_ID
+  passport: PASSPORT_NUMBER
+  passport_number: PASSPORT_NUMBER
+  driver_license: DRIVER_LICENSE
+  driver_license_number: DRIVER_LICENSE
+  ipv4: IP_ADDRESS
+  ipv6: IP_ADDRESS
+  ip_address: IP_ADDRESS
+  device_id: DEVICE_ID
+  auth_token: AUTH_TOKEN
+  api_key: API_KEY
+  password: PASSWORD
+  account_pin: PIN
+  pin: PIN
+  otp: OTP
+  one_time_password: OTP
+  security_answer: SECURITY_ANSWER
+  jwt: JWT
+  session_id: SESSION_ID
+  cookie: COOKIE
+  cvv: CVV
+  credit_card_security_code: CVV
+  card_expiry: CARD_EXPIRY
+  card_expiration: CARD_EXPIRY
+  mac_address: MAC_ADDRESS
+  geolocation: GEOLOCATION
+  local_latlng: GEOLOCATION
+  biometric_id: BIOMETRIC_ID
+  provider_npi: PROVIDER_NPI
+  npi: PROVIDER_NPI
+  mrn: MRN
+  patient_id: PATIENT_ID
+  health_plan_id: HEALTH_PLAN_ID
+  claim_id: CLAIM_ID
+  prescription_id: PRESCRIPTION_ID
+  diagnosis_code: DIAGNOSIS_CODE
+  procedure_code: PROCEDURE_CODE
+  lab_order_id: LAB_ORDER_ID
+  date: DATE
+  time: TIME
+  date_time: DATE_TIME
+  company: COMPANY
+  company_name: COMPANY
+  organization: ORGANIZATION
+  organization_name: ORGANIZATION_NAME
+  job: JOB
+
+mappings:
+  # Exact labels observed in gretelai/synthetic_pii_finance_multilingual are
+  # present here, followed by defensive aliases used by compatible revisions.
+  gretel:
+    source_id: gretel_finance_pii
+    mapping:
+      name: PERSON_NAME
+      person: PERSON_NAME
+      person_name: PERSON_NAME
+      full_name: PERSON_NAME
+      first_name: PERSON_NAME
+      middle_name: PERSON_NAME
+      last_name: PERSON_NAME
+      cardholder_name: PERSON_NAME
+      date_of_birth: DOB
+      birth_date: DOB
+      dob: DOB
+      age: AGE
+      ssn: SSN
+      social_security_number: SSN
+      itin: ITIN
+      tax_id: TAX_ID
+      taxpayer_id: TAX_ID
+      email: EMAIL
+      email_address: EMAIL
+      phone: PHONE
+      phone_number: PHONE
+      telephone: PHONE
+      street_address: STREET_ADDRESS
+      street: STREET_ADDRESS
+      address: STREET_ADDRESS
+      address_line_1: STREET_ADDRESS
+      address_line_2: STREET_ADDRESS
+      city: CITY
+      state: STATE_PROVINCE
+      province: STATE_PROVINCE
+      state_province: STATE_PROVINCE
+      zipcode: POSTAL_CODE
+      zip_code: POSTAL_CODE
+      postal_code: POSTAL_CODE
+      country: COUNTRY
+      credit_card: CREDIT_CARD_NUMBER
+      credit_card_number: CREDIT_CARD_NUMBER
+      bank_account: BANK_ACCOUNT_NUMBER
+      bank_account_number: BANK_ACCOUNT_NUMBER
+      bban: BANK_ACCOUNT_NUMBER
+      bank_routing_number: ROUTING_NUMBER
+      routing_number: ROUTING_NUMBER
+      iban: IBAN
+      swift: SWIFT_BIC
+      swift_bic: SWIFT_BIC
+      swift_bic_code: SWIFT_BIC
+      business_id: BUSINESS_ID
+      customer_id: BUSINESS_ID
+      account_id: BUSINESS_ID
+      account_number: BUSINESS_ID
+      loan_number: BUSINESS_ID
+      application_id: BUSINESS_ID
+      transaction_id: BUSINESS_ID
+      user_id: BUSINESS_ID
+      employee_id: BUSINESS_ID
+      user_name: BUSINESS_ID
+      username: BUSINESS_ID
+      passport: PASSPORT_NUMBER
+      passport_number: PASSPORT_NUMBER
+      driver_license: DRIVER_LICENSE
+      driver_license_number: DRIVER_LICENSE
+      ipv4: IP_ADDRESS
+      ipv6: IP_ADDRESS
+      ip_address: IP_ADDRESS
+      device_id: DEVICE_ID
+      auth_token: AUTH_TOKEN
+      api_key: API_KEY
+
+      # Sensitive but deferred from ML-v1.
+      password: null
+      account_pin: null
+      pin: null
+      otp: null
+      one_time_password: null
+      security_answer: null
+      jwt: null
+      session_id: null
+      cookie: null
+      cvv: null
+      credit_card_security_code: null
+      card_expiry: null
+      card_expiration: null
+      mac_address: null
+      geolocation: null
+      local_latlng: null
+      biometric_id: null
+
+      # Healthcare-extension source labels.
+      provider_npi: null
+      npi: null
+      mrn: null
+      patient_id: null
+      health_plan_id: null
+      claim_id: null
+      prescription_id: null
+      diagnosis_code: null
+      procedure_code: null
+      lab_order_id: null
+
+      # Benign/generic annotations are not safe semantic mappings.
+      date: null
+      time: null
+      date_time: null
+      company: null
+      company_name: null
+      organization: null
+      organization_name: null
+      job: null
+
+  ai4privacy:
+    source_id: ai4privacy_open_pii_500k
+    mapping:
+      GIVENNAME: PERSON_NAME
+      FIRST_NAME: PERSON_NAME
+      MIDDLENAME: PERSON_NAME
+      MIDDLE_NAME: PERSON_NAME
+      SURNAME: PERSON_NAME
+      LAST_NAME: PERSON_NAME
+      FULLNAME: PERSON_NAME
+      PERSON_NAME: PERSON_NAME
+      CARDHOLDER_NAME: PERSON_NAME
+      DOB: DOB
+      DATE_OF_BIRTH: DOB
+      AGE: AGE
+      SSN: SSN
+      SOCIALNUM: SSN
+      ITIN: ITIN
+      TAX_ID: TAX_ID
+      EMAIL: EMAIL
+      TELEPHONENUM: PHONE
+      PHONE: PHONE
+      STREET: STREET_ADDRESS
+      ADDRESS: STREET_ADDRESS
+      ADDRESS_LINE_1: STREET_ADDRESS
+      ADDRESS_LINE_2: STREET_ADDRESS
+      CITY: CITY
+      STATE: STATE_PROVINCE
+      PROVINCE: STATE_PROVINCE
+      STATE_PROVINCE: STATE_PROVINCE
+      ZIPCODE: POSTAL_CODE
+      ZIP_CODE: POSTAL_CODE
+      POSTAL_CODE: POSTAL_CODE
+      COUNTRY: COUNTRY
+      CREDITCARDNUMBER: CREDIT_CARD_NUMBER
+      CREDIT_CARD_NUMBER: CREDIT_CARD_NUMBER
+      ACCOUNTNUM: BANK_ACCOUNT_NUMBER
+      BANK_ACCOUNT_NUMBER: BANK_ACCOUNT_NUMBER
+      ROUTING_NUMBER: ROUTING_NUMBER
+      IBAN: IBAN
+      SWIFT_BIC: SWIFT_BIC
+      CUSTOMER_ID: BUSINESS_ID
+      ACCOUNT_ID: BUSINESS_ID
+      LOAN_NUMBER: BUSINESS_ID
+      APPLICATION_ID: BUSINESS_ID
+      TRANSACTION_ID: BUSINESS_ID
+      USER_ID: BUSINESS_ID
+      USERNAME: BUSINESS_ID
+      PASSPORTNUM: PASSPORT_NUMBER
+      PASSPORT_NUMBER: PASSPORT_NUMBER
+      DRIVERLICENSENUM: DRIVER_LICENSE
+      DRIVER_LICENSE: DRIVER_LICENSE
+      IPV4: IP_ADDRESS
+      IPV6: IP_ADDRESS
+      IP_ADDRESS: IP_ADDRESS
+      DEVICE_ID: DEVICE_ID
+      AUTH_TOKEN: AUTH_TOKEN
+      API_KEY: API_KEY
+      PASSWORD: null
+      PIN: null
+      OTP: null
+      SECURITY_ANSWER: null
+      JWT: null
+      SESSION_ID: null
+      COOKIE: null
+      CREDITCARDCVV: null
+      CVV: null
+      CARD_EXPIRY: null
+      MAC_ADDRESS: null
+      GEOLOCATION: null
+      BIOMETRIC_ID: null
+      PROVIDER_NPI: null
+      MRN: null
+      PATIENT_ID: null
+      HEALTH_PLAN_ID: null
+      CLAIM_ID: null
+      PRESCRIPTION_ID: null
+      DIAGNOSIS_CODE: null
+      PROCEDURE_CODE: null
+      LAB_ORDER_ID: null
+      DATE: null
+      TIME: null
+      COMPANY: null
+      ORGANIZATION: null
+      JOB: null
+
+  gliner:
+    source_id: nvidia_gliner_pii
+    mapping:
+      person: PERSON_NAME
+      person_name: PERSON_NAME
+      first_name: PERSON_NAME
+      middle_name: PERSON_NAME
+      last_name: PERSON_NAME
+      date_of_birth: DOB
+      age: AGE
+      social_security_number: SSN
+      ssn: SSN
+      itin: ITIN
+      tax_id: TAX_ID
+      email: EMAIL
+      phone_number: PHONE
+      address: STREET_ADDRESS
+      city: CITY
+      state: STATE_PROVINCE
+      postal_code: POSTAL_CODE
+      country: COUNTRY
+      credit_card_number: CREDIT_CARD_NUMBER
+      bank_account_number: BANK_ACCOUNT_NUMBER
+      routing_number: ROUTING_NUMBER
+      iban: IBAN
+      swift_bic: SWIFT_BIC
+      business_id: BUSINESS_ID
+      passport_number: PASSPORT_NUMBER
+      driver_license: DRIVER_LICENSE
+      ip_address: IP_ADDRESS
+      device_id: DEVICE_ID
+      auth_token: AUTH_TOKEN
+      api_key: API_KEY
+      password: null
+      pin: null
+      otp: null
+      security_answer: null
+      jwt: null
+      session_id: null
+      cookie: null
+      cvv: null
+      card_expiry: null
+      mac_address: null
+      geolocation: null
+      biometric_id: null
+      provider_npi: null
+      mrn: null
+      patient_id: null
+      health_plan_id: null
+      claim_id: null
+      prescription_id: null
+      diagnosis_code: null
+      procedure_code: null
+      lab_order_id: null
+      date: null
+      company: null
+      organization: null
+
+  starpii:
+    source_id: bigcode_starpii
+    mapping:
+      EMAIL: EMAIL
+      IP_ADDRESS: IP_ADDRESS
+      KEY: API_KEY
+      API_KEY: API_KEY
+      AUTH_TOKEN: AUTH_TOKEN
+      USERNAME: BUSINESS_ID
+      USER_ID: BUSINESS_ID
+      PASSWORD: null
+      JWT: null
+      SESSION_ID: null
+      COOKIE: null
+
+warnings:
+  - "Generic DATE, TIME, and DATE_TIME are not DOB."
+  - "Company, organization, and job labels are not PERSON_NAME or BUSINESS_ID."
+  - "Deferred and healthcare spans remain traceable but are not ML-v1 entities."
+  - "Unknown source labels require explicit review before training."

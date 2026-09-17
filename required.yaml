@@ -1,0 +1,22 @@
+training:
+  model_family: bert
+  model_task: token-classification
+  base_model: distilbert-base-uncased #move to DeBERTa-small only if accuracy is not enough and Java tokenizer support is confirmed
+  tokenizer_source: same_as_base_model
+  use_fast_tokenizer: true
+  label_format: BIO
+  max_length: 256
+  epochs: 3
+  batch_size: 16
+  learning_rate: 0.00005
+  metric_for_best_model: f1
+  load_best_model_at_end: true
+
+runtime:
+  target: java_onnx
+  onnx_task: token-classification
+  opset: 17
+  quantize_dynamic: true
+  export_tokenizer_json: true
+  export_labels_json: true
+  export_metadata_json: true

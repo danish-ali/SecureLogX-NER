@@ -1,0 +1,88 @@
+{
+  "profile_version": 1,
+  "dataset_version": "ML-v1.1",
+  "phase": "data_revision_and_challenge_set_preparation_only",
+  "seed": 42,
+  "generator_version": "securelogx-ml-v1.1-context-contrast-v1",
+  "parent_version": "ML-v1",
+  "parent_freeze": "configs/ml_v1_1_parent_freeze.json",
+  "canonical_labels": "configs/securelogx_labels.json",
+  "outputs": {
+    "train_additions": "data/ml_v1_1/context_contrast/train_additions.jsonl",
+    "dev_challenge": "data/ml_v1_1/context_contrast/dev_challenge.jsonl",
+    "sealed_challenge": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "manifest": "configs/ml_v1_1_dataset_manifest.json",
+    "manifest_sha256": "configs/ml_v1_1_dataset_manifest.sha256"
+  },
+  "future_composition": {
+    "training_inputs": [
+      "data/split/train.jsonl",
+      "data/ml_v1_1/context_contrast/train_additions.jsonl"
+    ],
+    "development_inputs": [
+      "data/split/dev.jsonl",
+      "data/ml_v1_1/context_contrast/dev_challenge.jsonl"
+    ],
+    "sealed_final_challenge": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "historical_regression_test": "data/split/test.jsonl"
+  },
+  "target_counts": {
+    "train_additions_records": 3000,
+    "dev_challenge_records": 480,
+    "sealed_challenge_records": 480,
+    "train_families": 30,
+    "dev_families": 12,
+    "sealed_families": 12
+  },
+  "business_id_subtypes": [
+    "CUSTOMER_ID",
+    "ACCOUNT_ID",
+    "APPLICATION_ID",
+    "TRANSACTION_ID",
+    "USER_ID",
+    "ORDER_ID",
+    "CASE_ID",
+    "TICKET_ID",
+    "INVOICE_ID",
+    "REFERENCE_ID",
+    "REQUEST_ID",
+    "WORKFLOW_ID"
+  ],
+  "readiness_gates": {
+    "entity_count": 25,
+    "bio_label_count": 51,
+    "parent_artifact_hash_mismatches": 0,
+    "within_or_cross_split_exact_text_duplicates": 0,
+    "cross_split_source_record_id_overlap": 0,
+    "cross_split_template_family_overlap": 0,
+    "cross_split_contrast_value_hash_overlap": 0,
+    "parent_test_records_in_train_or_dev": 0,
+    "parent_family_in_new_splits": 0,
+    "normalized_template_collision": 0,
+    "dev_business_id_vs_ssn_families_min": 5,
+    "dev_business_id_vs_card_or_account_families_min": 3,
+    "dev_network_technical_families_min": 2,
+    "sealed_family_count_min": 8,
+    "sealed_family_count_max": 12,
+    "train_business_id_addition_vs_parent_min_ratio": 0.25,
+    "train_ssn_addition_vs_parent_min_ratio": 0.25,
+    "required_surface_formats_min": 8
+  },
+  "sealed_challenge_policy": {
+    "generated_and_frozen_before_training": true,
+    "development_predictions_forbidden": true,
+    "model_predictions_run_in_this_phase": false,
+    "report_content": "aggregate_counts_family_ids_and_hashes_only"
+  },
+  "prohibited_operations": [
+    "model_training",
+    "model_evaluation",
+    "onnx_export",
+    "java_changes",
+    "parent_dataset_overwrite",
+    "parent_report_overwrite",
+    "parent_checkpoint_overwrite",
+    "ontology_change",
+    "copy_parent_test_into_train_or_dev"
+  ]
+}
