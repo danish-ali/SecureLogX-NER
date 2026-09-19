@@ -1,0 +1,39 @@
+{
+  "phase": "ML-v1.3 corrected development model freeze",
+  "created_for": "single post-selection sealed validation",
+  "development_selection_final": true,
+  "selected_model": {
+    "model_key": "bert",
+    "base_model": "bert-base-cased",
+    "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e",
+    "epoch": 3,
+    "expected_model_sha256": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+    "checkpoint_path": "output_securelogx/ml-v1.3/bert-base-cased/checkpoints/epoch-3"
+  },
+  "corrected_development_evidence": {
+    "decision": "BERT SELECTED BY CORRECTED DEVELOPMENT EVALUATION",
+    "bert_selection_score": 0.963232,
+    "deberta_selection_score": 0.937421,
+    "bert_standard_micro_f1": 0.911143,
+    "bert_standard_macro_f1": 0.933123,
+    "bert_challenge_micro_f1": 0.979592,
+    "bert_challenge_macro_f1": 0.995349,
+    "bert_combined_security_miss_partial": 225,
+    "deberta_combined_security_miss_partial": 380
+  },
+  "decoder_correction": {
+    "description": "Trim tokenizer-added surrounding whitespace from decoded entity spans.",
+    "implementation_commit": "50b774d1c1d8d7795defd5911a091cd1006d9d05",
+    "unit_test_commit": "564f9d6d08534e1b582bd7d1e81aa7f9e2819c30"
+  },
+  "frozen_dataset_manifest_sha256": "8125063016e4e519e3b1a5db4b2ebc2cb32d5d5712a7072c769c52ed17eef9c9",
+  "sealed_challenge_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+  "sealed_challenge_opened_before_freeze": false,
+  "policy": {
+    "sealed_evaluation_count": 1,
+    "model_selection_may_not_change_after_sealed_results": true,
+    "no_retraining_before_sealed_validation": true,
+    "no_data_changes_before_sealed_validation": true,
+    "no_threshold_tuning_on_sealed_results": true
+  }
+}
