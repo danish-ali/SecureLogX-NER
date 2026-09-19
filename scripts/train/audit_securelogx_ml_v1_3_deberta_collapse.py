@@ -22,11 +22,11 @@ from typing import Any, Mapping, Sequence
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts" / "train"))
 
+from securelogx_ml_v1_1_metrics import supported_macro  # noqa: E402
 from securelogx_training_common import (  # noqa: E402
     load_canonical_labels,
     load_jsonl,
     score_predictions,
-    supported_macro,
 )
 
 SEALED_SHA256 = "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
