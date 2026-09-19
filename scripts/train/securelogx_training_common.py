@@ -793,6 +793,37 @@ def decode_bio_spans(
     return spans, invalid_transitions
 
 
+def normalize_decoded_spans(
+    text: str,
+    spans: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
+    """Trim tokenizer-added surrounding whitespace from decoded entity spans.
+
+    SentencePiece tokenizers such as DeBERTa-v3 may emit offset mappings whose
+    first token for an entity includes an adjacent space. Training alignment can
+    legitimately supervise that token, but entity-level evaluation and runtime
+    masking should refer to the actual non-whitespace character span.
+
+    Only surrounding whitespace is removed. Internal characters and entity
+    labels/confidences are unchanged.
+    """
+    normalized: list[dict[str, Any]] = []
+    text_length = len(text)
+    for span in spans:
+        item = dict(span)
+        start = max(0, min(text_length, int(item["start"])))
+        end = max(start, min(text_length, int(item["end"])))
+        while start < end and text[start].isspace():
+            start += 1
+        while end > start and text[end - 1].isspace():
+            end -= 1
+        item["start"] = start
+        item["end"] = end
+        if start < end:
+            normalized.append(item)
+    return normalized
+
+
 def evaluate_model(
     model: Any,
     tokenizer: Any,
@@ -871,6 +902,7 @@ def evaluate_model(
             id_to_label,
         )
         invalid_transitions += invalid
+        spans = normalize_decoded_spans(str(records[record_index]["text"]), spans)
         predictions.append(spans)
         token_details.append(
             {
