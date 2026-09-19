@@ -1,0 +1,46 @@
+{
+  "exact_span_parity_all_records": true,
+  "max_abs_logit_tolerance": 0.0001,
+  "mean_abs_logit_tolerance": 1e-05,
+  "model_sha256": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+  "onnx_sha256": "5953acd999083fa08c17c537e1d88c38f3c7137bc518022d8f3246c1133997c2",
+  "overall_max_abs_logit_delta": 2.4080276489257812e-05,
+  "overall_weighted_mean_abs_logit_delta": 4.479025892032786e-07,
+  "passed": true,
+  "scope": {
+    "java_changes": false,
+    "sealed_inference": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "status": "ONNX PARITY PASSED",
+  "views": [
+    {
+      "exact_span_record_match_rate": 1.0,
+      "exact_span_record_matches": 48,
+      "max_abs_logit_delta": 1.6689300537109375e-05,
+      "mean_abs_logit_delta": 4.463596206572824e-07,
+      "mismatches": [],
+      "records": 48,
+      "view": "standard_dev"
+    },
+    {
+      "exact_span_record_match_rate": 1.0,
+      "exact_span_record_matches": 48,
+      "max_abs_logit_delta": 1.52587890625e-05,
+      "mean_abs_logit_delta": 4.4360087515884374e-07,
+      "mismatches": [],
+      "records": 48,
+      "view": "v1_3_challenge_dev"
+    },
+    {
+      "exact_span_record_match_rate": 1.0,
+      "exact_span_record_matches": 48,
+      "max_abs_logit_delta": 2.4080276489257812e-05,
+      "mean_abs_logit_delta": 4.5374727179370973e-07,
+      "mismatches": [],
+      "records": 48,
+      "view": "original_test_regression"
+    }
+  ]
+}

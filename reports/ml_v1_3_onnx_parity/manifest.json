@@ -1,0 +1,24 @@
+{
+  "bio_labels": 51,
+  "decoder": "BIO decode plus surrounding-whitespace span normalization",
+  "dynamic_batch": true,
+  "dynamic_sequence": true,
+  "frozen_model_sha256": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+  "inputs": [
+    "input_ids",
+    "attention_mask",
+    "token_type_ids"
+  ],
+  "onnx_opset": 17,
+  "onnx_sha256": "5953acd999083fa08c17c537e1d88c38f3c7137bc518022d8f3246c1133997c2",
+  "ontology_entities": 25,
+  "output": "logits",
+  "phase": "ML-v1.3 ONNX export",
+  "tokenizer_files": {
+    "config.json": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318",
+    "special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+    "tokenizer.json": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1",
+    "tokenizer_config.json": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570",
+    "vocab.txt": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+  }
+}
