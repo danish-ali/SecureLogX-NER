@@ -1,0 +1,69 @@
+{
+  "created_utc": "2026-09-18T01:00:00.196405+00:00",
+  "dataset_version": "ML-v1.3",
+  "failure_modes": {
+    "dev_challenge": {
+      "accountlike_o_vs_business_id": 120,
+      "auth_token_vs_business_id": 120,
+      "high_risk_identifier": 80,
+      "ip_vs_technical_reference": 80,
+      "ssn_vs_itin": 80
+    },
+    "train_addition": {
+      "accountlike_o_vs_business_id": 576,
+      "auth_token_vs_business_id": 576,
+      "high_risk_identifier": 384,
+      "ip_vs_technical_reference": 384,
+      "ssn_vs_itin": 384
+    }
+  },
+  "family_counts": {
+    "dev_challenge": 24,
+    "train_addition": 96
+  },
+  "generator_version": "securelogx-ml-v1.3-real-structure-v1",
+  "manifest_version": 1,
+  "new_data_artifacts": {
+    "data/ml_v1_3/real_structure/dev_challenge.jsonl": {
+      "bytes": 768867,
+      "records": 480,
+      "sha256": "23a8cf9997df2ac81a69b535935df8de6a47f9450344823b673c49a34363ea0a"
+    },
+    "data/ml_v1_3/real_structure/train_additions.jsonl": {
+      "bytes": 3683138,
+      "records": 2304,
+      "sha256": "4a2c332a387776e411c4d86a146dd79409d8e26ec455e050fc6c26c1b666dbd4"
+    }
+  },
+  "ontology_sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5",
+  "parent_freeze_sha256": "2b1a26605d353e53ac99d9b22c913cb77edc4d3b2bfa949185304e3de9b6e371",
+  "record_counts": {
+    "dev_challenge": 480,
+    "train_addition": 2304
+  },
+  "sealed_challenge": {
+    "file_opened": false,
+    "path": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
+  },
+  "seed": 42,
+  "structure_categories": {
+    "authentication_security": 144,
+    "database_error": 144,
+    "free_text_operational": 144,
+    "json_application": 144,
+    "kafka_client": 144,
+    "key_value_audit": 144,
+    "kubernetes_container": 144,
+    "log4j_pattern": 144,
+    "mixed_structured": 144,
+    "nested_json": 144,
+    "nginx_access": 144,
+    "rest_access": 144,
+    "spring_boot_application": 144,
+    "stack_trace_adjacent": 144,
+    "syslog_rfc5424": 144,
+    "warn_error": 144
+  },
+  "validation_passed": true
+}

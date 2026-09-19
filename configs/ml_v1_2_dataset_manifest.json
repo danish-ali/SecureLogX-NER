@@ -1,0 +1,1202 @@
+{
+  "business_id_subtype_counts": {
+    "dev_challenge": {
+      "ACCOUNT_ID": 36,
+      "APPLICATION_ID": 36,
+      "CASE_ID": 36,
+      "CUSTOMER_ID": 72,
+      "INVOICE_ID": 36,
+      "ORDER_ID": 36,
+      "REFERENCE_ID": 72,
+      "REQUEST_ID": 90,
+      "TRANSACTION_ID": 36,
+      "USER_ID": 36,
+      "WORKFLOW_ID": 36
+    },
+    "train_addition": {
+      "ACCOUNT_ID": 120,
+      "APPLICATION_ID": 200,
+      "CASE_ID": 120,
+      "CUSTOMER_ID": 220,
+      "INVOICE_ID": 80,
+      "ORDER_ID": 80,
+      "REFERENCE_ID": 80,
+      "REQUEST_ID": 240,
+      "TICKET_ID": 80,
+      "TRANSACTION_ID": 120,
+      "USER_ID": 60,
+      "WORKFLOW_ID": 160
+    }
+  },
+  "context_conflict_counts": {
+    "dev_challenge": {
+      "families": {
+        "business_id_vs_api_key": 1,
+        "business_id_vs_auth_token": 1,
+        "business_id_vs_bank_account": 1,
+        "business_id_vs_credit_card": 1,
+        "business_id_vs_driver_license": 1,
+        "business_id_vs_ip_address": 1,
+        "business_id_vs_itin": 1,
+        "business_id_vs_passport": 1,
+        "business_id_vs_routing_number": 1,
+        "business_id_vs_ssn": 2,
+        "business_id_vs_tax_id": 1,
+        "ip_address_vs_technical_reference": 3
+      },
+      "records": {
+        "business_id_vs_api_key": 36,
+        "business_id_vs_auth_token": 36,
+        "business_id_vs_bank_account": 36,
+        "business_id_vs_credit_card": 36,
+        "business_id_vs_driver_license": 36,
+        "business_id_vs_ip_address": 36,
+        "business_id_vs_itin": 36,
+        "business_id_vs_passport": 36,
+        "business_id_vs_routing_number": 36,
+        "business_id_vs_ssn": 72,
+        "business_id_vs_tax_id": 36,
+        "ip_address_vs_technical_reference": 108
+      }
+    },
+    "train_addition": {
+      "families": {
+        "business_id_vs_api_key": 2,
+        "business_id_vs_auth_token": 2,
+        "business_id_vs_bank_account": 3,
+        "business_id_vs_credit_card": 4,
+        "business_id_vs_driver_license": 2,
+        "business_id_vs_ip_address": 2,
+        "business_id_vs_itin": 2,
+        "business_id_vs_passport": 2,
+        "business_id_vs_routing_number": 3,
+        "business_id_vs_ssn": 10,
+        "business_id_vs_tax_id": 2,
+        "ip_address_vs_technical_reference": 6
+      },
+      "records": {
+        "business_id_vs_api_key": 80,
+        "business_id_vs_auth_token": 80,
+        "business_id_vs_bank_account": 120,
+        "business_id_vs_credit_card": 160,
+        "business_id_vs_driver_license": 80,
+        "business_id_vs_ip_address": 80,
+        "business_id_vs_itin": 80,
+        "business_id_vs_passport": 80,
+        "business_id_vs_routing_number": 120,
+        "business_id_vs_ssn": 400,
+        "business_id_vs_tax_id": 80,
+        "ip_address_vs_technical_reference": 240
+      }
+    }
+  },
+  "counterbalance_targets": {
+    "diagnosed_worst_category": "ip_address_vs_technical_reference",
+    "diagnosed_worst_category_error_rate": 0.2625,
+    "train_business_id_spans": 1560,
+    "train_sensitive_span_counts": {
+      "API_KEY": 80,
+      "AUTH_TOKEN": 80,
+      "BANK_ACCOUNT_NUMBER": 120,
+      "CREDIT_CARD_NUMBER": 160,
+      "DRIVER_LICENSE": 80,
+      "IP_ADDRESS": 200,
+      "ITIN": 80,
+      "PASSPORT_NUMBER": 80,
+      "ROUTING_NUMBER": 120,
+      "SSN": 400,
+      "TAX_ID": 80
+    }
+  },
+  "created_utc": "2026-09-17T22:50:21.695487+00:00",
+  "dataset_version": "ML-v1.2",
+  "future_composition": {
+    "development_inputs": [
+      "data/split/dev.jsonl",
+      "data/ml_v1_2/counterbalance/dev_challenge.jsonl"
+    ],
+    "historical_diagnostic_only": "data/ml_v1_1/context_contrast/dev_challenge.jsonl",
+    "historical_regression_test": "data/split/test.jsonl",
+    "sealed_final_challenge": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "training_inputs": [
+      "data/split/train.jsonl",
+      "data/ml_v1_1/context_contrast/train_additions.jsonl",
+      "data/ml_v1_2/counterbalance/train_additions.jsonl"
+    ]
+  },
+  "generation": {
+    "family_catalog_sha256": "8e940bfb84726af8f6a612d3f24c07d9f04920ed33cd771d523ec5d82b6e9f29",
+    "generator_version": "securelogx-ml-v1.2-counterbalance-v1",
+    "profile_path": "configs/ml_v1_2_dataset_profile.json",
+    "profile_sha256": "fbc14ff2075d081b5253c105c32ac54d8f1e151d37977d61a6aee9daa4109560",
+    "script_sha256": {
+      "scripts/data/analyze_securelogx_ml_v1_1_dev_errors.py": "31f5ae4495ebdb0705cc98696f6ddde75aaa87c35451d154722c9773acb14cd4",
+      "scripts/data/build_securelogx_ml_v1_2_dataset.py": "9929bd295749e6c6ed98d6b7a07a46913e12a84de6b92b25bc36024e56019bb7",
+      "scripts/data/capture_securelogx_ml_v1_2_parent_freeze.py": "9c3c33a524bda51b6a8bd3ec0a319a05178794f57b4ab95c8de1ff7c3242fb38",
+      "scripts/data/generate_securelogx_ml_v1_2_counterbalance.py": "6bf7077d6d8da1d1c59c4d93a556c7db8ef5b2ff785c8af46b48023b5eec6290",
+      "scripts/data/validate_securelogx_ml_v1_2.py": "ba57c19bf0a6e5f771f29cccda365c6385df1c9fcdcf9ace6ee0d1c83a985050"
+    },
+    "seed": 42
+  },
+  "leakage": {
+    "cross_split_exact_text": {
+      "pairs": {
+        "train_addition__dev_challenge": 0
+      },
+      "total": 0
+    },
+    "cross_split_focus_value_hash": {
+      "pairs": {
+        "train_addition__dev_challenge": 0
+      },
+      "total": 0
+    },
+    "cross_split_source_id": {
+      "pairs": {
+        "train_addition__dev_challenge": 0
+      },
+      "total": 0
+    },
+    "cross_split_template_family": {
+      "pairs": {
+        "train_addition__dev_challenge": 0
+      },
+      "total": 0
+    },
+    "parent_exact_text_count": 0,
+    "parent_source_id_count": 0,
+    "parent_template_family_count": 0,
+    "parent_test_exact_text_count": 0,
+    "v1_1_overlap": {
+      "v1_1_dev_challenge": {
+        "families": 0,
+        "focus_value_hashes": 0,
+        "normalized_text_skeletons": 0,
+        "source_ids": 0,
+        "texts": 0
+      },
+      "v1_1_sealed_challenge": {
+        "families": 0,
+        "focus_value_hashes": 0,
+        "normalized_text_skeletons": 0,
+        "source_ids": 0,
+        "texts": 0
+      },
+      "v1_1_train_addition": {
+        "families": 0,
+        "focus_value_hashes": 0,
+        "normalized_text_skeletons": 0,
+        "source_ids": 0,
+        "texts": 0
+      }
+    },
+    "v1_1_overlap_total": 0
+  },
+  "manifest_version": 1,
+  "new_data_artifacts": {
+    "data/ml_v1_2/counterbalance/dev_challenge.jsonl": {
+      "business_id_subtype_counts": {
+        "ACCOUNT_ID": 36,
+        "APPLICATION_ID": 36,
+        "CASE_ID": 36,
+        "CUSTOMER_ID": 72,
+        "INVOICE_ID": 36,
+        "ORDER_ID": 36,
+        "REFERENCE_ID": 72,
+        "REQUEST_ID": 90,
+        "TRANSACTION_ID": 36,
+        "USER_ID": 36,
+        "WORKFLOW_ID": 36
+      },
+      "bytes": 1212242,
+      "category_family_counts": {
+        "business_id_vs_api_key": 1,
+        "business_id_vs_auth_token": 1,
+        "business_id_vs_bank_account": 1,
+        "business_id_vs_credit_card": 1,
+        "business_id_vs_driver_license": 1,
+        "business_id_vs_ip_address": 1,
+        "business_id_vs_itin": 1,
+        "business_id_vs_passport": 1,
+        "business_id_vs_routing_number": 1,
+        "business_id_vs_ssn": 2,
+        "business_id_vs_tax_id": 1,
+        "ip_address_vs_technical_reference": 3
+      },
+      "category_record_counts": {
+        "business_id_vs_api_key": 36,
+        "business_id_vs_auth_token": 36,
+        "business_id_vs_bank_account": 36,
+        "business_id_vs_credit_card": 36,
+        "business_id_vs_driver_license": 36,
+        "business_id_vs_ip_address": 36,
+        "business_id_vs_itin": 36,
+        "business_id_vs_passport": 36,
+        "business_id_vs_routing_number": 36,
+        "business_id_vs_ssn": 72,
+        "business_id_vs_tax_id": 36,
+        "ip_address_vs_technical_reference": 108
+      },
+      "contrast_group_count": 270,
+      "entity_counts": {
+        "API_KEY": 36,
+        "AUTH_TOKEN": 36,
+        "BANK_ACCOUNT_NUMBER": 36,
+        "BUSINESS_ID": 522,
+        "CREDIT_CARD_NUMBER": 36,
+        "DRIVER_LICENSE": 36,
+        "IP_ADDRESS": 90,
+        "ITIN": 36,
+        "PASSPORT_NUMBER": 36,
+        "PERSON_NAME": 18,
+        "ROUTING_NUMBER": 36,
+        "SSN": 72,
+        "TAX_ID": 36
+      },
+      "entity_spans": 1026,
+      "families": [
+        "ml_v1_2_dev_challenge_appeal_itin_attestation_v1_2",
+        "ml_v1_2_dev_challenge_artifact_version_relay_v1_2",
+        "ml_v1_2_dev_challenge_catalog_coordinate_socket_v1_2",
+        "ml_v1_2_dev_challenge_citation_tax_registration_v1_2",
+        "ml_v1_2_dev_challenge_dispatch_dotted_locator_v1_2",
+        "ml_v1_2_dev_challenge_exchange_api_authorization_v1_2",
+        "ml_v1_2_dev_challenge_operator_license_enrollment_v1_2",
+        "ml_v1_2_dev_challenge_orchestration_aba_clearance_v1_2",
+        "ml_v1_2_dev_challenge_permit_passport_inspection_v1_2",
+        "ml_v1_2_dev_challenge_petition_identity_clearance_v1_2",
+        "ml_v1_2_dev_challenge_portfolio_deposit_destination_v1_2",
+        "ml_v1_2_dev_challenge_protocol_revision_endpoint_v1_2",
+        "ml_v1_2_dev_challenge_remittance_auth_session_v1_2",
+        "ml_v1_2_dev_challenge_shipment_card_adjudication_v1_2",
+        "ml_v1_2_dev_challenge_subscriber_benefit_identity_v1_2"
+      ],
+      "family_count": 15,
+      "focus_label_counts": {
+        "API_KEY": 18,
+        "AUTH_TOKEN": 18,
+        "BANK_ACCOUNT_NUMBER": 18,
+        "BUSINESS_ID": 216,
+        "CREDIT_CARD_NUMBER": 18,
+        "DRIVER_LICENSE": 18,
+        "IP_ADDRESS": 72,
+        "ITIN": 18,
+        "O": 54,
+        "PASSPORT_NUMBER": 18,
+        "ROUTING_NUMBER": 18,
+        "SSN": 36,
+        "TAX_ID": 18
+      },
+      "formats": [
+        "csv",
+        "json",
+        "key_value",
+        "text"
+      ],
+      "morphology_classes": [
+        "api_key_prefixed",
+        "auth_token_prefixed",
+        "bank_account_14_digits",
+        "card_16_grouped_spaces",
+        "driver_license_alphanumeric",
+        "ipv4_dotted_quad",
+        "itin_hyphenated",
+        "passport_us",
+        "routing_aba",
+        "ssn_hyphenated",
+        "ssn_spaced",
+        "tax_ein_hyphenated"
+      ],
+      "multi_entity_ratio": 0.9,
+      "multi_entity_records": 486,
+      "records": 540,
+      "sha256": "7be86f4eb9ce5d67164597ddff643bd89aaf92e82aede030271005989db1f62b",
+      "source_record_id_count": 540,
+      "surface_styles": [
+        "countercheck_audit",
+        "countercheck_bracketed",
+        "countercheck_csv",
+        "countercheck_json",
+        "countercheck_kv",
+        "countercheck_nested_json",
+        "countercheck_query",
+        "countercheck_syslog"
+      ]
+    },
+    "data/ml_v1_2/counterbalance/train_additions.jsonl": {
+      "business_id_subtype_counts": {
+        "ACCOUNT_ID": 120,
+        "APPLICATION_ID": 200,
+        "CASE_ID": 120,
+        "CUSTOMER_ID": 220,
+        "INVOICE_ID": 80,
+        "ORDER_ID": 80,
+        "REFERENCE_ID": 80,
+        "REQUEST_ID": 240,
+        "TICKET_ID": 80,
+        "TRANSACTION_ID": 120,
+        "USER_ID": 60,
+        "WORKFLOW_ID": 160
+      },
+      "bytes": 3592022,
+      "category_family_counts": {
+        "business_id_vs_api_key": 2,
+        "business_id_vs_auth_token": 2,
+        "business_id_vs_bank_account": 3,
+        "business_id_vs_credit_card": 4,
+        "business_id_vs_driver_license": 2,
+        "business_id_vs_ip_address": 2,
+        "business_id_vs_itin": 2,
+        "business_id_vs_passport": 2,
+        "business_id_vs_routing_number": 3,
+        "business_id_vs_ssn": 10,
+        "business_id_vs_tax_id": 2,
+        "ip_address_vs_technical_reference": 6
+      },
+      "category_record_counts": {
+        "business_id_vs_api_key": 80,
+        "business_id_vs_auth_token": 80,
+        "business_id_vs_bank_account": 120,
+        "business_id_vs_credit_card": 160,
+        "business_id_vs_driver_license": 80,
+        "business_id_vs_ip_address": 80,
+        "business_id_vs_itin": 80,
+        "business_id_vs_passport": 80,
+        "business_id_vs_routing_number": 120,
+        "business_id_vs_ssn": 400,
+        "business_id_vs_tax_id": 80,
+        "ip_address_vs_technical_reference": 240
+      },
+      "contrast_group_count": 800,
+      "entity_counts": {
+        "API_KEY": 80,
+        "AUTH_TOKEN": 80,
+        "BANK_ACCOUNT_NUMBER": 120,
+        "BUSINESS_ID": 1560,
+        "CREDIT_CARD_NUMBER": 160,
+        "DRIVER_LICENSE": 80,
+        "IP_ADDRESS": 200,
+        "ITIN": 80,
+        "PASSPORT_NUMBER": 80,
+        "PERSON_NAME": 40,
+        "ROUTING_NUMBER": 120,
+        "SSN": 400,
+        "TAX_ID": 80
+      },
+      "entity_spans": 3080,
+      "families": [
+        "ml_v1_2_train_addition_account_claimant_registry_v1_2",
+        "ml_v1_2_train_addition_account_deposit_registry_v1_2",
+        "ml_v1_2_train_addition_account_routing_migration_v1_2",
+        "ml_v1_2_train_addition_application_access_token_v1_2",
+        "ml_v1_2_train_addition_application_itin_review_v1_2",
+        "ml_v1_2_train_addition_application_taxpayer_enrollment_v1_2",
+        "ml_v1_2_train_addition_application_travel_document_v1_2",
+        "ml_v1_2_train_addition_build_tuple_origin_v1_2",
+        "ml_v1_2_train_addition_case_dependent_review_v1_2",
+        "ml_v1_2_train_addition_case_dotted_network_locator_v1_2",
+        "ml_v1_2_train_addition_case_employer_tax_v1_2",
+        "ml_v1_2_train_addition_customer_card_vault_v1_2",
+        "ml_v1_2_train_addition_customer_dotted_identity_v1_2",
+        "ml_v1_2_train_addition_customer_itin_enrollment_v1_2",
+        "ml_v1_2_train_addition_customer_license_check_v1_2",
+        "ml_v1_2_train_addition_customer_social_identity_ledger_v1_2",
+        "ml_v1_2_train_addition_customer_subject_identity_v1_2",
+        "ml_v1_2_train_addition_dependency_coordinate_edge_v1_2",
+        "ml_v1_2_train_addition_firmware_version_client_v1_2",
+        "ml_v1_2_train_addition_invoice_card_refund_v1_2",
+        "ml_v1_2_train_addition_invoice_taxpayer_filing_v1_2",
+        "ml_v1_2_train_addition_order_pan_settlement_v1_2",
+        "ml_v1_2_train_addition_package_coordinate_gateway_v1_2",
+        "ml_v1_2_train_addition_reference_bearer_session_v1_2",
+        "ml_v1_2_train_addition_release_version_peer_v1_2",
+        "ml_v1_2_train_addition_request_aba_verification_v1_2",
+        "ml_v1_2_train_addition_request_benefit_intake_stamp_v1_2",
+        "ml_v1_2_train_addition_request_disbursement_account_v1_2",
+        "ml_v1_2_train_addition_request_integration_key_v1_2",
+        "ml_v1_2_train_addition_request_payroll_trace_v1_2",
+        "ml_v1_2_train_addition_schema_revision_proxy_v1_2",
+        "ml_v1_2_train_addition_ticket_passport_screening_v1_2",
+        "ml_v1_2_train_addition_transaction_card_authorization_v1_2",
+        "ml_v1_2_train_addition_transaction_member_audit_v1_2",
+        "ml_v1_2_train_addition_transaction_routing_dispatch_v1_2",
+        "ml_v1_2_train_addition_user_employee_verification_v1_2",
+        "ml_v1_2_train_addition_user_license_verification_v1_2",
+        "ml_v1_2_train_addition_workflow_ach_account_v1_2",
+        "ml_v1_2_train_addition_workflow_api_credential_v1_2",
+        "ml_v1_2_train_addition_workflow_identity_quarantine_v1_2"
+      ],
+      "family_count": 40,
+      "focus_label_counts": {
+        "API_KEY": 40,
+        "AUTH_TOKEN": 40,
+        "BANK_ACCOUNT_NUMBER": 60,
+        "BUSINESS_ID": 680,
+        "CREDIT_CARD_NUMBER": 80,
+        "DRIVER_LICENSE": 40,
+        "IP_ADDRESS": 160,
+        "ITIN": 40,
+        "O": 120,
+        "PASSPORT_NUMBER": 40,
+        "ROUTING_NUMBER": 60,
+        "SSN": 200,
+        "TAX_ID": 40
+      },
+      "formats": [
+        "csv",
+        "json",
+        "key_value",
+        "text"
+      ],
+      "morphology_classes": [
+        "api_key_prefixed",
+        "auth_token_prefixed",
+        "bank_account_10_digits",
+        "bank_account_12_digits",
+        "bank_account_grouped",
+        "card_16_grouped_hyphens",
+        "card_16_grouped_spaces",
+        "card_16_luhn",
+        "driver_license_alphanumeric",
+        "ipv4_dotted_quad",
+        "itin_compact",
+        "itin_hyphenated",
+        "passport_us",
+        "routing_aba",
+        "ssn_compact",
+        "ssn_dotted",
+        "ssn_hyphenated",
+        "ssn_spaced",
+        "tax_ein_compact",
+        "tax_ein_hyphenated"
+      ],
+      "multi_entity_ratio": 0.925,
+      "multi_entity_records": 1480,
+      "records": 1600,
+      "sha256": "d46fc893dcfb7233129c09f8de1f32c5c6e206262cadedf7460d4fb9f6e33c81",
+      "source_record_id_count": 1600,
+      "surface_styles": [
+        "countercheck_audit",
+        "countercheck_bracketed",
+        "countercheck_csv",
+        "countercheck_json",
+        "countercheck_kv",
+        "countercheck_nested_json",
+        "countercheck_query",
+        "countercheck_syslog"
+      ]
+    }
+  },
+  "ontology": {
+    "bio_label_count": 51,
+    "changed": false,
+    "entity_count": 25,
+    "path": "configs/securelogx_labels.json",
+    "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+  },
+  "operations_performed": {
+    "dataset_generation": true,
+    "java_modification": false,
+    "model_evaluation": false,
+    "model_training": false,
+    "onnx_export": false,
+    "original_test_inference": false,
+    "report_generation": true,
+    "sealed_challenge_predictions": false
+  },
+  "parent": {
+    "snapshot_path": "configs/ml_v1_2_parent_freeze.json",
+    "snapshot_sha256": "02640b5d16646594baf319984131689926cf5f560040d8362116dd15d59b58d3",
+    "verified_after_generation": {
+      "group_fingerprints": [
+        {
+          "actual_fingerprint_sha256": "009906b485ad76279ed85a533c5243dbfbd836183ebf59fe7ba41458be26e878",
+          "expected_fingerprint_sha256": "009906b485ad76279ed85a533c5243dbfbd836183ebf59fe7ba41458be26e878",
+          "file_count": 42,
+          "group": "ml_v1_1_checkpoints_and_dev_evidence",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "60cd0a112fe1e538187d21692f592515ff46beac8667f02bc7ebd63e7ab7f138",
+          "expected_fingerprint_sha256": "60cd0a112fe1e538187d21692f592515ff46beac8667f02bc7ebd63e7ab7f138",
+          "file_count": 6,
+          "group": "ml_v1_1_configs",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "45733d234a3f3f2f90e8ad1fcdafb766a3903859b79c12aabc608f63c0488e06",
+          "expected_fingerprint_sha256": "45733d234a3f3f2f90e8ad1fcdafb766a3903859b79c12aabc608f63c0488e06",
+          "file_count": 3,
+          "group": "ml_v1_1_datasets",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "4cfa08ed197d05c0582729026c22f3b01cb182cf3f300fb0f078a5b5ef38d588",
+          "expected_fingerprint_sha256": "4cfa08ed197d05c0582729026c22f3b01cb182cf3f300fb0f078a5b5ef38d588",
+          "file_count": 22,
+          "group": "ml_v1_1_reports",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "0ad736822254c3af3b228a0674097e0cb053174dd97bb18875a5aa7051f10f9b",
+          "expected_fingerprint_sha256": "0ad736822254c3af3b228a0674097e0cb053174dd97bb18875a5aa7051f10f9b",
+          "file_count": 56,
+          "group": "ml_v1_artifacts",
+          "passed": true
+        }
+      ],
+      "mismatch_count": 0,
+      "mismatches": [],
+      "ontology": {
+        "actual": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "expected": {
+          "bio_labels": 51,
+          "entities": 25,
+          "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "sealed_challenge": {
+        "actual_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+        "expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+        "file_opened": false,
+        "method": "regenerated_in_memory",
+        "passed": true,
+        "path": "data/ml_v1_1/challenge/sealed_test.jsonl"
+      },
+      "verified_files": 129
+    },
+    "verified_before_generation": {
+      "group_fingerprints": [
+        {
+          "actual_fingerprint_sha256": "009906b485ad76279ed85a533c5243dbfbd836183ebf59fe7ba41458be26e878",
+          "expected_fingerprint_sha256": "009906b485ad76279ed85a533c5243dbfbd836183ebf59fe7ba41458be26e878",
+          "file_count": 42,
+          "group": "ml_v1_1_checkpoints_and_dev_evidence",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "60cd0a112fe1e538187d21692f592515ff46beac8667f02bc7ebd63e7ab7f138",
+          "expected_fingerprint_sha256": "60cd0a112fe1e538187d21692f592515ff46beac8667f02bc7ebd63e7ab7f138",
+          "file_count": 6,
+          "group": "ml_v1_1_configs",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "45733d234a3f3f2f90e8ad1fcdafb766a3903859b79c12aabc608f63c0488e06",
+          "expected_fingerprint_sha256": "45733d234a3f3f2f90e8ad1fcdafb766a3903859b79c12aabc608f63c0488e06",
+          "file_count": 3,
+          "group": "ml_v1_1_datasets",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "4cfa08ed197d05c0582729026c22f3b01cb182cf3f300fb0f078a5b5ef38d588",
+          "expected_fingerprint_sha256": "4cfa08ed197d05c0582729026c22f3b01cb182cf3f300fb0f078a5b5ef38d588",
+          "file_count": 22,
+          "group": "ml_v1_1_reports",
+          "passed": true
+        },
+        {
+          "actual_fingerprint_sha256": "0ad736822254c3af3b228a0674097e0cb053174dd97bb18875a5aa7051f10f9b",
+          "expected_fingerprint_sha256": "0ad736822254c3af3b228a0674097e0cb053174dd97bb18875a5aa7051f10f9b",
+          "file_count": 56,
+          "group": "ml_v1_artifacts",
+          "passed": true
+        }
+      ],
+      "mismatch_count": 0,
+      "mismatches": [],
+      "ontology": {
+        "actual": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "expected": {
+          "bio_labels": 51,
+          "entities": 25,
+          "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+        },
+        "passed": true
+      },
+      "passed": true,
+      "sealed_challenge": {
+        "actual_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+        "expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+        "file_opened": false,
+        "method": "regenerated_in_memory",
+        "passed": true,
+        "path": "data/ml_v1_1/challenge/sealed_test.jsonl"
+      },
+      "verified_files": 129
+    },
+    "versions": [
+      "ML-v1",
+      "ML-v1.1"
+    ]
+  },
+  "phase": "counterbalance_data_analysis_and_hardening_only",
+  "readiness_gates": {
+    "all_passed": true,
+    "builder": {
+      "all_business_id_subtypes_retained": true,
+      "all_sensitive_counterexamples_present": true,
+      "canonical_ontology_unchanged": true,
+      "dev_record_count_within_declared_range": true,
+      "exact_text_leakage_zero": true,
+      "model_predictions_not_run": true,
+      "multi_entity_ratio_met": true,
+      "original_test_contamination_zero": true,
+      "parent_artifact_hash_mismatches_zero": true,
+      "sealed_challenge_hash_unchanged": true,
+      "sealed_challenge_never_opened": true,
+      "ssn_counterbalance_material": true,
+      "target_dev_family_count": true,
+      "target_dev_record_count": true,
+      "target_train_family_count": true,
+      "target_train_record_count": true,
+      "template_family_leakage_zero": true,
+      "train_record_count_within_declared_range": true,
+      "worst_category_families_present": true
+    },
+    "validator": {
+      "canonical_spans": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "complete_paired_contrast_groups": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "contrast_targets": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_exact_text_leakage": {
+        "actual": 0,
+        "details": {
+          "train_addition__dev_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_focus_value_hash_leakage": {
+        "actual": 0,
+        "details": {
+          "train_addition__dev_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_source_id_leakage": {
+        "actual": 0,
+        "details": {
+          "train_addition__dev_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_template_family_leakage": {
+        "actual": 0,
+        "details": {
+          "train_addition__dev_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "dev_challenge_category_family_allocation": {
+        "actual": {
+          "business_id_vs_api_key": 1,
+          "business_id_vs_auth_token": 1,
+          "business_id_vs_bank_account": 1,
+          "business_id_vs_credit_card": 1,
+          "business_id_vs_driver_license": 1,
+          "business_id_vs_ip_address": 1,
+          "business_id_vs_itin": 1,
+          "business_id_vs_passport": 1,
+          "business_id_vs_routing_number": 1,
+          "business_id_vs_ssn": 2,
+          "business_id_vs_tax_id": 1,
+          "ip_address_vs_technical_reference": 3
+        },
+        "expected": {
+          "business_id_vs_api_key": 1,
+          "business_id_vs_auth_token": 1,
+          "business_id_vs_bank_account": 1,
+          "business_id_vs_credit_card": 1,
+          "business_id_vs_driver_license": 1,
+          "business_id_vs_ip_address": 1,
+          "business_id_vs_itin": 1,
+          "business_id_vs_passport": 1,
+          "business_id_vs_routing_number": 1,
+          "business_id_vs_ssn": 2,
+          "business_id_vs_tax_id": 1,
+          "ip_address_vs_technical_reference": 3
+        },
+        "passed": true
+      },
+      "dev_challenge_family_count": {
+        "actual": 15,
+        "expected": 15,
+        "passed": true
+      },
+      "dev_challenge_multi_entity_ratio": {
+        "actual": 0.9,
+        "expected": ">=0.7",
+        "passed": true
+      },
+      "dev_challenge_record_count": {
+        "actual": 540,
+        "expected": 540,
+        "passed": true
+      },
+      "dev_challenge_record_count_range": {
+        "actual": 540,
+        "expected": "400..600",
+        "passed": true
+      },
+      "dev_ip_technical_family_minimum": {
+        "actual": 3,
+        "expected": ">=3",
+        "passed": true
+      },
+      "entity_provenance_bijection": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "family_metadata_consistency": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "forbidden_parent_hard_negative": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "inputs_readable": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "intended_split": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "o_target_non_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "ontology_exact_25_entities_51_bio": {
+        "actual": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "expected": {
+          "bio_labels": 51,
+          "entities": 25
+        },
+        "passed": true
+      },
+      "parent_exact_text_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_source_id_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_template_family_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_test_exact_text_contamination": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "record_shape": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "sealed_challenge_file_never_opened": {
+        "actual": "regenerated_in_memory",
+        "expected": "regenerated_in_memory",
+        "passed": true
+      },
+      "sealed_challenge_hash_unchanged": {
+        "actual": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+        "expected": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+        "passed": true
+      },
+      "template_catalog_catalogs_readable": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_cross_split_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_forbidden_parent_template": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_parent_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_v1_1_family_name_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "template_catalog_v1_1_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "train_addition_category_family_allocation": {
+        "actual": {
+          "business_id_vs_api_key": 2,
+          "business_id_vs_auth_token": 2,
+          "business_id_vs_bank_account": 3,
+          "business_id_vs_credit_card": 4,
+          "business_id_vs_driver_license": 2,
+          "business_id_vs_ip_address": 2,
+          "business_id_vs_itin": 2,
+          "business_id_vs_passport": 2,
+          "business_id_vs_routing_number": 3,
+          "business_id_vs_ssn": 10,
+          "business_id_vs_tax_id": 2,
+          "ip_address_vs_technical_reference": 6
+        },
+        "expected": {
+          "business_id_vs_api_key": 2,
+          "business_id_vs_auth_token": 2,
+          "business_id_vs_bank_account": 3,
+          "business_id_vs_credit_card": 4,
+          "business_id_vs_driver_license": 2,
+          "business_id_vs_ip_address": 2,
+          "business_id_vs_itin": 2,
+          "business_id_vs_passport": 2,
+          "business_id_vs_routing_number": 3,
+          "business_id_vs_ssn": 10,
+          "business_id_vs_tax_id": 2,
+          "ip_address_vs_technical_reference": 6
+        },
+        "passed": true
+      },
+      "train_addition_family_count": {
+        "actual": 40,
+        "expected": 40,
+        "passed": true
+      },
+      "train_addition_multi_entity_ratio": {
+        "actual": 0.925,
+        "expected": ">=0.7",
+        "passed": true
+      },
+      "train_addition_record_count": {
+        "actual": 1600,
+        "expected": 1600,
+        "passed": true
+      },
+      "train_addition_record_count_range": {
+        "actual": 1600,
+        "expected": "1200..2000",
+        "passed": true
+      },
+      "train_all_business_id_subtypes_retained": {
+        "actual": [
+          "ACCOUNT_ID",
+          "APPLICATION_ID",
+          "CASE_ID",
+          "CUSTOMER_ID",
+          "INVOICE_ID",
+          "ORDER_ID",
+          "REFERENCE_ID",
+          "REQUEST_ID",
+          "TICKET_ID",
+          "TRANSACTION_ID",
+          "USER_ID",
+          "WORKFLOW_ID"
+        ],
+        "expected": [
+          "ACCOUNT_ID",
+          "APPLICATION_ID",
+          "CASE_ID",
+          "CUSTOMER_ID",
+          "INVOICE_ID",
+          "ORDER_ID",
+          "REFERENCE_ID",
+          "REQUEST_ID",
+          "TICKET_ID",
+          "TRANSACTION_ID",
+          "USER_ID",
+          "WORKFLOW_ID"
+        ],
+        "passed": true
+      },
+      "train_customer_id_family_minimum": {
+        "actual": 6,
+        "expected": ">=4",
+        "passed": true
+      },
+      "train_ip_technical_family_minimum": {
+        "actual": 6,
+        "expected": ">=6",
+        "passed": true
+      },
+      "train_request_id_family_minimum": {
+        "actual": 6,
+        "expected": ">=4",
+        "passed": true
+      },
+      "train_sensitive_counterexample_minimum": {
+        "actual": {
+          "API_KEY": 80,
+          "AUTH_TOKEN": 80,
+          "BANK_ACCOUNT_NUMBER": 120,
+          "CREDIT_CARD_NUMBER": 160,
+          "DRIVER_LICENSE": 80,
+          "IP_ADDRESS": 200,
+          "ITIN": 80,
+          "PASSPORT_NUMBER": 80,
+          "ROUTING_NUMBER": 120,
+          "SSN": 400,
+          "TAX_ID": 80
+        },
+        "details": {
+          "below_minimum": {}
+        },
+        "expected": ">=40 each",
+        "passed": true
+      },
+      "train_ssn_span_minimum": {
+        "actual": 400,
+        "expected": ">=300",
+        "passed": true
+      },
+      "unique_record_texts": {
+        "actual": 0,
+        "details": {
+          "train_addition__dev_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "unique_source_record_ids": {
+        "actual": 0,
+        "details": {
+          "train_addition__dev_challenge": 0
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "v1_1_contamination_zero": {
+        "actual": 0,
+        "details": {
+          "v1_1_dev_challenge": {
+            "families": 0,
+            "focus_value_hashes": 0,
+            "normalized_text_skeletons": 0,
+            "source_ids": 0,
+            "texts": 0
+          },
+          "v1_1_sealed_challenge": {
+            "families": 0,
+            "focus_value_hashes": 0,
+            "normalized_text_skeletons": 0,
+            "source_ids": 0,
+            "texts": 0
+          },
+          "v1_1_train_addition": {
+            "families": 0,
+            "focus_value_hashes": 0,
+            "normalized_text_skeletons": 0,
+            "source_ids": 0,
+            "texts": 0
+          }
+        },
+        "expected": 0,
+        "passed": true
+      },
+      "v1_2_metadata": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      }
+    }
+  },
+  "recommendation": "READY FOR ML-v1.2 RETRAINING",
+  "release_constraint": {
+    "license_reviewed": false,
+    "meaning": "Technical data readiness does not authorize production or commercial release.",
+    "source": "gretel_finance_pii"
+  },
+  "reports": {
+    "reports/ml_v1_2_business_id_false_positive_analysis.md": {
+      "bytes": 4271,
+      "sha256": "97300e385bc87f05c020df7883447af2bbe9ed0cf84260231b526eaff9d608a3"
+    },
+    "reports/ml_v1_2_checkpoint_tradeoff_analysis.md": {
+      "bytes": 3402,
+      "sha256": "202ed4bb9b6e45aeb16ad24e3df88938d39beaa0e5bb06e9206e3614da2f295c"
+    },
+    "reports/ml_v1_2_counterbalance_summary.md": {
+      "bytes": 4222,
+      "sha256": "e768ac389f93c68e1a004d052878e30e492151111176a07415e9ffbedaaf9738"
+    },
+    "reports/ml_v1_2_data_readiness.md": {
+      "bytes": 4599,
+      "sha256": "3c98659eb5ab5b039d18c9fee10f54403dd1dae30671b81323aac366b6f7c7cd"
+    },
+    "reports/ml_v1_2_dev_challenge_summary.md": {
+      "bytes": 2926,
+      "sha256": "1308a0b98e3f55a085de690bed9de2eafb3fc0a8c2f334f734a15730d52ab808"
+    },
+    "reports/ml_v1_2_template_leakage_report.md": {
+      "bytes": 2487,
+      "sha256": "cc33a6df32b0716fa8441f77774a6607c1223dc3783892c7984e9737bc99d3de"
+    },
+    "reports/ml_v1_2_v1_1_dev_error_analysis.json": {
+      "bytes": 40142,
+      "sha256": "96a5378b8233749ad05b088447ada0614ac33e6cfdb8792a27953ec59e735dca"
+    },
+    "reports/ml_v1_2_v1_1_error_diagnosis.md": {
+      "bytes": 5416,
+      "sha256": "a6451c1db89d6cc3cad08e9e46481d8312813946c2731367f8b5ed6ea672aff5"
+    }
+  },
+  "sealed_challenge": {
+    "development_predictions_forbidden": true,
+    "evaluated": false,
+    "expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+    "file_opened": false,
+    "model_predictions_run": false,
+    "modified": false,
+    "path": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "sealed": true,
+    "verification_method": "deterministic_in_memory_regeneration",
+    "verified_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
+  },
+  "template_audit": {
+    "cross_split_similarity": {
+      "max_literal_token_3gram_jaccard": {
+        "left_family": "ml_v1_2_dev_challenge_petition_identity_clearance_v1_2",
+        "right_family": "ml_v1_2_train_addition_account_claimant_registry_v1_2",
+        "score": 0.181818
+      },
+      "max_sequence_matcher_ratio": {
+        "left_family": "ml_v1_2_dev_challenge_remittance_auth_session_v1_2",
+        "right_family": "ml_v1_2_train_addition_reference_bearer_session_v1_2",
+        "score": 0.875274
+      }
+    },
+    "errors": [],
+    "gates": {
+      "catalogs_readable": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "cross_split_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "forbidden_parent_template": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "parent_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "v1_1_family_name_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      },
+      "v1_1_normalized_skeleton_overlap": {
+        "actual": 0,
+        "expected": 0,
+        "passed": true
+      }
+    },
+    "interpretation": "Similarity ratios are descriptive lexical diagnostics only; they do not establish semantic independence.",
+    "new_template_count": 110,
+    "parent_similarity": {
+      "max_literal_token_3gram_jaccard": {
+        "left_family": null,
+        "right_family": null,
+        "score": 0.0
+      },
+      "max_sequence_matcher_ratio": {
+        "left_family": "ml_v1_2_train_addition_workflow_identity_quarantine_v1_2",
+        "right_family": "business_id_secure_v1",
+        "score": 0.514469
+      }
+    },
+    "parent_template_count": 266,
+    "passed": true,
+    "v1_1_similarity": {
+      "max_literal_token_3gram_jaccard": {
+        "left_family": null,
+        "right_family": null,
+        "score": 0.0
+      },
+      "max_sequence_matcher_ratio": {
+        "left_family": "ml_v1_2_train_addition_customer_social_identity_ledger_v1_2",
+        "right_family": "ml_v1_1_train_addition_customer_identity_bridge_v1_1",
+        "score": 0.627551
+      }
+    },
+    "v1_1_template_count": 108
+  },
+  "v1_1_partition_verification": {
+    "v1_1_dev_challenge": {
+      "expected_sha256": "215c2133c05a3199b5c54b145406f4ed1571214b30eb6c37d00bb7783c96a09e",
+      "file_opened": false,
+      "method": "regenerated_in_memory",
+      "path": "data/ml_v1_1/context_contrast/dev_challenge.jsonl",
+      "records": 480,
+      "sha256": "215c2133c05a3199b5c54b145406f4ed1571214b30eb6c37d00bb7783c96a09e"
+    },
+    "v1_1_sealed_challenge": {
+      "expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+      "file_opened": false,
+      "method": "regenerated_in_memory",
+      "path": "data/ml_v1_1/challenge/sealed_test.jsonl",
+      "records": 480,
+      "sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
+    },
+    "v1_1_train_addition": {
+      "expected_sha256": "99972a6dc287b53cb9618df3e04c612d7592161cefcaa8de562505f57ebb35a6",
+      "file_opened": false,
+      "method": "regenerated_in_memory",
+      "path": "data/ml_v1_1/context_contrast/train_additions.jsonl",
+      "records": 3000,
+      "sha256": "99972a6dc287b53cb9618df3e04c612d7592161cefcaa8de562505f57ebb35a6"
+    }
+  }
+}

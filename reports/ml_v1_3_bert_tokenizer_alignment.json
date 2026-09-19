@@ -1,0 +1,73 @@
+{
+  "alignments": {
+    "challenge_dev": {
+      "aligned": 840,
+      "boundary_adjusted": 0,
+      "failed": 20,
+      "model": "bert",
+      "problems": [],
+      "reason_counts": {
+        "exact_token_boundaries": 840,
+        "multiple_gold_spans_share_a_wordpiece": 20
+      },
+      "total_spans": 860,
+      "truncated": 0,
+      "unexplained_failures": 0
+    },
+    "probe": {
+      "aligned": 17,
+      "boundary_adjusted": 0,
+      "failed": 0,
+      "model": "bert",
+      "problems": [],
+      "reason_counts": {
+        "exact_token_boundaries": 17
+      },
+      "total_spans": 17,
+      "truncated": 0,
+      "unexplained_failures": 0
+    },
+    "standard_dev": {
+      "aligned": 4017,
+      "boundary_adjusted": 0,
+      "failed": 3,
+      "model": "bert",
+      "problems": [],
+      "reason_counts": {
+        "exact_token_boundaries": 4017,
+        "token_boundary_adjustment_exceeds_three_characters": 3
+      },
+      "total_spans": 4020,
+      "truncated": 0,
+      "unexplained_failures": 0
+    },
+    "train": {
+      "aligned": 42033,
+      "boundary_adjusted": 29,
+      "failed": 78,
+      "model": "bert",
+      "problems": [],
+      "reason_counts": {
+        "character_boundary_inside_or_outside_token": 29,
+        "exact_token_boundaries": 42004,
+        "multiple_gold_spans_share_a_wordpiece": 72,
+        "token_boundary_adjustment_exceeds_three_characters": 4,
+        "tokenizer_emitted_no_token_for_span": 2
+      },
+      "total_spans": 42111,
+      "truncated": 0,
+      "unexplained_failures": 0
+    }
+  },
+  "bio": {
+    "bio_label_count": 51,
+    "entity_count": 25,
+    "mapping_complete": true,
+    "missing_bio": [],
+    "o_id": 0
+  },
+  "model": "bert",
+  "probe_records": 9,
+  "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e",
+  "tokenizer_class": "BertTokenizerFast"
+}

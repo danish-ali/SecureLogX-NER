@@ -1,0 +1,104 @@
+{
+  "profile_version": 1,
+  "dataset_version": "ML-v1.3",
+  "phase": "real_structure_semi_synthetic_data_analysis_only",
+  "seed": 42,
+  "generator_version": "securelogx-ml-v1.3-real-structure-v1",
+  "parent_version": "ML-v1.2",
+  "parent_freeze": "configs/ml_v1_3_parent_freeze.json",
+  "canonical_labels": "configs/securelogx_labels.json",
+  "outputs": {
+    "train_additions": "data/ml_v1_3/real_structure/train_additions.jsonl",
+    "dev_challenge": "data/ml_v1_3/real_structure/dev_challenge.jsonl",
+    "manifest": "configs/ml_v1_3_dataset_manifest.json",
+    "manifest_sha256": "configs/ml_v1_3_dataset_manifest.sha256"
+  },
+  "future_composition": {
+    "training_inputs": [
+      "data/split/train.jsonl",
+      "data/ml_v1_1/context_contrast/train_additions.jsonl",
+      "data/ml_v1_2/counterbalance/train_additions.jsonl",
+      "data/ml_v1_3/real_structure/train_additions.jsonl"
+    ],
+    "development_inputs": [
+      "data/split/dev.jsonl",
+      "data/ml_v1_3/real_structure/dev_challenge.jsonl"
+    ],
+    "historical_diagnostic_only": [
+      "data/ml_v1_1/context_contrast/dev_challenge.jsonl",
+      "data/ml_v1_2/counterbalance/dev_challenge.jsonl"
+    ],
+    "sealed_final_challenge": "data/ml_v1_1/challenge/sealed_test.jsonl",
+    "historical_regression_test": "data/split/test.jsonl"
+  },
+  "target_counts": {
+    "train_additions_records_min": 2000,
+    "train_additions_records_max": 4000,
+    "dev_challenge_records_min": 400,
+    "dev_challenge_records_max": 600,
+    "train_families": 96,
+    "dev_families": 24,
+    "train_pair_groups_per_family": 12,
+    "dev_pair_groups_per_family": 10
+  },
+  "structure_policy": {
+    "must_not_reuse_parent_generator_templates": true,
+    "must_not_download_unreviewed_datasets": true,
+    "raw_public_log_text_stored": false,
+    "value_injection": "synthetic_only",
+    "public_sources_are_format_specifications": true
+  },
+  "failure_modes": [
+    "accountlike_o_vs_business_id",
+    "auth_token_vs_business_id",
+    "ssn_vs_itin",
+    "ip_vs_technical_reference",
+    "high_risk_identifier"
+  ],
+  "business_id_subtypes": [
+    "CUSTOMER_ID",
+    "REQUEST_ID",
+    "TRANSACTION_ID",
+    "APPLICATION_ID",
+    "ORDER_ID",
+    "ACCOUNT_ID",
+    "CASE_ID",
+    "TICKET_ID",
+    "REFERENCE_ID",
+    "WORKFLOW_ID"
+  ],
+  "readiness_gates": {
+    "entity_count": 25,
+    "bio_label_count": 51,
+    "parent_artifact_hash_mismatches": 0,
+    "sealed_challenge_expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+    "sealed_challenge_writes": 0,
+    "within_or_cross_split_exact_text_duplicates": 0,
+    "normalized_template_leakage": 0,
+    "cross_split_structure_family_overlap": 0,
+    "cross_split_target_value_hash_overlap": 0,
+    "original_ml_v1_test_overlap": 0,
+    "ml_v1_1_dev_challenge_overlap": 0,
+    "ml_v1_2_dev_challenge_overlap": 0,
+    "sealed_challenge_overlap": 0
+  },
+  "sealed_challenge_policy": {
+    "dataset_is_parent_frozen": true,
+    "dataset_must_not_be_read_by_generator": true,
+    "dataset_must_not_be_modified": true,
+    "predictions_forbidden": true,
+    "model_evaluation_forbidden": true
+  },
+  "prohibited_operations": [
+    "model_training",
+    "model_evaluation",
+    "sealed_challenge_read_or_write",
+    "onnx_export",
+    "java_changes",
+    "parent_dataset_overwrite",
+    "parent_report_overwrite",
+    "parent_checkpoint_overwrite",
+    "ontology_change",
+    "bert_versus_deberta_training"
+  ]
+}

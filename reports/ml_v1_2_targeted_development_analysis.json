@@ -1,0 +1,139 @@
+{
+  "business_id_false_positives_on_gold_o_accountlike": {
+    "false_positive_spans": 94,
+    "family_records": 94,
+    "records_with_false_positive": 94
+  },
+  "business_id_subtype_recall": {
+    "ACCOUNT_ID": {
+      "recall": 1.0,
+      "support": 36,
+      "true_positives": 36
+    },
+    "APPLICATION_ID": {
+      "recall": 0.5,
+      "support": 36,
+      "true_positives": 18
+    },
+    "CASE_ID": {
+      "recall": 1.0,
+      "support": 36,
+      "true_positives": 36
+    },
+    "CUSTOMER_ID": {
+      "recall": 1.0,
+      "support": 72,
+      "true_positives": 72
+    },
+    "INVOICE_ID": {
+      "recall": 0.5,
+      "support": 36,
+      "true_positives": 18
+    },
+    "ORDER_ID": {
+      "recall": 1.0,
+      "support": 36,
+      "true_positives": 36
+    },
+    "REFERENCE_ID": {
+      "recall": 0.7777777777777778,
+      "support": 72,
+      "true_positives": 56
+    },
+    "REQUEST_ID": {
+      "recall": 0.8,
+      "support": 90,
+      "true_positives": 72
+    },
+    "TRANSACTION_ID": {
+      "recall": 1.0,
+      "support": 36,
+      "true_positives": 36
+    },
+    "USER_ID": {
+      "recall": 1.0,
+      "support": 36,
+      "true_positives": 36
+    },
+    "WORKFLOW_ID": {
+      "recall": 1.0,
+      "support": 36,
+      "true_positives": 36
+    }
+  },
+  "business_id_vs_credit_card": {
+    "business_id_to_credit_card": {
+      "confused_spans": 0,
+      "gold_support": 36,
+      "rate": 0.0,
+      "records": 0
+    },
+    "credit_card_to_business_id": {
+      "confused_spans": 0,
+      "gold_support": 36,
+      "rate": 0.0,
+      "records": 0
+    }
+  },
+  "business_id_vs_ssn": {
+    "business_id_to_ssn": {
+      "confused_spans": 0,
+      "gold_support": 54,
+      "rate": 0.0,
+      "records": 0
+    },
+    "ssn_to_business_id": {
+      "confused_spans": 0,
+      "gold_support": 72,
+      "rate": 0.0,
+      "records": 0
+    }
+  },
+  "challenge_context_target_error_rate": 0.06574074074074074,
+  "challenge_record_error_rate": 0.13148148148148148,
+  "ip_address_on_technical_reference": {
+    "rate": 0.0,
+    "records": 54,
+    "records_with_error": 0
+  },
+  "ml_v1_1_historical_reference": {
+    "ml_v1_1_challenge_business_id_to_ssn_count": 10,
+    "ml_v1_1_challenge_context_target_error_rate": 0.1125,
+    "ml_v1_1_challenge_credit_card_to_business_id_count": 20,
+    "ml_v1_1_challenge_customer_id_recall": 0.5,
+    "ml_v1_1_challenge_ip_on_technical_reference_record_count": 21,
+    "ml_v1_1_challenge_maximum_category_error_rate": 0.2625,
+    "ml_v1_1_challenge_micro_f1": 0.8925438596491229,
+    "ml_v1_1_challenge_record_error_rate": 0.1125,
+    "ml_v1_1_challenge_request_id_recall": 0.85,
+    "ml_v1_1_challenge_supported_macro_f1": 0.8523412768461313,
+    "ml_v1_1_challenge_worst_category": "ip_address_vs_technical_reference",
+    "ml_v1_1_selected_epoch": 3,
+    "ml_v1_1_standard_dev_accountlike_o_to_business_id_count": 94,
+    "ml_v1_1_standard_dev_business_id_f1": 0.7068493150684931,
+    "ml_v1_1_standard_dev_business_id_precision": 0.5608695652173913,
+    "ml_v1_1_standard_dev_business_id_recall": 0.9555555555555556,
+    "ml_v1_1_standard_dev_high_risk_recall": 0.8993766696349065,
+    "ml_v1_1_standard_dev_ip_address_f1": 0.952755905511811,
+    "ml_v1_1_standard_dev_ip_address_precision": 0.968,
+    "ml_v1_1_standard_dev_ip_address_recall": 0.937984496124031,
+    "ml_v1_1_standard_dev_micro_f1": 0.9034862385321101,
+    "ml_v1_1_standard_dev_ssn_f1": 0.9359605911330049,
+    "ml_v1_1_standard_dev_ssn_precision": 0.95,
+    "ml_v1_1_standard_dev_ssn_recall": 0.9223300970873787,
+    "ml_v1_1_standard_dev_ssn_to_itin_count": 5,
+    "ml_v1_1_standard_dev_supported_macro_f1": 0.9116670497968847
+  },
+  "standard_dev_ssn_to_itin": {
+    "confused_spans": 5,
+    "gold_support": 103,
+    "rate": 0.04854368932038835,
+    "records": 5
+  },
+  "worst_conflict_category": {
+    "category": "business_id_vs_auth_token",
+    "record_error_rate": 0.5,
+    "records": 36,
+    "records_with_errors": 18
+  }
+}

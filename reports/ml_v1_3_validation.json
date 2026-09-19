@@ -1,0 +1,255 @@
+{
+  "gates": {
+    "accountlike_o_examples": {
+      "actual": 288,
+      "passed": true
+    },
+    "all_required_business_id_subtypes": {
+      "actual": [
+        "ACCOUNT_ID",
+        "APPLICATION_ID",
+        "CASE_ID",
+        "CUSTOMER_ID",
+        "ORDER_ID",
+        "REFERENCE_ID",
+        "REQUEST_ID",
+        "TICKET_ID",
+        "TRANSACTION_ID",
+        "WORKFLOW_ID"
+      ],
+      "passed": true
+    },
+    "auth_token_business_id_multi_entity": {
+      "dev": true,
+      "passed": true,
+      "train": true
+    },
+    "catalog_matches_records": {
+      "passed": true
+    },
+    "cross_split_exact_text_leakage": {
+      "count": 0,
+      "passed": true
+    },
+    "cross_split_normalized_template_overlap": {
+      "count": 0,
+      "passed": true
+    },
+    "cross_split_structure_family_overlap": {
+      "count": 0,
+      "passed": true
+    },
+    "cross_split_target_value_hash_overlap": {
+      "count": 0,
+      "passed": true
+    },
+    "dev_challenge_family_count": {
+      "actual": 24,
+      "expected": 24,
+      "passed": true
+    },
+    "dev_challenge_provenance": {
+      "passed": true,
+      "sources": [
+        "securelogx_real_structure_v1_3"
+      ]
+    },
+    "dev_challenge_record_count": {
+      "actual": 480,
+      "expected": 480,
+      "passed": true
+    },
+    "failure_mode_coverage": {
+      "dev": {
+        "accountlike_o_vs_business_id": 120,
+        "auth_token_vs_business_id": 120,
+        "high_risk_identifier": 80,
+        "ip_vs_technical_reference": 80,
+        "ssn_vs_itin": 80
+      },
+      "passed": true,
+      "train": {
+        "accountlike_o_vs_business_id": 576,
+        "auth_token_vs_business_id": 576,
+        "high_risk_identifier": 384,
+        "ip_vs_technical_reference": 384,
+        "ssn_vs_itin": 384
+      }
+    },
+    "ontology_exact_25_entities_51_bio": {
+      "actual": {
+        "bio_label_count": 51,
+        "entity_count": 25,
+        "errors": [],
+        "passed": true,
+        "path": "D:\\workspace\\SecureLogX-NER\\configs\\securelogx_labels.json",
+        "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+      },
+      "passed": true
+    },
+    "parent_dev_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_dev_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_dev_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_freeze_sealed_hash": {
+      "actual": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+      "passed": true
+    },
+    "parent_test_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_test_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_test_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_train_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_train_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "parent_train_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "sealed_challenge_file_never_opened": {
+      "method": "regenerated_in_memory",
+      "passed": true
+    },
+    "sealed_challenge_hash_unchanged": {
+      "actual": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+      "expected": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+      "passed": true
+    },
+    "sealed_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "sealed_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "sealed_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "span_validity": {
+      "errors": [],
+      "passed": true
+    },
+    "ssn_itin_examples": {
+      "dev": 80,
+      "passed": true,
+      "train": 384
+    },
+    "structure_category_diversity": {
+      "actual": {
+        "authentication_security": 144,
+        "database_error": 144,
+        "free_text_operational": 144,
+        "json_application": 144,
+        "kafka_client": 144,
+        "key_value_audit": 144,
+        "kubernetes_container": 144,
+        "log4j_pattern": 144,
+        "mixed_structured": 144,
+        "nested_json": 144,
+        "nginx_access": 144,
+        "rest_access": 144,
+        "spring_boot_application": 144,
+        "stack_trace_adjacent": 144,
+        "syslog_rfc5424": 144,
+        "warn_error": 144
+      },
+      "passed": true
+    },
+    "train_addition_family_count": {
+      "actual": 96,
+      "expected": 96,
+      "passed": true
+    },
+    "train_addition_provenance": {
+      "passed": true,
+      "sources": [
+        "securelogx_real_structure_v1_3"
+      ]
+    },
+    "train_addition_record_count": {
+      "actual": 2304,
+      "expected": 2304,
+      "passed": true
+    },
+    "train_multi_entity_ratio": {
+      "actual": 0.7916666666666666,
+      "passed": true
+    },
+    "unique_source_record_ids": {
+      "passed": true
+    },
+    "v1_1_dev_challenge_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_1_dev_challenge_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_1_dev_challenge_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_2_dev_challenge_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_2_dev_challenge_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_2_dev_challenge_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_2_train_exact_text_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_2_train_family_contamination": {
+      "count": 0,
+      "passed": true
+    },
+    "v1_2_train_skeleton_contamination": {
+      "count": 0,
+      "passed": true
+    }
+  },
+  "ontology": {
+    "bio_label_count": 51,
+    "entity_count": 25,
+    "errors": [],
+    "passed": true,
+    "path": "D:\\workspace\\SecureLogX-NER\\configs\\securelogx_labels.json",
+    "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5"
+  },
+  "passed": true,
+  "sealed_challenge": {
+    "file_opened": false,
+    "method": "regenerated_in_memory",
+    "sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a"
+  }
+}

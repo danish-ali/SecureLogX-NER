@@ -1,0 +1,339 @@
+{
+  "bert_selected": {
+    "alignments": {
+      "challenge_dev": {
+        "aligned": 840,
+        "boundary_adjusted": 0,
+        "failed": 20,
+        "model": "bert",
+        "problems": [],
+        "reason_counts": {
+          "exact_token_boundaries": 840,
+          "multiple_gold_spans_share_a_wordpiece": 20
+        },
+        "total_spans": 860,
+        "truncated": 0,
+        "unexplained_failures": 0
+      },
+      "probe": {
+        "aligned": 17,
+        "boundary_adjusted": 0,
+        "failed": 0,
+        "model": "bert",
+        "problems": [],
+        "reason_counts": {
+          "exact_token_boundaries": 17
+        },
+        "total_spans": 17,
+        "truncated": 0,
+        "unexplained_failures": 0
+      },
+      "standard_dev": {
+        "aligned": 4017,
+        "boundary_adjusted": 0,
+        "failed": 3,
+        "model": "bert",
+        "problems": [],
+        "reason_counts": {
+          "exact_token_boundaries": 4017,
+          "token_boundary_adjustment_exceeds_three_characters": 3
+        },
+        "total_spans": 4020,
+        "truncated": 0,
+        "unexplained_failures": 0
+      },
+      "train": {
+        "aligned": 42033,
+        "boundary_adjusted": 29,
+        "failed": 78,
+        "model": "bert",
+        "problems": [],
+        "reason_counts": {
+          "character_boundary_inside_or_outside_token": 29,
+          "exact_token_boundaries": 42004,
+          "multiple_gold_spans_share_a_wordpiece": 72,
+          "token_boundary_adjustment_exceeds_three_characters": 4,
+          "tokenizer_emitted_no_token_for_span": 2
+        },
+        "total_spans": 42111,
+        "truncated": 0,
+        "unexplained_failures": 0
+      }
+    },
+    "artifact_sha256": {
+      "config.json": "b88e05a1e2f141879ebcf36c4e57c8d23d1e63b25ad07645f749667675f10318",
+      "environment.json": "fb65dd6dfa7490ddb61f5568db9331f3179ab5c8763380b6d46a59028fbcd445",
+      "epoch_metrics.json": "fd82d0563125d671d736845b68546d69601d61bb0e16897e68cb5857c79a88cd",
+      "model.safetensors": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+      "special_tokens_map.json": "3c3507f36dff57bce437223db3b3081d1e2b52ec3e56ee55438193ecb2c94dd6",
+      "tokenizer.json": "b30eb8ca04d00e5330bade5d5e6036bd0ce0ad68f7b96e2e38bff11942ee30b1",
+      "tokenizer_config.json": "42a16d6d6e24ee14d4b42a81e86cbc74a8c8e8565d770905c2b07c0798235570",
+      "training_args.json": "d865a08c731251057118b350475177de472cc6b65ffe1f733fb98830ae6dac0b",
+      "vocab.txt": "eeaa9875b23b04b4c54ef759d03db9d1ba1554838f8fb26c5d96fa551df93d02"
+    },
+    "base_model": "bert-base-cased",
+    "checkpoint_fingerprint_sha256": "ed1943868599b9f497d0754aadd78f4a1040465d6645cf4a397bd1f1847db020",
+    "latency_64_seconds": 0.30459509999491274,
+    "model_bytes": 431058932,
+    "model_key": "bert",
+    "model_sha256": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+    "peak_gpu_gib": 3.321732997894287,
+    "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e",
+    "selected_epoch": 3,
+    "selection_value": 0.9634563089113617,
+    "smoke": false,
+    "training_seconds": 3723.454821099993
+  },
+  "deberta_selected": {
+    "alignments": {
+      "challenge_dev": {
+        "aligned": 840,
+        "boundary_adjusted": 0,
+        "failed": 20,
+        "model": "deberta",
+        "problems": [],
+        "reason_counts": {
+          "exact_token_boundaries": 840,
+          "multiple_gold_spans_share_a_wordpiece": 20
+        },
+        "total_spans": 860,
+        "truncated": 0,
+        "unexplained_failures": 0
+      },
+      "probe": {
+        "aligned": 17,
+        "boundary_adjusted": 1,
+        "failed": 0,
+        "model": "deberta",
+        "problems": [],
+        "reason_counts": {
+          "character_boundary_inside_or_outside_token": 1,
+          "exact_token_boundaries": 16
+        },
+        "total_spans": 17,
+        "truncated": 0,
+        "unexplained_failures": 0
+      },
+      "standard_dev": {
+        "aligned": 4017,
+        "boundary_adjusted": 2875,
+        "failed": 3,
+        "model": "deberta",
+        "problems": [],
+        "reason_counts": {
+          "character_boundary_inside_or_outside_token": 2875,
+          "exact_token_boundaries": 1142,
+          "token_boundary_adjustment_exceeds_three_characters": 3
+        },
+        "total_spans": 4020,
+        "truncated": 0,
+        "unexplained_failures": 0
+      },
+      "train": {
+        "aligned": 42035,
+        "boundary_adjusted": 25622,
+        "failed": 76,
+        "model": "deberta",
+        "problems": [],
+        "reason_counts": {
+          "character_boundary_inside_or_outside_token": 25622,
+          "exact_token_boundaries": 16413,
+          "multiple_gold_spans_share_a_wordpiece": 72,
+          "token_boundary_adjustment_exceeds_three_characters": 2,
+          "tokenizer_emitted_no_token_for_span": 2
+        },
+        "total_spans": 42111,
+        "truncated": 0,
+        "unexplained_failures": 0
+      }
+    },
+    "artifact_sha256": {
+      "added_tokens.json": "a4b6bfe668f2b3cf6f0cd535e98a0663d2d0d4a4a15f13075ad3597d33985a23",
+      "config.json": "36a3e639d05de74198d02c6987d889cc4a14089c3c178048d836b53cfbc2508e",
+      "environment.json": "e74b57f4e9738d854e96411a18c35964b1aecdea414aa45eef0c5a86d1d98bc6",
+      "epoch_metrics.json": "a8327009a0ce3cf4ee5f0a95ae537a3229c7d6a3355208e24a476bd06e106da8",
+      "model.safetensors": "ec8229d7f3b1de4d4d2d3a9fc2b465edba194ffc5b06391a46c4645756e473b6",
+      "special_tokens_map.json": "ed7c099c988dbb414b18a6980d20cb57b91b7cd119f6f6941eb364b0e892e712",
+      "spm.model": "c679fbf93643d19aab7ee10c0b99e460bdbc02fedf34b92b05af343b4af586fd",
+      "tokenizer.json": "5c0b14d718dabc22f566d5700b7ec69d2ae51e19e26120665082e812edfbd2cc",
+      "tokenizer_config.json": "700dba386cc05b6b14e74add7fe9293a6cb3ab16f3aa2eb177c76e288592bf01",
+      "training_args.json": "7c2bf2a6bf49ae9d333ec787249136d7187f50d3627affe416c482be56ad36b4"
+    },
+    "base_model": "microsoft/deberta-v3-base",
+    "checkpoint_fingerprint_sha256": "cf661056feb3b0a852ee357ef54d102f91ea9c183a3e564747b296e78ee997fb",
+    "latency_64_seconds": 0.5212035998702049,
+    "model_bytes": 735507468,
+    "model_key": "deberta",
+    "model_sha256": "ec8229d7f3b1de4d4d2d3a9fc2b465edba194ffc5b06391a46c4645756e473b6",
+    "peak_gpu_gib": 4.173935413360596,
+    "revision": "8ccc9b6f36199bec6961081d44eb72fb3f7353f3",
+    "selected_epoch": 3,
+    "selection_value": 0.48449887891179905,
+    "smoke": false,
+    "training_seconds": 12161.0175187001
+  },
+  "rows": [
+    {
+      "bert": 0.9114754098360655,
+      "deberta": 0.2625211710621825,
+      "delta": -0.6489542387738829,
+      "metric": "standard-dev micro F1"
+    },
+    {
+      "bert": 0.9335441007122571,
+      "deberta": 0.3198321899732682,
+      "delta": -0.613711910738989,
+      "metric": "standard-dev macro F1"
+    },
+    {
+      "bert": 0.9795918367346939,
+      "deberta": 0.9941520467836257,
+      "delta": 0.014560210048931821,
+      "metric": "challenge-dev micro F1"
+    },
+    {
+      "bert": 0.9953488372093023,
+      "deberta": 0.9986648865153539,
+      "delta": 0.0033160493060515606,
+      "metric": "challenge-dev macro F1"
+    },
+    {
+      "bert": 0.5508474576271186,
+      "deberta": 0.42857142857142855,
+      "delta": -0.12227602905569007,
+      "metric": "BUSINESS_ID precision (standard)"
+    },
+    {
+      "bert": 0.9629629629629629,
+      "deberta": 0.7333333333333333,
+      "delta": -0.22962962962962963,
+      "metric": "BUSINESS_ID recall (standard)"
+    },
+    {
+      "bert": 0.7008086253369272,
+      "deberta": 0.540983606557377,
+      "delta": -0.15982501877955024,
+      "metric": "BUSINESS_ID F1 (standard)"
+    },
+    {
+      "bert": 0.9719626168224299,
+      "deberta": 1.0,
+      "delta": 0.028037383177570097,
+      "metric": "BUSINESS_ID P/R/F1 challenge-P"
+    },
+    {
+      "bert": 0.9629629629629629,
+      "deberta": 0.9814814814814815,
+      "delta": 0.0185185185185186,
+      "metric": "BUSINESS_ID recall (challenge)"
+    },
+    {
+      "bert": 0.970873786407767,
+      "deberta": 0.038834951456310676,
+      "delta": -0.9320388349514563,
+      "metric": "SSN recall (standard)"
+    },
+    {
+      "bert": 1.0,
+      "deberta": 0.0,
+      "delta": -1.0,
+      "metric": "ITIN recall (standard)"
+    },
+    {
+      "bert": 1.0,
+      "deberta": 1.0,
+      "delta": 0.0,
+      "metric": "AUTH_TOKEN precision (standard)"
+    },
+    {
+      "bert": 1.0,
+      "deberta": 1.0,
+      "delta": 0.0,
+      "metric": "AUTH_TOKEN recall (standard)"
+    },
+    {
+      "bert": 1.0,
+      "deberta": 1.0,
+      "delta": 0.0,
+      "metric": "AUTH_TOKEN F1 (standard)"
+    },
+    {
+      "bert": 0.9158878504672897,
+      "deberta": 0.0,
+      "delta": -0.9158878504672897,
+      "metric": "API_KEY recall (standard)"
+    },
+    {
+      "bert": 0.9379844961240311,
+      "deberta": 0.07722007722007722,
+      "delta": -0.8607644189039539,
+      "metric": "IP_ADDRESS F1 (standard)"
+    },
+    {
+      "bert": 0.9385574354407836,
+      "deberta": 0.3508459483526269,
+      "delta": -0.5877114870881568,
+      "metric": "high-risk recall"
+    },
+    {
+      "bert": 0.9953488372093023,
+      "deberta": 1.0,
+      "delta": 0.0046511627906976605,
+      "metric": "sensitive-span recall"
+    },
+    {
+      "bert": 0.977906976744186,
+      "deberta": 1.0,
+      "delta": 0.02209302325581397,
+      "metric": "full-mask recall"
+    },
+    {
+      "bert": 1.0,
+      "deberta": 1.0,
+      "delta": 0.0,
+      "metric": "high-risk full-mask recall"
+    },
+    {
+      "bert": 112.0,
+      "deberta": 108.0,
+      "delta": -4.0,
+      "metric": "SECURITY_CRITICAL_MISS"
+    },
+    {
+      "bert": 112.0,
+      "deberta": 84.0,
+      "delta": -28.0,
+      "metric": "SECURITY_CRITICAL_PARTIAL"
+    },
+    {
+      "bert": 251.0,
+      "deberta": 245.0,
+      "delta": -6.0,
+      "metric": "OVERMASKING"
+    },
+    {
+      "bert": 94.0,
+      "deberta": 94.0,
+      "delta": 0.0,
+      "metric": "account-like O→BUSINESS_ID"
+    },
+    {
+      "bert": 0.0,
+      "deberta": 0.0,
+      "delta": 0.0,
+      "metric": "AUTH_TOKEN vs BUSINESS_ID errors"
+    },
+    {
+      "bert": 0.022916666666666665,
+      "deberta": 0.020833333333333332,
+      "delta": -0.002083333333333333,
+      "metric": "challenge record error"
+    },
+    {
+      "bert": 0.08333333333333333,
+      "deberta": 0.08333333333333333,
+      "delta": 0.0,
+      "metric": "worst-category error"
+    }
+  ]
+}

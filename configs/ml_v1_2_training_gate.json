@@ -1,0 +1,143 @@
+{
+  "gate_version": 1,
+  "dataset_version": "ML-v1.2",
+  "declared_before_training": true,
+  "declared_utc": "2026-09-17T23:08:16.2898376Z",
+  "scope": "Development-only checkpoint selection and terminal ML-v1.2 development-gate decision for the controlled data-revision experiment",
+  "frozen_inputs": {
+    "ml_v1_2_dataset_manifest": {
+      "path": "configs/ml_v1_2_dataset_manifest.json",
+      "sha256": "67e5d32e40444f7399793b79e0dca4f2e788afd70706c4496f1c6a35bf6c6ead"
+    },
+    "ml_v1_2_parent_freeze": {
+      "path": "configs/ml_v1_2_parent_freeze.json",
+      "sha256": "02640b5d16646594baf319984131689926cf5f560040d8362116dd15d59b58d3"
+    },
+    "ontology": {
+      "path": "configs/securelogx_labels.json",
+      "sha256": "60361655594004a36c154725a79d43f64896014e8f8b445552b57305b3ba24e5",
+      "entity_count": 25,
+      "bio_label_count": 51
+    }
+  },
+  "training_configuration": {
+    "architecture": "bert-base-cased token classification",
+    "base_model": "bert-base-cased",
+    "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e",
+    "epochs": 3,
+    "learning_rate": 0.00002,
+    "weight_decay": 0.01,
+    "warmup_ratio": 0.1,
+    "max_grad_norm": 1.0,
+    "max_length": 384,
+    "stride": 128,
+    "dynamic_padding": true,
+    "bf16_when_supported": true,
+    "train_batch_size": 4,
+    "gradient_accumulation_steps": 4,
+    "effective_batch_size": 16,
+    "eval_batch_size": 8,
+    "seed": 42
+  },
+  "training_composition": {
+    "original_ml_v1_train_records": 23558,
+    "ml_v1_1_train_addition_records": 3000,
+    "ml_v1_2_train_addition_records": 1600,
+    "combined_training_records": 28158,
+    "standard_dev_records": 2994,
+    "ml_v1_2_challenge_dev_records": 540
+  },
+  "metric_definitions": {
+    "entity_matching": "exact character span and entity class",
+    "macro": "unweighted mean across entity labels with positive gold support in that evaluation view",
+    "micro": "aggregate exact-span true positives, false positives, and false negatives",
+    "record_error_rate": "records with any exact-span false positive, false negative, boundary error, or wrong-class error divided by all records",
+    "context_target_error_rate": "declared focus or companion targets not decoded with the expected exact entity label, or O targets overlapped by any predicted entity, divided by all declared targets",
+    "category_error_rate": "record_error_rate calculated independently for one meta.contrast_category",
+    "directional_confusion": "a prediction with the named predicted label overlapping a gold entity or declared O focus target of the named source class",
+    "subtype_recall": "exact BUSINESS_ID span matches grouped by frozen gold business_id_subtype provenance",
+    "unexplained_alignment_failure": "a failed alignment other than tokenizer_emitted_no_token_for_span or token_boundary_adjustment_exceeds_three_characters"
+  },
+  "checkpoint_selection": {
+    "development_only": true,
+    "primary_score": "harmonic_mean(standard_dev_supported_entity_macro_f1, ml_v1_2_challenge_dev_supported_entity_macro_f1)",
+    "formula": "2*a*b/(a+b), or 0 when a+b is 0",
+    "effective_tie_absolute": 0.001,
+    "tie_break": "earlier epoch",
+    "sealed_challenge_forbidden": true,
+    "original_test_forbidden": true
+  },
+  "historical_reference": {
+    "ml_v1_1_selected_epoch": 3,
+    "ml_v1_1_standard_dev_micro_f1": 0.9034862385321101,
+    "ml_v1_1_standard_dev_supported_macro_f1": 0.9116670497968847,
+    "ml_v1_1_standard_dev_high_risk_recall": 0.8993766696349065,
+    "ml_v1_1_standard_dev_business_id_precision": 0.5608695652173913,
+    "ml_v1_1_standard_dev_business_id_recall": 0.9555555555555556,
+    "ml_v1_1_standard_dev_business_id_f1": 0.7068493150684931,
+    "ml_v1_1_standard_dev_ssn_precision": 0.95,
+    "ml_v1_1_standard_dev_ssn_recall": 0.9223300970873787,
+    "ml_v1_1_standard_dev_ssn_f1": 0.9359605911330049,
+    "ml_v1_1_standard_dev_ip_address_precision": 0.968,
+    "ml_v1_1_standard_dev_ip_address_recall": 0.937984496124031,
+    "ml_v1_1_standard_dev_ip_address_f1": 0.952755905511811,
+    "ml_v1_1_standard_dev_accountlike_o_to_business_id_count": 94,
+    "ml_v1_1_standard_dev_ssn_to_itin_count": 5,
+    "ml_v1_1_challenge_micro_f1": 0.8925438596491229,
+    "ml_v1_1_challenge_supported_macro_f1": 0.8523412768461313,
+    "ml_v1_1_challenge_record_error_rate": 0.1125,
+    "ml_v1_1_challenge_context_target_error_rate": 0.1125,
+    "ml_v1_1_challenge_maximum_category_error_rate": 0.2625,
+    "ml_v1_1_challenge_worst_category": "ip_address_vs_technical_reference",
+    "ml_v1_1_challenge_credit_card_to_business_id_count": 20,
+    "ml_v1_1_challenge_business_id_to_ssn_count": 10,
+    "ml_v1_1_challenge_ip_on_technical_reference_record_count": 21,
+    "ml_v1_1_challenge_customer_id_recall": 0.5,
+    "ml_v1_1_challenge_request_id_recall": 0.85
+  },
+  "development_gate": {
+    "decision_on_pass": "PASS DEVELOPMENT GATE",
+    "decision_on_failure": "FAIL DEVELOPMENT GATE",
+    "all_required": {
+      "standard_dev_micro_f1_minimum": 0.8934862385321101,
+      "standard_dev_supported_macro_f1_minimum": 0.9016670497968847,
+      "standard_dev_high_risk_recall_minimum": 0.8893766696349065,
+      "standard_dev_business_id_precision_minimum": 0.65,
+      "standard_dev_business_id_recall_minimum": 0.9,
+      "standard_dev_business_id_f1_minimum": 0.7,
+      "standard_dev_ssn_precision_minimum": 0.93,
+      "standard_dev_ssn_recall_minimum": 0.9,
+      "standard_dev_ssn_f1_minimum": 0.915,
+      "standard_dev_ip_address_precision_minimum": 0.94,
+      "standard_dev_ip_address_recall_minimum": 0.9,
+      "standard_dev_ip_address_f1_minimum": 0.92,
+      "challenge_dev_micro_f1_minimum": 0.9,
+      "challenge_dev_supported_macro_f1_minimum": 0.85,
+      "challenge_dev_business_id_precision_minimum": 0.9,
+      "challenge_dev_business_id_recall_minimum": 0.9,
+      "challenge_dev_ssn_recall_minimum": 0.9,
+      "challenge_dev_ip_address_recall_minimum": 0.9,
+      "challenge_dev_record_error_rate_maximum": 0.1,
+      "challenge_dev_context_target_error_rate_maximum": 0.1,
+      "challenge_dev_maximum_category_error_rate_maximum": 0.2,
+      "standard_dev_accountlike_o_to_business_id_count_maximum": 47,
+      "standard_dev_ssn_to_itin_count_maximum": 4,
+      "challenge_dev_credit_card_to_business_id_rate_maximum": 0.1,
+      "challenge_dev_business_id_to_ssn_rate_maximum": 0.1,
+      "challenge_dev_ip_on_technical_reference_rate_maximum": 0.2,
+      "challenge_dev_customer_id_recall_minimum": 0.8,
+      "challenge_dev_request_id_recall_minimum": 0.8,
+      "unexplained_alignment_failures_maximum": 0,
+      "truncated_entity_spans_maximum": 0
+    },
+    "rationale": "Standard-dev aggregate floors permit at most one absolute percentage point below ML-v1.1. Label floors protect high-risk and general capability. BUSINESS_ID precision must materially improve while recall remains at least 0.90. Directional limits require at least a 50% reduction in account-like O false positives, improvement in SSN-to-ITIN confusion, and bounded challenge morphology/context failures. The required challenge micro, context-target, and worst-category gates are unchanged from ML-v1.1."
+  },
+  "stop_boundary": {
+    "stop_after_development_gate": true,
+    "sealed_challenge_must_not_be_opened": true,
+    "original_test_inference_forbidden": true,
+    "onnx_export_forbidden": true,
+    "java_changes_forbidden": true,
+    "thresholds_may_not_be_changed_after_results": true
+  }
+}

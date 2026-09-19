@@ -1,0 +1,9 @@
+{
+  "bert_critical": 224,
+  "bert_high_risk_full_mask_recall": 1.0,
+  "deberta_critical": 192,
+  "deberta_high_risk_full_mask_recall": 1.0,
+  "decision": "DEBERTA SELECTED FOR FINAL VALIDATION",
+  "rationale": "DeBERTa has 32 fewer combined security-critical miss/partial outcomes.",
+  "same_persistent_failures": false
+}
