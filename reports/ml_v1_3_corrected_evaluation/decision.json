@@ -1,0 +1,9 @@
+{
+  "bert_challenge_high_risk_full_mask_recall": 1.0,
+  "bert_critical_total": 225,
+  "deberta_challenge_high_risk_full_mask_recall": 1.0,
+  "deberta_critical_total": 380,
+  "decision": "BERT SELECTED BY CORRECTED DEVELOPMENT EVALUATION",
+  "note": "This reuses the historical cross-model rule after correcting a decoder implementation defect. Historical reports remain unchanged.",
+  "rationale": "BERT has 155 fewer corrected combined security-critical miss/partial outcomes."
+}
