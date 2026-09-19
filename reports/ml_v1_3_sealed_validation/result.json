@@ -1,0 +1,1982 @@
+{
+  "actual_model_sha256": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+  "alignment": {
+    "boundary_adjusted_spans": 0,
+    "failed_alignments": 0,
+    "reason_counts": {
+      "exact_token_boundaries": 420
+    },
+    "successfully_aligned_spans": 420,
+    "total_spans": 420,
+    "truncated_spans": 0
+  },
+  "bf16": true,
+  "bundle": {
+    "api_key_f1": 0.0,
+    "api_key_p": 0.0,
+    "api_key_r": 0.0,
+    "auth_token_f1": 0.0,
+    "auth_token_p": 0.0,
+    "auth_token_r": 0.0,
+    "business_id_f1": 0.9055555555555556,
+    "business_id_p": 0.9055555555555556,
+    "business_id_r": 0.9055555555555556,
+    "high_risk_recall": 1.0,
+    "ip_address_f1": 0.9917355371900827,
+    "ip_address_p": 0.9836065573770492,
+    "ip_address_r": 1.0,
+    "itin_f1": 0.0,
+    "itin_p": 0.0,
+    "itin_r": 0.0,
+    "macro_f1": 0.9794582185491276,
+    "macro_p": 0.9778324225865209,
+    "macro_r": 0.9811111111111112,
+    "micro_f1": 0.9583828775267539,
+    "micro_p": 0.9572446555819477,
+    "micro_r": 0.9595238095238096,
+    "ssn_f1": 1.0,
+    "ssn_p": 1.0,
+    "ssn_r": 1.0
+  },
+  "device": "cuda",
+  "metrics": {
+    "confidence": {
+      "boundary_too_short": {
+        "count": 17,
+        "mean": 0.9535888860038682,
+        "median": 0.990363883972168,
+        "p25": 0.957794263958931,
+        "p75": 0.9948344826698303
+      },
+      "correct": {
+        "count": 403,
+        "mean": 0.9956253780838475,
+        "median": 0.9992666670254299,
+        "p25": 0.9986242358646695,
+        "p75": 0.9995961033162617
+      },
+      "false_positive": {
+        "count": 1,
+        "mean": 0.728188693523407,
+        "median": 0.728188693523407,
+        "p25": 0.728188693523407,
+        "p75": 0.728188693523407
+      }
+    },
+    "context_diagnostics": {
+      "by_category": {
+        "business_id_vs_bank_account": {
+          "context_target_error_rate": 0.0,
+          "context_target_errors": 0,
+          "context_targets": 80,
+          "error_counts": {
+            "boundary_shifted": 0,
+            "boundary_too_long": 0,
+            "boundary_too_short": 0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "wrong_entity_class": 0
+          },
+          "exact_span_matches": 80,
+          "gold_entities": 80,
+          "high_risk": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 40,
+            "true_positives": 40
+          },
+          "macro": {
+            "f1": 0.08,
+            "precision": 0.08,
+            "recall": 0.08
+          },
+          "micro": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "true_positives": 80
+          },
+          "morphology_over_context_error_rate": 0.0,
+          "morphology_over_context_errors": 0,
+          "morphology_over_context_share_of_target_errors": 0.0,
+          "per_label": {
+            "AGE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "API_KEY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "AUTH_TOKEN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BANK_ACCOUNT_NUMBER": {
+              "f1": 1.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 1.0,
+              "predicted": 40,
+              "recall": 1.0,
+              "support": 40,
+              "true_positives": 40
+            },
+            "BUSINESS_ID": {
+              "f1": 1.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 1.0,
+              "predicted": 40,
+              "recall": 1.0,
+              "support": 40,
+              "true_positives": 40
+            },
+            "CITY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "COUNTRY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "CREDIT_CARD_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DEVICE_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DOB": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DRIVER_LICENSE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "EMAIL": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IBAN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IP_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ITIN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PASSPORT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PERSON_NAME": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PHONE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "POSTAL_CODE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ROUTING_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SSN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STATE_PROVINCE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STREET_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SWIFT_BIC": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "TAX_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            }
+          },
+          "predicted_entities": 80,
+          "record_error_rate": 0.0,
+          "records": 80,
+          "records_with_errors": 0,
+          "supported_macro": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        },
+        "business_id_vs_credit_card": {
+          "context_target_error_rate": 0.0,
+          "context_target_errors": 0,
+          "context_targets": 80,
+          "error_counts": {
+            "boundary_shifted": 0,
+            "boundary_too_long": 0,
+            "boundary_too_short": 0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "wrong_entity_class": 0
+          },
+          "exact_span_matches": 80,
+          "gold_entities": 80,
+          "high_risk": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 40,
+            "true_positives": 40
+          },
+          "macro": {
+            "f1": 0.08,
+            "precision": 0.08,
+            "recall": 0.08
+          },
+          "micro": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "true_positives": 80
+          },
+          "morphology_over_context_error_rate": 0.0,
+          "morphology_over_context_errors": 0,
+          "morphology_over_context_share_of_target_errors": 0.0,
+          "per_label": {
+            "AGE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "API_KEY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "AUTH_TOKEN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BANK_ACCOUNT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BUSINESS_ID": {
+              "f1": 1.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 1.0,
+              "predicted": 40,
+              "recall": 1.0,
+              "support": 40,
+              "true_positives": 40
+            },
+            "CITY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "COUNTRY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "CREDIT_CARD_NUMBER": {
+              "f1": 1.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 1.0,
+              "predicted": 40,
+              "recall": 1.0,
+              "support": 40,
+              "true_positives": 40
+            },
+            "DEVICE_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DOB": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DRIVER_LICENSE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "EMAIL": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IBAN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IP_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ITIN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PASSPORT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PERSON_NAME": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PHONE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "POSTAL_CODE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ROUTING_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SSN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STATE_PROVINCE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STREET_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SWIFT_BIC": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "TAX_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            }
+          },
+          "predicted_entities": 80,
+          "record_error_rate": 0.0,
+          "records": 80,
+          "records_with_errors": 0,
+          "supported_macro": {
+            "f1": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          }
+        },
+        "business_id_vs_ssn": {
+          "context_target_error_rate": 0.085,
+          "context_target_errors": 17,
+          "context_targets": 200,
+          "error_counts": {
+            "boundary_shifted": 0,
+            "boundary_too_long": 0,
+            "boundary_too_short": 17,
+            "false_negatives": 17,
+            "false_positives": 17,
+            "wrong_entity_class": 0
+          },
+          "exact_span_matches": 183,
+          "gold_entities": 200,
+          "high_risk": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "support": 100,
+            "true_positives": 100
+          },
+          "macro": {
+            "f1": 0.0732,
+            "precision": 0.0732,
+            "recall": 0.0732
+          },
+          "micro": {
+            "f1": 0.915,
+            "false_negatives": 17,
+            "false_positives": 17,
+            "precision": 0.915,
+            "recall": 0.915,
+            "true_positives": 183
+          },
+          "morphology_over_context_error_rate": 0.0,
+          "morphology_over_context_errors": 0,
+          "morphology_over_context_share_of_target_errors": 0.0,
+          "per_label": {
+            "AGE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "API_KEY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "AUTH_TOKEN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BANK_ACCOUNT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BUSINESS_ID": {
+              "f1": 0.83,
+              "false_negatives": 17,
+              "false_positives": 17,
+              "precision": 0.83,
+              "predicted": 100,
+              "recall": 0.83,
+              "support": 100,
+              "true_positives": 83
+            },
+            "CITY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "COUNTRY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "CREDIT_CARD_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DEVICE_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DOB": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DRIVER_LICENSE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "EMAIL": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IBAN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IP_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ITIN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PASSPORT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PERSON_NAME": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PHONE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "POSTAL_CODE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ROUTING_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SSN": {
+              "f1": 1.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 1.0,
+              "predicted": 100,
+              "recall": 1.0,
+              "support": 100,
+              "true_positives": 100
+            },
+            "STATE_PROVINCE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STREET_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SWIFT_BIC": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "TAX_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            }
+          },
+          "predicted_entities": 200,
+          "record_error_rate": 0.085,
+          "records": 200,
+          "records_with_errors": 17,
+          "supported_macro": {
+            "f1": 0.915,
+            "precision": 0.915,
+            "recall": 0.915
+          }
+        },
+        "ip_address_vs_technical_reference": {
+          "context_target_error_rate": 0.008333333333333333,
+          "context_target_errors": 1,
+          "context_targets": 120,
+          "error_counts": {
+            "boundary_shifted": 0,
+            "boundary_too_long": 0,
+            "boundary_too_short": 0,
+            "false_negatives": 0,
+            "false_positives": 1,
+            "wrong_entity_class": 0
+          },
+          "exact_span_matches": 60,
+          "gold_entities": 60,
+          "high_risk": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "macro": {
+            "f1": 0.03966942148760331,
+            "precision": 0.039344262295081964,
+            "recall": 0.04
+          },
+          "micro": {
+            "f1": 0.9917355371900827,
+            "false_negatives": 0,
+            "false_positives": 1,
+            "precision": 0.9836065573770492,
+            "recall": 1.0,
+            "true_positives": 60
+          },
+          "morphology_over_context_error_rate": 0.008333333333333333,
+          "morphology_over_context_errors": 1,
+          "morphology_over_context_share_of_target_errors": 1.0,
+          "per_label": {
+            "AGE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "API_KEY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "AUTH_TOKEN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BANK_ACCOUNT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "BUSINESS_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "CITY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "COUNTRY": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "CREDIT_CARD_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DEVICE_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DOB": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "DRIVER_LICENSE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "EMAIL": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IBAN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "IP_ADDRESS": {
+              "f1": 0.9917355371900827,
+              "false_negatives": 0,
+              "false_positives": 1,
+              "precision": 0.9836065573770492,
+              "predicted": 61,
+              "recall": 1.0,
+              "support": 60,
+              "true_positives": 60
+            },
+            "ITIN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PASSPORT_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PERSON_NAME": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "PHONE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "POSTAL_CODE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "ROUTING_NUMBER": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SSN": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STATE_PROVINCE": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "STREET_ADDRESS": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "SWIFT_BIC": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            },
+            "TAX_ID": {
+              "f1": 0.0,
+              "false_negatives": 0,
+              "false_positives": 0,
+              "precision": 0.0,
+              "predicted": 0,
+              "recall": 0.0,
+              "support": 0,
+              "true_positives": 0
+            }
+          },
+          "predicted_entities": 61,
+          "record_error_rate": 0.008333333333333333,
+          "records": 120,
+          "records_with_errors": 1,
+          "supported_macro": {
+            "f1": 0.9917355371900827,
+            "precision": 0.9836065573770492,
+            "recall": 1.0
+          }
+        }
+      },
+      "context_target_error_rate": 0.0375,
+      "context_target_errors": 18,
+      "context_targets": 480,
+      "maximum_category_error_rate": 0.085,
+      "morphology_over_context_error_rate": 0.0020833333333333333,
+      "morphology_over_context_errors": 1,
+      "morphology_over_context_share_of_target_errors": 0.05555555555555555,
+      "record_error_rate": 0.0375,
+      "records": 480,
+      "records_with_errors": 18,
+      "score": {
+        "error_counts": {
+          "boundary_shifted": 0,
+          "boundary_too_long": 0,
+          "boundary_too_short": 17,
+          "false_negatives": 17,
+          "false_positives": 18,
+          "wrong_entity_class": 0
+        },
+        "exact_span_matches": 403,
+        "gold_entities": 420,
+        "high_risk": {
+          "f1": 1.0,
+          "false_negatives": 0,
+          "false_positives": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "support": 180,
+          "true_positives": 180
+        },
+        "macro": {
+          "f1": 0.1958916437098255,
+          "precision": 0.19556648451730418,
+          "recall": 0.19622222222222224
+        },
+        "micro": {
+          "f1": 0.9583828775267539,
+          "false_negatives": 17,
+          "false_positives": 18,
+          "precision": 0.9572446555819477,
+          "recall": 0.9595238095238096,
+          "true_positives": 403
+        },
+        "per_label": {
+          "AGE": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "API_KEY": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "AUTH_TOKEN": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "BANK_ACCOUNT_NUMBER": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "predicted": 40,
+            "recall": 1.0,
+            "support": 40,
+            "true_positives": 40
+          },
+          "BUSINESS_ID": {
+            "f1": 0.9055555555555556,
+            "false_negatives": 17,
+            "false_positives": 17,
+            "precision": 0.9055555555555556,
+            "predicted": 180,
+            "recall": 0.9055555555555556,
+            "support": 180,
+            "true_positives": 163
+          },
+          "CITY": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "COUNTRY": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "CREDIT_CARD_NUMBER": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "predicted": 40,
+            "recall": 1.0,
+            "support": 40,
+            "true_positives": 40
+          },
+          "DEVICE_ID": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "DOB": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "DRIVER_LICENSE": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "EMAIL": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "IBAN": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "IP_ADDRESS": {
+            "f1": 0.9917355371900827,
+            "false_negatives": 0,
+            "false_positives": 1,
+            "precision": 0.9836065573770492,
+            "predicted": 61,
+            "recall": 1.0,
+            "support": 60,
+            "true_positives": 60
+          },
+          "ITIN": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "PASSPORT_NUMBER": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "PERSON_NAME": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "PHONE": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "POSTAL_CODE": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "ROUTING_NUMBER": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "SSN": {
+            "f1": 1.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 1.0,
+            "predicted": 100,
+            "recall": 1.0,
+            "support": 100,
+            "true_positives": 100
+          },
+          "STATE_PROVINCE": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "STREET_ADDRESS": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "SWIFT_BIC": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          },
+          "TAX_ID": {
+            "f1": 0.0,
+            "false_negatives": 0,
+            "false_positives": 0,
+            "precision": 0.0,
+            "predicted": 0,
+            "recall": 0.0,
+            "support": 0,
+            "true_positives": 0
+          }
+        },
+        "predicted_entities": 421,
+        "records": 480,
+        "supported_macro": {
+          "f1": 0.9794582185491276,
+          "precision": 0.9778324225865209,
+          "recall": 0.9811111111111112
+        }
+      },
+      "split": "ml_v1_3_final_sealed"
+    },
+    "error_counts": {
+      "boundary_shifted": 0,
+      "boundary_too_long": 0,
+      "boundary_too_short": 17,
+      "false_negatives": 17,
+      "false_positives": 18,
+      "wrong_entity_class": 0
+    },
+    "exact_span_matches": 403,
+    "gold_entities": 420,
+    "high_risk": {
+      "f1": 1.0,
+      "false_negatives": 0,
+      "false_positives": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "support": 180,
+      "true_positives": 180
+    },
+    "invalid_bio_transitions": 17,
+    "loss": 0.0049556559466032764,
+    "macro": {
+      "f1": 0.1958916437098255,
+      "precision": 0.19556648451730418,
+      "recall": 0.19622222222222224
+    },
+    "micro": {
+      "f1": 0.9583828775267539,
+      "false_negatives": 17,
+      "false_positives": 18,
+      "precision": 0.9572446555819477,
+      "recall": 0.9595238095238096,
+      "true_positives": 403
+    },
+    "per_label": {
+      "AGE": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "API_KEY": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "AUTH_TOKEN": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "BANK_ACCOUNT_NUMBER": {
+        "f1": 1.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "predicted": 40,
+        "recall": 1.0,
+        "support": 40,
+        "true_positives": 40
+      },
+      "BUSINESS_ID": {
+        "f1": 0.9055555555555556,
+        "false_negatives": 17,
+        "false_positives": 17,
+        "precision": 0.9055555555555556,
+        "predicted": 180,
+        "recall": 0.9055555555555556,
+        "support": 180,
+        "true_positives": 163
+      },
+      "CITY": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "COUNTRY": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "CREDIT_CARD_NUMBER": {
+        "f1": 1.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "predicted": 40,
+        "recall": 1.0,
+        "support": 40,
+        "true_positives": 40
+      },
+      "DEVICE_ID": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "DOB": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "DRIVER_LICENSE": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "EMAIL": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "IBAN": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "IP_ADDRESS": {
+        "f1": 0.9917355371900827,
+        "false_negatives": 0,
+        "false_positives": 1,
+        "precision": 0.9836065573770492,
+        "predicted": 61,
+        "recall": 1.0,
+        "support": 60,
+        "true_positives": 60
+      },
+      "ITIN": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "PASSPORT_NUMBER": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "PERSON_NAME": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "PHONE": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "POSTAL_CODE": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "ROUTING_NUMBER": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "SSN": {
+        "f1": 1.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 1.0,
+        "predicted": 100,
+        "recall": 1.0,
+        "support": 100,
+        "true_positives": 100
+      },
+      "STATE_PROVINCE": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "STREET_ADDRESS": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "SWIFT_BIC": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      },
+      "TAX_ID": {
+        "f1": 0.0,
+        "false_negatives": 0,
+        "false_positives": 0,
+        "precision": 0.0,
+        "predicted": 0,
+        "recall": 0.0,
+        "support": 0,
+        "true_positives": 0
+      }
+    },
+    "predicted_entities": 421,
+    "records": 480,
+    "split": "ml_v1_3_final_sealed",
+    "supported_macro": {
+      "f1": 0.9794582185491276,
+      "precision": 0.9778324225865209,
+      "recall": 0.9811111111111112
+    }
+  },
+  "model_selection_may_not_change_after_sealed_results": true,
+  "scope": {
+    "java_changes": false,
+    "onnx_export": false,
+    "original_test_inference": false,
+    "threshold_tuning": false,
+    "training": false
+  },
+  "sealed": {
+    "actual_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+    "expected_sha256": "6f22e8133e74e4cc7e63048b05acaf9004e9ff8c385f774298e07bd6b15ded9a",
+    "hash_match": true,
+    "records": 480
+  },
+  "security": {
+    "accountlike_o_to_business_id": 0,
+    "api_key_related_errors": 0,
+    "auth_token_vs_business_id": 0,
+    "by_failure_mode": {
+      "accountlike_o_vs_business_id": {
+        "exact_true_positive": 0,
+        "full_mask_recall": 1.0,
+        "high_risk_full_mask_recall": 1.0,
+        "high_risk_gold_spans": 0,
+        "other_semantic_error": 0,
+        "overmasking": 0,
+        "policy_safe_wrong_class": 0,
+        "security_critical_miss": 0,
+        "security_critical_partial": 0,
+        "sensitive_gold_spans": 0,
+        "sensitive_span_recall": 1.0
+      },
+      "auth_token_vs_business_id": {
+        "exact_true_positive": 0,
+        "full_mask_recall": 1.0,
+        "high_risk_full_mask_recall": 1.0,
+        "high_risk_gold_spans": 0,
+        "other_semantic_error": 0,
+        "overmasking": 0,
+        "policy_safe_wrong_class": 0,
+        "security_critical_miss": 0,
+        "security_critical_partial": 0,
+        "sensitive_gold_spans": 0,
+        "sensitive_span_recall": 1.0
+      },
+      "high_risk_identifier": {
+        "exact_true_positive": 0,
+        "full_mask_recall": 1.0,
+        "high_risk_full_mask_recall": 1.0,
+        "high_risk_gold_spans": 0,
+        "other_semantic_error": 0,
+        "overmasking": 0,
+        "policy_safe_wrong_class": 0,
+        "security_critical_miss": 0,
+        "security_critical_partial": 0,
+        "sensitive_gold_spans": 0,
+        "sensitive_span_recall": 1.0
+      },
+      "ip_vs_technical_reference": {
+        "exact_true_positive": 0,
+        "full_mask_recall": 1.0,
+        "high_risk_full_mask_recall": 1.0,
+        "high_risk_gold_spans": 0,
+        "other_semantic_error": 0,
+        "overmasking": 0,
+        "policy_safe_wrong_class": 0,
+        "security_critical_miss": 0,
+        "security_critical_partial": 0,
+        "sensitive_gold_spans": 0,
+        "sensitive_span_recall": 1.0
+      },
+      "ssn_vs_itin": {
+        "exact_true_positive": 0,
+        "full_mask_recall": 1.0,
+        "high_risk_full_mask_recall": 1.0,
+        "high_risk_gold_spans": 0,
+        "other_semantic_error": 0,
+        "overmasking": 0,
+        "policy_safe_wrong_class": 0,
+        "security_critical_miss": 0,
+        "security_critical_partial": 0,
+        "sensitive_gold_spans": 0,
+        "sensitive_span_recall": 1.0
+      }
+    },
+    "exact_true_positive": 403,
+    "full_mask_recall": 0.9595238095238096,
+    "high_risk_full_mask_recall": 1.0,
+    "high_risk_gold_spans": 180,
+    "other_semantic_error": 0,
+    "overmasking": 1,
+    "policy_safe_wrong_class": 0,
+    "row_count": 18,
+    "security_critical_miss": 0,
+    "security_critical_partial": 17,
+    "sensitive_gold_spans": 420,
+    "sensitive_span_recall": 1.0,
+    "ssn_to_itin": 0
+  },
+  "selected_model": {
+    "base_model": "bert-base-cased",
+    "checkpoint_path": "output_securelogx/ml-v1.3/bert-base-cased/checkpoints/epoch-3",
+    "epoch": 3,
+    "expected_model_sha256": "31a460720152a9b555150a55eb474d67cbfa2f236254d9ce464e930f8e2a0f44",
+    "model_key": "bert",
+    "revision": "cd5ef92a9fb2f889e972770a36d4ed042daf221e"
+  },
+  "selection_frozen_before_sealed": true,
+  "status": "SEALED VALIDATION COMPLETE"
+}
