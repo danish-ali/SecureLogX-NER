@@ -54,3 +54,24 @@ Passing this candidate audit does NOT prove a previously published result had ze
 3. Independently test SHA256/count invariants and the old-vs-new dataset diff (one `entities` entry only).
 4. Keep the strict gold overmask threshold at **zero**.
 5. Rerun Phase 2 request-scoped scan parity and matched real-ONNX protected-output A/B; keep full-corpus ONNX privacy accuracy as a separate pending gate.
+
+## Executed validation evidence (2026-11-01)
+
+[GitHub Actions run 41308569120](https://github.com/danish-ali/SecureLogX-NER/actions/runs/41308569120)
+completed successfully on Python 3.13 / Java 25 using the proposed candidate
+**without modifying original frozen datasets**:
+
+| Verification | Result |
+|---|---|
+| Python synthetic unit tests | 6 passed |
+| Exactly one record modified in candidate | Passed |
+| Other two locked input files byte-identical | Passed |
+| Original 6,463-record frozen gold audit | Fails as expected: 1 overmask, 0 uncovered gold, 0 ALLOW conflicts |
+| Proposed 6,463-record candidate gold audit | Passed: 0 overmask, 0 uncovered gold, 0 ALLOW conflicts |
+| Phase 2 model-free deterministic scan reuse audit | Passed: 5,545 reused and 918 worker fallback scans |
+| Real ONNX A/B model-output parity | **NOT TESTED** |
+| Dataset owner review and canonical versioning | **NOT APPROVED** |
+
+This CI result establishes a reproducible **candidate**, not permission to
+overwrite frozen gold, revise published baseline measurements, retrain on a
+changed dev split, or merge/activate Phase 2.
