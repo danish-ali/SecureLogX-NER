@@ -1,13 +1,6 @@
 name: Gold annotation candidate — non-destructive validation
 
 on:
-  push:
-    branches:
-      - chatgpt/review-gretel-bank-account-gold-span
-    paths:
-      - scripts/data/propose_bank_account_gold_amendment.py
-      - tests/test_bank_account_gold_amendment.py
-      - .github/workflows/gold-annotation-candidate.yml
   pull_request:
     paths:
       - scripts/data/propose_bank_account_gold_amendment.py
@@ -123,4 +116,25 @@ jobs:
           assert x['bypass_uncovered_gold'] == x['deterministic_overmask'] == x['allow_gold_conflict'] == 0
           assert x['by_source']['standard_dev']['gold_spans'] == 4021
           print('PASS proposed candidate: 6463 records, three safety counters at zero')
+          PY
+
+      - name: Verify Phase 2 deterministic scan-reuse handoff on candidate corpus
+        working-directory: java
+        run: |
+          mvn -B -ntp -pl securelogx-core \
+            -Dexec.mainClass=com.securelogx.validation.Phase2LockedScanReuseAudit \
+            "-Dexec.args=$GITHUB_WORKSPACE/candidate $RUNNER_TEMP/reuse-audit.json ORG42 $GITHUB_WORKSPACE/java/examples/organization-rules.example.json" \
+            org.codehaus.mojo:exec-maven-plugin:3.5.0:java
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          x = json.loads((Path(os.environ['RUNNER_TEMP']) / 'reuse-audit.json').read_text())
+          assert x['record_count'] == 6463 and x['passed'] is True
+          assert x['full_onnx_output_parity'] == 'NOT_TESTED'
+          n = (x['caller_scans_reused'] + x['worker_rescans_required'] +
+               x['deterministic_direct_fields'])
+          assert n == 6463, f'Not all 6463 records accounted for: {n}'
+          print('PASS Phase 2 model-free scan handoff: 6463 records')
+          print('Reused caller scans:', x['caller_scans_reused'])
+          print('Worker fallback scans:', x['worker_rescans_required'])
           PY
