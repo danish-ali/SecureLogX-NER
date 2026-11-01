@@ -1,0 +1,126 @@
+name: Gold annotation candidate — non-destructive validation
+
+on:
+  push:
+    branches:
+      - chatgpt/review-gretel-bank-account-gold-span
+    paths:
+      - scripts/data/propose_bank_account_gold_amendment.py
+      - tests/test_bank_account_gold_amendment.py
+      - .github/workflows/gold-annotation-candidate.yml
+  pull_request:
+    paths:
+      - scripts/data/propose_bank_account_gold_amendment.py
+      - tests/test_bank_account_gold_amendment.py
+      - .github/workflows/gold-annotation-candidate.yml
+
+permissions:
+  contents: read
+
+jobs:
+  candidate-and-java-gold-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout Python NER source without changing frozen data
+        uses: actions/checkout@v4
+        with:
+          path: ner
+
+      - name: Setup Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Run synthetic non-destructive amendment tests
+        run: python -m unittest discover -s ner/tests -p test_bank_account_gold_amendment.py -v
+
+      - name: Generate proposed candidate outside source tree
+        run: |
+          python ner/scripts/data/propose_bank_account_gold_amendment.py \
+            --ner-root ner --output-root candidate --write-candidate
+
+      - name: Verify exact one-span amendment and untouched sibling datasets
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+          src = Path('ner/data/split/dev.jsonl')
+          new = Path('candidate/data/split/dev.jsonl')
+          a, b = src.read_bytes().splitlines(), new.read_bytes().splitlines()
+          assert len(a) == len(b) == 2994
+          changed = [i for i, (x, y) in enumerate(zip(a, b)) if x != y]
+          assert changed == [2027], f'unexpected modified indices: {changed}'
+          x, y = json.loads(a[2027]), json.loads(b[2027])
+          assert x['text'] == y['text']
+          assert x['meta'] == y['meta']
+          assert len(x['entities']) == 6 and len(y['entities']) == 7
+          assert sorted(y['entities']) == sorted(x['entities'] + [[490, 499, 'BANK_ACCOUNT_NUMBER']])
+          for sub in ('data/split/test.jsonl', 'data/ml_v1_3/real_structure/dev_challenge.jsonl'):
+              assert (Path('ner') / sub).read_bytes() == (Path('candidate') / sub).read_bytes()
+          manifest = json.loads(Path('candidate/annotation-candidate-manifest.json').read_text())
+          assert manifest['review_status'] == 'PROPOSED_NOT_APPROVED'
+          print('PASS: source preserved; exactly one proposed entity-span amendment')
+          PY
+
+      - name: Checkout Java SecureLogX Phase 2 without changing its repo
+        uses: actions/checkout@v4
+        with:
+          repository: danish-ali/SecureLogX
+          ref: chatgpt/phase2-request-scoped-scan-reuse
+          path: java
+
+      - name: Setup Java 25
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: java/pom.xml
+
+      - name: Build Java gold audit without ONNX model
+        working-directory: java
+        run: mvn -B -ntp -pl securelogx-core -am -DskipTests package
+
+      - name: Verify legacy frozen gold audit still reports exactly one discrepancy
+        working-directory: java
+        shell: bash
+        run: |
+          set +e
+          mvn -B -ntp -pl securelogx-core \
+            -Dexec.mainClass=com.securelogx.validation.HybridGateDatasetAudit \
+            "-Dexec.args=$GITHUB_WORKSPACE/ner $RUNNER_TEMP/frozen-audit.json" \
+            org.codehaus.mojo:exec-maven-plugin:3.5.0:java > "$RUNNER_TEMP/frozen-audit.log" 2>&1
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then
+            echo "ERROR: original frozen corpus unexpectedly passed"
+            exit 1
+          fi
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          x = json.loads((Path(os.environ['RUNNER_TEMP']) / 'frozen-audit.json').read_text())
+          assert x['records'] == 6463 and x['bypass_uncovered_gold'] == 0
+          assert x['deterministic_overmask'] == 1 and x['allow_gold_conflict'] == 0
+          assert x['by_source']['standard_dev']['deterministic_overmask'] == 1
+          print('CONFIRMED frozen audit: 6463 records, zero uncovered-gold, one overmask, zero ALLOW conflicts')
+          PY
+
+      - name: Confirm corrected candidate passes strict Java gold audit
+        working-directory: java
+        run: |
+          mvn -B -ntp -pl securelogx-core \
+            -Dexec.mainClass=com.securelogx.validation.HybridGateDatasetAudit \
+            "-Dexec.args=$GITHUB_WORKSPACE/candidate $RUNNER_TEMP/candidate-audit.json" \
+            org.codehaus.mojo:exec-maven-plugin:3.5.0:java
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          x = json.loads((Path(os.environ['RUNNER_TEMP']) / 'candidate-audit.json').read_text())
+          assert x['records'] == 6463 and x['safety_passed']
+          assert x['bypass_uncovered_gold'] == x['deterministic_overmask'] == x['allow_gold_conflict'] == 0
+          assert x['by_source']['standard_dev']['gold_spans'] == 4021
+          print('PASS proposed candidate: 6463 records, three safety counters at zero')
+          PY
